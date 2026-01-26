@@ -1,2 +1,2 @@
-# authifi-project
-Project management repo for Authifi
+# authifi-docs
+Public documentation for the Authifi project
