@@ -1,14 +1,14 @@
 # Authifi Documentation
 
-Welcome to the Authifi documentation. Authifi is an enterprise identity and access management platform providing OAuth 2.0, OpenID Connect, and SAML 2.0 authentication services.
+Authifi is an enterprise identity broker, access management and application security platform providing with an emphasis on security, collaboration, and ease of use.
+ 
 
 ## Getting Started
 
-Choose a section below to learn more about Authifi:
 
 ### Authorization
 
-Learn about Authifi's authorization model, including admin roles, permissions, and access control.
+Authifi supports admin roles as well as RBAC, OAuth scopes, custom roles and permissions, scripted authorization rules, and fine-grained access control. Use the links below to learn more.
 
 - [OAuth Client Authorization](authorization/authorization.md) - User groups, API authorization, and RBAC
 - [Admin Roles](authorization/admin-roles.md) - System admin, tenant admin, and scoped admin roles
