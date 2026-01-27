@@ -13,7 +13,7 @@ This guide provides comprehensive instructions for tenant administrators on mana
   - [System Notifications](#system-notifications)
   - [Login Metrics](#login-metrics)
   - [Usage Report](#usage-report)
-- [Edit Tenant Dialog - Tab Reference](#edit-tenant-dialog---tab-reference)
+- [Edit Tenant Dialog - Tab Reference](#edit-tenant-dialog-tab-reference)
   - [Settings Tab](#settings-tab)
   - [Branding Tab](#branding-tab)
   - [Login Page Tab](#login-page-tab)
