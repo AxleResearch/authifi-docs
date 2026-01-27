@@ -487,4 +487,3 @@ The feature is fully backward compatible:
 
 - [Delegating Tenant Management to a Shared Tenant](delegating-tenant-management-to-a-shared-tenant.md) - User guide
 - [Authorization](authorization.md) - General authorization concepts
-- [API Documentation](../api/README.md) - Complete API reference

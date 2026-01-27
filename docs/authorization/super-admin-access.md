@@ -30,14 +30,14 @@ These identifiers remain in code for backward compatibility but refer to Super A
 ### Table of contents
 
 - [Tenants](#tenants)
-- [Users & groups](#users--groups)
-- [Apps / clients](#apps--clients)
+- [Users & groups](#users-groups)
+- [Apps / clients](#apps-clients)
 - [Identity providers](#identity-providers)
-- [Roles & permissions (privileged RBAC entities)](#roles--permissions-privileged-rbac-entities)
+- [Roles & permissions (privileged RBAC entities)](#roles-permissions-privileged-rbac-entities)
 - [Access requests](#access-requests)
 - [Secrets](#secrets)
 - [Templates (system templates)](#templates-system-templates)
-- [Platform / system APIs](#platform--system-apis)
+- [Platform / system APIs](#platform-system-apis)
 
 ---
 
