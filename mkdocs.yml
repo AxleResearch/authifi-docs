@@ -76,4 +76,6 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/your-org/authifi-docs
+      link: https://github.com/axleresearch/authifi-docs
+
+copyright: Copyright &copy; 2026 Axle Informatics, LLC. All rights reserved.
