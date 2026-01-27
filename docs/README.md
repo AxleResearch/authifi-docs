@@ -1,3 +1,0 @@
-# Authifi Documentation
-
-TBD 

@@ -1,0 +1,79 @@
+site_name: Authifi Documentation
+site_description: Public documentation for the Authifi identity and access management platform
+site_url: https://authifi-docs.pages.dev
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Authorization:
+    - Overview: authorization/authorization.md
+    - Admin Roles: authorization/admin-roles.md
+    - Super Admin Access: authorization/super-admin-access.md
+    - Super Admin Terminology Migration: authorization/super-admin-terminology-migration.md
+    - Default Application User Groups: authorization/default-application-user-groups.md
+    - Delegating Tenant Management: authorization/delegating-tenant-management-to-a-shared-tenant.md
+    - Trusted Tenant Implementation: authorization/trusted-tenant-implementation.md
+  - Guides:
+    - Tenant Administration: guides/tenant-admin-guide.md
+    - Users and Groups: guides/users-groups-admin-guide.md
+    - SSO Integration: guides/sso-integration-guide.md
+    - Access Requests: guides/access-requests-guide.md
+    - License Management: guides/license-management-guide.md
+    - Monitoring and Logging: guides/monitoring-guide.md
+    - Resources and Tools: guides/resources-tools-guide.md
+  - Security:
+    - Overview: security/README.md
+    - Security Admin Guide: security/security-admin-guide.md
+    - Recommended Secure Configuration: security/recommended-secure-configuration.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/your-org/authifi-docs
