@@ -14,15 +14,21 @@ To deploy this documentation site:
 
 ### 1. Connect Repository to Cloudflare Pages
 
+> **Important**: Use **Pages**, not Workers. The setup screens look similar but Pages is for static sites.
+
 1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com)
-2. Go to **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**
-3. Select this GitHub repository
-4. Configure build settings:
-   - **Project name**: `authifi-docs` (or your preferred subdomain)
+2. Go to **Workers & Pages** in the left sidebar
+3. Click **Create** button
+4. Select the **Pages** tab (not Workers)
+5. Click **Connect to Git**
+6. Authorize GitHub and select the `AxleResearch/authifi-docs` repository
+7. Configure build settings:
+   - **Project name**: `authifi-docs`
    - **Production branch**: `main`
+   - **Framework preset**: None
    - **Build command**: `pip install -r requirements.txt && mkdocs build`
    - **Build output directory**: `site`
-5. Click **Save and Deploy**
+8. Click **Save and Deploy**
 
 ### 2. Verify Deploy Previews
 
