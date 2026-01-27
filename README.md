@@ -56,8 +56,12 @@ To use a custom domain instead of `*.pages.dev`:
 ### Setup
 
 ```bash
+# Set up a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
 # Install dependencies
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 
 # Start development server
 mkdocs serve
