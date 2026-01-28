@@ -59,7 +59,7 @@ This document provides comprehensive security guidance for configuring and opera
 
 ### Tenant Administrator
 
-- Manages a single tenant within Auth
+- Manages a single tenant within Authifi
 - No cross-tenant access
 - Cannot access super administrator functions
 

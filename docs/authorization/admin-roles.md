@@ -82,7 +82,7 @@ This document uses "system admin" to refer to the technical implementation in co
 **What it enables**
 
 - These scopes commonly grant access to operations that would otherwise be **system-admin-only** (or allow edits on “privileged” entities).
-- Examples of elevated admin scopes used in Auth:
+- Examples of elevated admin scopes used in Authifi:
   - `ADMIN_SCOPE.ADMIN_PERMISSIONS_UPDATE` (privileged RBAC entities: admin groups/roles/permissions)
   - `ADMIN_SCOPE.UPDATE_SYSTEM_TEMPLATES` (system templates)
   - `ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT` (trusted/verified IdP restrictions, some IdP type restrictions)
