@@ -1,6 +1,6 @@
 # Resources and Tools Guide
 
-This guide provides comprehensive instructions for tenant administrators on managing templates, images, secrets, and scheduled jobs through the Auth service UI.
+This guide provides comprehensive instructions for tenant administrators on managing templates, images, secrets, and scheduled jobs through the Authifi UI.
 
 ## Table of Contents
 
@@ -42,7 +42,7 @@ The **Resources and Tools** section provides centralized management of reusable 
 
 **Location**: Resources and Tools > Email Templates
 
-**Purpose**: Customize email communications sent by the Auth system (invitations, password resets, notifications, etc.).
+**Purpose**: Customize email communications sent by the Authifi system (invitations, password resets, notifications, etc.).
 
 #### What You Can Do
 
@@ -884,7 +884,7 @@ return [
 
 **Security restrictions**:
 
-- Cannot access sensitive Auth APIs
+- Cannot access sensitive Authifi APIs
 - Cannot modify authentication flow
 - Sandboxed execution environment
 - XSS protection enabled
@@ -1022,7 +1022,7 @@ Expiration: Never
 
 ### Example Generic Job
 
-**Purpose**: Sync users from external HR system to Auth tenant.
+**Purpose**: Sync users from external HR system to Authifi tenant.
 
 ```javascript
 const { logger, secrets, config } = context;
@@ -1047,7 +1047,7 @@ try {
   const hrUsers = await response.json();
   logger.info(`Fetched ${hrUsers.length} users from HR system`);
 
-  // Get existing Auth users
+  // Get existing Authifi users
   const authUsersResponse = await fetch(
     `${config.authApiUrl}/tenants/${tenantId}/users`,
     { headers: { Authorization: `Bearer ${config.authToken}` } }

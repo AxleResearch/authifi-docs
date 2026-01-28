@@ -1,6 +1,6 @@
 # Access Requests and Delegated Administration Guide
 
-This guide provides comprehensive instructions for tenant administrators on managing access requests, self-service workflows, and delegated administration through the Auth service UI.
+This guide provides comprehensive instructions for tenant administrators on managing access requests, self-service workflows, and delegated administration through the Authifi UI.
 
 ## Table of Contents
 

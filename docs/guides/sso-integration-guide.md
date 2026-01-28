@@ -1,6 +1,6 @@
 # SSO Integration Guide: Managing Applications and Identity Providers
 
-This guide provides comprehensive instructions for tenant administrators on managing SSO integrations, applications, APIs, and identity providers through the Auth service UI.
+This guide provides comprehensive instructions for tenant administrators on managing SSO integrations, applications, APIs, and identity providers through the Authifi UI.
 
 ## Table of Contents
 
@@ -192,7 +192,7 @@ Use a consistent naming scheme:
 
 #### OAuth 2.0 Scopes
 
-Permissions in the Auth system map to OAuth 2.0 scopes. When a client requests scopes, the Auth service checks if the user has the corresponding permissions.
+Permissions in the Authifi system map to OAuth 2.0 scopes. When a client requests scopes, the Authifi checks if the user has the corresponding permissions.
 
 **Security recommendations**:
 
@@ -320,7 +320,7 @@ Permissions in the Auth system map to OAuth 2.0 scopes. When a client requests s
 - **Google**: Google Workspace / Gmail
 - **Azure AD**: Microsoft Azure Active Directory
 - **LDAP**: Lightweight Directory Access Protocol
-- **Local**: Username/password (managed by Auth service)
+- **Local**: Username/password (managed by Authifi service, not suitable for production)
 
 #### Adding a New Provider
 
@@ -360,7 +360,7 @@ Permissions in the Auth system map to OAuth 2.0 scopes. When a client requests s
    - **SSO URL**: IdP's single sign-on endpoint
    - **Certificate**: IdP's X.509 signing certificate
    - **Attribute Mapping**: Map SAML assertions to user attributes
-3. Download Auth service metadata XML
+3. Download Authifi metadata XML
 4. Upload metadata to your IdP
 5. Test SAML flow
 6. Click **Save**
@@ -486,7 +486,7 @@ When creating or editing an application via **App Dashboard**, you'll encounter 
   - Read-only (auto-generated)
 
 - **Client Secret** (Confidential clients only)
-  - Secret key for authenticating the client to the Auth service
+  - Secret key for authenticating the client to the Authifi service
   - **Critical security**: Treat like a password, never expose in client-side code
   - Rotate regularly (recommendation: every 90-180 days)
 
@@ -540,7 +540,7 @@ When creating or editing an application via **App Dashboard**, you'll encounter 
 - **Use HTTPS** in production (not HTTP)
 - **No wildcards** (exact match only)
 - **No open redirects** (restrict to known endpoints)
-- **Validate strictly**: Auth service rejects tokens sent to non-whitelisted URIs
+- **Validate strictly**: Authifi rejects tokens sent to non-whitelisted URIs
 
 #### Logout URIs
 
@@ -866,7 +866,7 @@ _(This section would cover the detailed IdP configuration dialog with all provid
 - **Tenant Administrator Guide**: `packages/auth/docs/guides/tenant-admin-guide.md`
 - **Super Admin Access Reference**: `packages/auth/docs/authorization/super-admin-access.md`
 - **Admin Roles Overview**: `packages/auth/docs/authorization/admin-roles.md`
-- **Auth API Documentation**: Available via Help > Auth API Documentation in the UI
+- **Authifi API Documentation**: Available via Help > API Documentation in the UI
 
 ---
 

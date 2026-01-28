@@ -1,6 +1,6 @@
-## Super Administrator access requirements (Auth service)
+## Super Administrator access requirements (Authifi service)
 
-This document lists places in the Auth service where **Super Administrator** privileges are required **or treated as a privileged bypass**.
+This document lists places in the Authifi service where **Super Administrator** privileges are required **or treated as a privileged bypass**.
 
 ### What “system admin” means in code
 
@@ -10,7 +10,7 @@ This document lists places in the Auth service where **Super Administrator** pri
 
 ### Legacy Code References
 
-The Auth service codebase uses these identifiers (unchanged for backward compatibility):
+The Authifi service codebase uses these identifiers (unchanged for backward compatibility):
 
 - **Role constant:** `ROLE_AUTH_SYSTEM_ADMIN` (refers to Super Administrator role)
 - **Authorization check:** `UserInfoAuthorization.isSystemAdmin` (checks Super Administrator status)

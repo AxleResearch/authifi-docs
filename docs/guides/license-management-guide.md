@@ -1,6 +1,6 @@
 # License Management Guide (Super Admins)
 
-This guide provides comprehensive instructions for super administrators on managing platform licenses through the Auth service UI.
+This guide provides comprehensive instructions for super administrators on managing platform licenses through the Authifi UI.
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@ This guide provides comprehensive instructions for super administrators on manag
 
 ## Overview
 
-**License management** is a **super administrator-only** feature that controls tenant and application quotas across the Auth platform. Licenses define resource limits that can be assigned to tenants, enabling:
+**License management** is a **super administrator-only** feature that controls tenant and application quotas across the Authifi platform. Licenses define resource limits that can be assigned to tenants, enabling:
 
 - Multi-tier SaaS offerings (Free, Pro, Enterprise)
 - Department or business unit quotas
@@ -42,7 +42,7 @@ This guide provides comprehensive instructions for super administrators on manag
 
 **Navigation**:
 
-1. Log in to the Auth UI with super admin credentials
+1. Log in to the Authifi UI with super admin credentials
 2. Select any tenant from the tenant dropdown
 3. Navigate to **Admins** in the left navigation menu
 4. Click **Licenses**
@@ -265,7 +265,7 @@ Licenses are assigned to tenants via **Tenant Settings**.
 
 ### Enforcement
 
-License limits are enforced by the Auth service:
+License limits are enforced by the Authifi service:
 
 - **Client creation**: Blocked when Max Clients limit is reached
 - **Tenant creation**: Blocked when Max Tenants limit is reached (at platform level)
@@ -412,7 +412,7 @@ Production:
 3. **Validate license assignments**
    - Ensure tenants have appropriate licenses
    - Prevent unauthorized license tier escalations
-   - Implement approval workflows for license upgrades (external to Auth system)
+   - Implement approval workflows for license upgrades (external to Authifi system)
 
 4. **Protect quota integrity**
    - Don't set limits that could be easily bypassed

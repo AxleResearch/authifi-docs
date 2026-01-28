@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document tracks the transition from "System Administrator" to "Super Administrator" terminology in the Auth service. This change was implemented to avoid confusion between application-level administrators (Auth service) and infrastructure-level administrators (OS/server management).
+This document tracks the transition from "System Administrator" to "Super Administrator" terminology in the Authifi service. This change was implemented to avoid confusion between application-level administrators (Authifi service) and infrastructure-level administrators (OS/server management).
 
 **Status**: Phase 1 (Documentation) Complete  
 **Last Updated**: 2025-12-12
@@ -13,10 +13,10 @@ This document tracks the transition from "System Administrator" to "Super Admini
 
 ### Problem Statement
 
-The term "system admin" or "system administrator" is ambiguous in the context of the Auth service:
+The term "system admin" or "system administrator" is ambiguous in the context of the Authifi service:
 
 - **Infrastructure administrators** manage servers, operating systems, Kubernetes, Docker containers, and deployment infrastructure
-- **Application administrators** manage the Auth service itself, including tenants, users, applications, and security settings
+- **Application administrators** manage the Authifi service itself, including tenants, users, applications, and security settings
 
 This ambiguity causes confusion in:
 
@@ -30,7 +30,7 @@ This ambiguity causes confusion in:
 Adopt "Super Administrator" terminology for application-level administrators:
 
 - **Clear differentiation**: "Super Administrator" is unmistakably an application-level role
-- **Hierarchical clarity**: "Super" conveys the highest privilege level within the Auth application
+- **Hierarchical clarity**: "Super" conveys the highest privilege level within the Authifi application
 - **Industry standard**: Commonly used in enterprise SaaS applications (e.g., Salesforce, Office 365)
 - **FedRAMP aligned**: Provides clear terminology for recommended secure configuration documentation
 
@@ -551,7 +551,7 @@ auth: {
 
 | Date       | Phase   | Changes                                                     | Author    |
 | ---------- | ------- | ----------------------------------------------------------- | --------- |
-| 2025-12-12 | Phase 1 | Documentation migration complete, tracking document created | Auth Team |
+| 2025-12-12 | Phase 1 | Documentation migration complete, tracking document created | Authifi Team |
 
 ---
 
@@ -559,6 +559,5 @@ auth: {
 
 For questions about this migration:
 
-- Create an issue in the auth-monorepo repository
-- Contact the Auth team via Slack
-- Email: [team email]
+- Create an issue in the [Authifi Docs](https://github.com/AxleResearch/authifi-docs/issues) repository
+- Email: [Authifi Support](mailto:auth.support@labshare.org)

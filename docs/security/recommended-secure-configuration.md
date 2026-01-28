@@ -1,6 +1,6 @@
-# Auth Service - Recommended Secure Configuration
+# Authifi Service - Recommended Secure Configuration
 
-This document provides comprehensive security guidance for configuring and operating the Auth service in accordance with FedRAMP Recommended Secure Configuration requirements and security best practices.
+This document provides comprehensive security guidance for configuring and operating the Authifi service in accordance with FedRAMP Recommended Secure Configuration requirements and security best practices.
 
 > **See Also**: For a structured guide covering administrative account lifecycle (setup, configuration, operation, decommissioning) and security settings reference tables, refer to the [Security Admin Guide](./security-admin-guide.md).
 
@@ -21,9 +21,9 @@ This document provides comprehensive security guidance for configuring and opera
 
 ## Document Information
 
-**Document Version**: 1.0  
-**Last Updated**: 2025-12-12  
-**Applies To**: Auth Service v2.x and later  
+**Document Version**: 1.0
+**Last Updated**: 2026-01-28  
+**Applies To**: Authifi Service 10.x.x and later
 **Compliance**: FedRAMP Rev5 Recommended Secure Configuration  
 **Classification**: Public
 
@@ -43,8 +43,8 @@ This document provides comprehensive security guidance for configuring and opera
 
 ### Super Administrator
 
-- **Application-level administrator** with full control over the Auth service
-- Highest privilege level within the Auth application
+- **Application-level administrator** with full control over the Authifi service
+- Highest privilege level within the Authifi application
 - Manages all tenants and platform-wide configurations
 - Cross-tenant access and platform-level security controls
 - **Code identifiers:** `Auth System Admin` role (constant: `DEFAULT_ROLE.SYSTEM_ADMIN`), `systemAdmins` group
@@ -53,23 +53,23 @@ This document provides comprehensive security guidance for configuring and opera
 
 - **Not covered in this document**
 - Manages underlying servers, containers, Kubernetes, and operating systems
-- Deploys and maintains Auth service infrastructure
+- Deploys and maintains Authifi service infrastructure
 - OS-level system administration
 - See deployment documentation for infrastructure requirements
 
 ### Tenant Administrator
 
-- Manages a single tenant within Auth
+- Manages a single tenant within Authifi
 - No cross-tenant access
 - Cannot access super administrator functions
 
-**Throughout this document, "Super Administrator" refers exclusively to the Auth application administrator role.**
+**Throughout this document, "Super Administrator" refers exclusively to the Authifi application administrator role.**
 
 ---
 
 ## Executive Summary
 
-The Auth service provides enterprise identity and access management with a hierarchical administrative model. This document describes:
+The Authifi service provides enterprise identity and access management with a hierarchical administrative model. This document describes:
 
 - **Top-level administrative accounts** (Super Administrators): Full platform control, cross-tenant management
 - **Privileged accounts** (Tenant Administrators): Tenant-scoped administrative access
@@ -97,12 +97,12 @@ The Auth service provides enterprise identity and access management with a hiera
 
 ### Account Hierarchy
 
-The Auth service implements three levels of administrative access:
+The Authifi service implements three levels of administrative access:
 
 ```
 ┌─────────────────────────────────────┐
 │   Super Administrators              │  <- Top-Level Administrative Accounts
-│   (Auth System Admin role)          │
+│   (Authifi System Admin role)          │
 │   - Platform-wide control           │
 │   - All tenant access               │
 │   - License management              │
@@ -129,14 +129,14 @@ The Auth service implements three levels of administrative access:
 
 ### Terminology
 
-**Top-Level Administrative Accounts** (referred to as "Super Administrators" in Auth service):
+**Top-Level Administrative Accounts** (referred to as "Super Administrators" in Authifi):
 
 - Accounts with `Auth System Admin` role (constant: `DEFAULT_ROLE.SYSTEM_ADMIN`)
 - Full control over all platform features and all tenants
 - Can create/delete tenants, manage licenses, access all tenant data
 - Bypass tenant-level permission checks
 
-**Privileged Accounts** (referred to as "Tenant Administrators" and "Scoped Admins" in Auth service):
+**Privileged Accounts** (referred to as "Tenant Administrators" and "Scoped Admins" in Authifi):
 
 - Tenant Administrators: Members of tenant admin groups or users with tenant-admin-capable permissions
 - Scoped Administrators: Users with `ADMIN_SCOPE.*` permissions for specific resources
@@ -157,7 +157,7 @@ The Auth service implements three levels of administrative access:
 
 **Reference**: See [Super Admin Access Requirements](../authorization/super-admin-access.md) for complete list of super-admin-only operations.
 
-Super Administrators have unrestricted access to the Auth platform and can:
+Super Administrators have unrestricted access to the Authifi platform and can:
 
 **Platform Management**:
 
@@ -632,7 +632,7 @@ Tenant administrators can configure these security settings within their tenant:
 
 **Security Implications**:
 
-- Compromised IdP = compromised Auth tenant
+- Compromised IdP = compromised Authifi tenant
 - Misconfigured claims mapping can grant unintended access
 - Claims scripting vulnerabilities can be exploited
 - Always validate IdP authenticity before trusting
@@ -827,7 +827,7 @@ Tenant administrators can configure these security settings within their tenant:
 
 ### Default Security Settings
 
-The Auth service provisions new tenants with the following secure defaults:
+The Authifi service provisions new tenants with the following secure defaults:
 
 **Authentication**:
 
@@ -1089,7 +1089,7 @@ DELETE /auth/admin/tenants/{tenantId}/users/{userId}
 
 3. **MFA at IdP Level**:
    - Configure MFA at identity provider
-   - Don't rely solely on Auth service MFA
+   - Don't rely solely on Authifi service MFA
    - Prefer IdP-enforced MFA for admins
 
 4. **Regular Testing**:
@@ -1163,7 +1163,7 @@ DELETE /auth/admin/tenants/{tenantId}/users/{userId}
 
 2. **Incident Response**:
    - Document incident response procedures
-   - Include Auth service in IR playbooks
+   - Include Authifi service in IR playbooks
    - Know how to:
      - Revoke sessions immediately
      - Remove admin privileges
@@ -1234,8 +1234,8 @@ This document addresses the following FedRAMP Recommended Secure Configuration r
 
 **FRR-RSC-09**: Publish Guidance
 
-- This document is publicly available in the Auth service repository
-- Also available at: https://github.com/AxleResearch/auth-monorepo/blob/main/packages/auth/docs/security/recommended-secure-configuration.md
+- This document is publicly available in the Authifi Documentation repository at: https://authifi.pages.dev/security/recommended-secure-configuration
+- Also available at: https://github.com/AxleResearch/authifi-docs/blob/main/docs/security/recommended-secure-configuration.md
 
 **FRR-RSC-10**: Versioning and Release History
 
@@ -1353,7 +1353,7 @@ This document addresses the following FedRAMP Recommended Secure Configuration r
 
 | Version | Date       | Changes         | Author                  |
 | ------- | ---------- | --------------- | ----------------------- |
-| 1.0     | 2025-12-12 | Initial release | Auth Documentation Team |
+| 1.0     | 2025-12-12 | Initial release | Authifi Documentation Team |
 
 **Feedback**:
 
@@ -1385,8 +1385,8 @@ This document addresses the following FedRAMP Recommended Secure Configuration r
 
 **API Documentation**:
 
-- Auth API Reference: `/auth/docs` (Swagger/OpenAPI)
-- Available at runtime on Auth service instance
+- Authifi API Reference: `/auth/docs` (Swagger/OpenAPI)
+- Available at runtime on Authifi service instance
 
 ---
 

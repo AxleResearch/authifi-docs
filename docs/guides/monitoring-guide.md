@@ -1,6 +1,6 @@
 # Monitoring and Logging Guide
 
-This guide provides comprehensive instructions for tenant administrators on monitoring authentication activity, viewing audit trails, and analyzing system behavior through the Auth service UI.
+This guide provides comprehensive instructions for tenant administrators on monitoring authentication activity, viewing audit trails, and analyzing system behavior through the Authifi UI.
 
 ## Table of Contents
 
@@ -249,7 +249,7 @@ See [Natural Language Queries](#natural-language-queries) for more examples.
 **Natural language queries**:
 
 - "the event type is login and the log was created in the last 7 days"
-- "client is auth ui and the log was created one week ago"
+- "client is reportmgr and the log was created one week ago"
 - "provider name is google and email contains @example.com"
 
 #### Security Monitoring with Event Logs
@@ -717,8 +717,8 @@ See [Natural Language Queries](#natural-language-queries) for more examples.
 **Event Logs**:
 
 - "the event type is login and the log was created in the last 7 days"
-- "client is auth ui and the log was created one week ago"
-- "show failed logins from IP 192.168.1.1"
+- "client is reportmgr and the log was created one week ago"
+- "show failed logins from IP xxx.xxx.xxx.xxx"
 - "mfa events for user@example.com yesterday"
 - "login events where provider is google"
 

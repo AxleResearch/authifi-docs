@@ -1,6 +1,6 @@
-## Admin roles and privileged access (Auth service)
+## Admin roles and privileged access (Authifi service)
 
-This document describes how the Auth service models “admin” privileges and where those privileges come from:
+This document describes how the Authifi service models “admin” privileges and where those privileges come from:
 
 - **System admins** (platform-wide)
 - **Tenant admins** (tenant-wide)
@@ -82,7 +82,7 @@ This document uses "system admin" to refer to the technical implementation in co
 **What it enables**
 
 - These scopes commonly grant access to operations that would otherwise be **system-admin-only** (or allow edits on “privileged” entities).
-- Examples of elevated admin scopes used in Auth:
+- Examples of elevated admin scopes used in Authifi:
   - `ADMIN_SCOPE.ADMIN_PERMISSIONS_UPDATE` (privileged RBAC entities: admin groups/roles/permissions)
   - `ADMIN_SCOPE.UPDATE_SYSTEM_TEMPLATES` (system templates)
   - `ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT` (trusted/verified IdP restrictions, some IdP type restrictions)
@@ -121,7 +121,7 @@ This is why many “admin” APIs don’t contain an explicit “tenant admin re
 - The service supports delegating admin access across tenants using “trusted tenants” relationships.
 - Used by:
   - `packages/auth/src/controllers/trusted-tenant.controller.ts`
-  - Auth middleware and audience logic when evaluating tenant-scoped requests.
+  - Authifi middleware and audience logic when evaluating tenant-scoped requests.
 
 ---
 
