@@ -20,7 +20,7 @@ This guide provides comprehensive instructions for super administrators on manag
 
 ## Overview
 
-**License management** is a **super administrator-only** feature that controls tenant and application quotas across the Auth platform. Licenses define resource limits that can be assigned to tenants, enabling:
+**License management** is a **super administrator-only** feature that controls tenant and application quotas across the Authifi platform. Licenses define resource limits that can be assigned to tenants, enabling:
 
 - Multi-tier SaaS offerings (Free, Pro, Enterprise)
 - Department or business unit quotas
@@ -412,7 +412,7 @@ Production:
 3. **Validate license assignments**
    - Ensure tenants have appropriate licenses
    - Prevent unauthorized license tier escalations
-   - Implement approval workflows for license upgrades (external to Auth system)
+   - Implement approval workflows for license upgrades (external to Authifi system)
 
 4. **Protect quota integrity**
    - Don't set limits that could be easily bypassed

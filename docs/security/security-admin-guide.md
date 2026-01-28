@@ -61,7 +61,7 @@ The guide covers any user profile with elevated permissions and action privilege
 
 | Term                     | Definition                                                                                                                                                  |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Super Administrator**  | Application-level administrator with full control over the Auth platform. Highest privilege level. Can manage all tenants and platform-wide configurations. |
+| **Super Administrator**  | Application-level administrator with full control over the Authifi platform. Highest privilege level. Can manage all tenants and platform-wide configurations. |
 | **Tenant Administrator** | Administrator with full control within a single tenant. Cannot access other tenants or super admin functions.                                               |
 | **Privileged User**      | User with specific elevated permissions (scoped admin) for particular resource types without full admin access.                                             |
 
@@ -113,7 +113,7 @@ The guide covers any user profile with elevated permissions and action privilege
 
 ### Super Administrators (Top-Level Administrative Accounts)
 
-Super Administrators have unrestricted access to the Auth platform. This is the highest level of administrative privilege that can be assumed by end customers.
+Super Administrators have unrestricted access to the Authifi platform. This is the highest level of administrative privilege that can be assumed by end customers.
 
 #### Role Definition
 
@@ -792,7 +792,7 @@ All security settings are accessible via REST API:
 
 | Version | Date       | Changes         | Author                  |
 | ------- | ---------- | --------------- | ----------------------- |
-| 1.0     | 2026-01-22 | Initial release | Auth Documentation Team |
+| 1.0     | 2026-01-22 | Initial release | Authifi Documentation Team |
 
 ---
 

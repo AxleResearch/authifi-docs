@@ -835,7 +835,7 @@ UMRS (User-Managed Role System) allows designated users to grant/revoke specific
 - **SSO Integration Guide**: `packages/auth/docs/guides/sso-integration-guide.md`
 - **Super Admin Access Reference**: `packages/auth/docs/authorization/super-admin-access.md`
 - **Admin Roles Overview**: `packages/auth/docs/authorization/admin-roles.md`
-- **Auth API Documentation**: Available via Help > Auth API Documentation in the UI
+- **Authifi API Documentation**: Available via Help > API Documentation in the UI
 
 ---
 

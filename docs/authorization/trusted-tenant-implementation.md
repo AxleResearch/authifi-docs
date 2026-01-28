@@ -139,7 +139,7 @@ if (
 }
 ```
 
-#### 2. Auth Middleware (Scope Validation)
+#### 2. Authifi Middleware (Scope Validation)
 
 ```typescript
 // Location: src/providers/auth-middleware.provider.ts
@@ -420,7 +420,7 @@ it('allows cross-tenant resource management with trusted tenant relationship', a
 ### Explicit Limitations
 
 1. **Client Credentials Exclusion**: Service-to-service tokens cannot use trusted tenant features
-2. **Partial Endpoint Coverage**: Some Auth endpoints may not recognize trusted tenant relationships
+2. **Partial Endpoint Coverage**: Some Authifi endpoints may not recognize trusted tenant relationships
 3. **Identity Provider Dependency**: Requires authentication via trusted identity providers
 
 ### Architectural Constraints

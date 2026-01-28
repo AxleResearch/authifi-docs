@@ -192,7 +192,7 @@ Use a consistent naming scheme:
 
 #### OAuth 2.0 Scopes
 
-Permissions in the Auth system map to OAuth 2.0 scopes. When a client requests scopes, the Authifi checks if the user has the corresponding permissions.
+Permissions in the Authifi system map to OAuth 2.0 scopes. When a client requests scopes, the Authifi checks if the user has the corresponding permissions.
 
 **Security recommendations**:
 
@@ -866,7 +866,7 @@ _(This section would cover the detailed IdP configuration dialog with all provid
 - **Tenant Administrator Guide**: `packages/auth/docs/guides/tenant-admin-guide.md`
 - **Super Admin Access Reference**: `packages/auth/docs/authorization/super-admin-access.md`
 - **Admin Roles Overview**: `packages/auth/docs/authorization/admin-roles.md`
-- **Auth API Documentation**: Available via Help > Auth API Documentation in the UI
+- **Authifi API Documentation**: Available via Help > API Documentation in the UI
 
 ---
 

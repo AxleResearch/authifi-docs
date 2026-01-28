@@ -1,6 +1,6 @@
 # Tenant Administrator Guide: Managing Tenant Settings
 
-This guide provides comprehensive instructions for tenant administrators on managing tenant settings through the Auth UI.
+This guide provides comprehensive instructions for tenant administrators on managing tenant settings through the Authifi UI.
 
 ## Table of Contents
 
@@ -843,7 +843,7 @@ Available when "Use Default Email Settings" is disabled:
 
 - **Super Admin Access Reference**: `packages/auth/docs/authorization/super-admin-access.md`
 - **Admin Roles Overview**: `packages/auth/docs/authorization/admin-roles.md`
-- **Auth API Documentation**: Available via Help > Auth API Documentation in the UI
+- **Authifi API Documentation**: Available via Help > API Documentation in the UI
 
 ---
 

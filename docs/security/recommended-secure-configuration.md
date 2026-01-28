@@ -44,7 +44,7 @@ This document provides comprehensive security guidance for configuring and opera
 ### Super Administrator
 
 - **Application-level administrator** with full control over the Authifi service
-- Highest privilege level within the Auth application
+- Highest privilege level within the Authifi application
 - Manages all tenants and platform-wide configurations
 - Cross-tenant access and platform-level security controls
 - **Code identifiers:** `Auth System Admin` role (constant: `DEFAULT_ROLE.SYSTEM_ADMIN`), `systemAdmins` group
@@ -63,7 +63,7 @@ This document provides comprehensive security guidance for configuring and opera
 - No cross-tenant access
 - Cannot access super administrator functions
 
-**Throughout this document, "Super Administrator" refers exclusively to the Auth application administrator role.**
+**Throughout this document, "Super Administrator" refers exclusively to the Authifi application administrator role.**
 
 ---
 
@@ -102,7 +102,7 @@ The Authifi service implements three levels of administrative access:
 ```
 ┌─────────────────────────────────────┐
 │   Super Administrators              │  <- Top-Level Administrative Accounts
-│   (Auth System Admin role)          │
+│   (Authifi System Admin role)          │
 │   - Platform-wide control           │
 │   - All tenant access               │
 │   - License management              │
@@ -157,7 +157,7 @@ The Authifi service implements three levels of administrative access:
 
 **Reference**: See [Super Admin Access Requirements](../authorization/super-admin-access.md) for complete list of super-admin-only operations.
 
-Super Administrators have unrestricted access to the Auth platform and can:
+Super Administrators have unrestricted access to the Authifi platform and can:
 
 **Platform Management**:
 
@@ -632,7 +632,7 @@ Tenant administrators can configure these security settings within their tenant:
 
 **Security Implications**:
 
-- Compromised IdP = compromised Auth tenant
+- Compromised IdP = compromised Authifi tenant
 - Misconfigured claims mapping can grant unintended access
 - Claims scripting vulnerabilities can be exploited
 - Always validate IdP authenticity before trusting
@@ -1353,7 +1353,7 @@ This document addresses the following FedRAMP Recommended Secure Configuration r
 
 | Version | Date       | Changes         | Author                  |
 | ------- | ---------- | --------------- | ----------------------- |
-| 1.0     | 2025-12-12 | Initial release | Auth Documentation Team |
+| 1.0     | 2025-12-12 | Initial release | Authifi Documentation Team |
 
 **Feedback**:
 
@@ -1385,7 +1385,7 @@ This document addresses the following FedRAMP Recommended Secure Configuration r
 
 **API Documentation**:
 
-- Auth API Reference: `/auth/docs` (Swagger/OpenAPI)
+- Authifi API Reference: `/auth/docs` (Swagger/OpenAPI)
 - Available at runtime on Authifi service instance
 
 ---
