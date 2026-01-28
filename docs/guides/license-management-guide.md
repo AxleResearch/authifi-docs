@@ -1,6 +1,6 @@
 # License Management Guide (Super Admins)
 
-This guide provides comprehensive instructions for super administrators on managing platform licenses through the Auth service UI.
+This guide provides comprehensive instructions for super administrators on managing platform licenses through the Authifi UI.
 
 ## Table of Contents
 
@@ -42,7 +42,7 @@ This guide provides comprehensive instructions for super administrators on manag
 
 **Navigation**:
 
-1. Log in to the Auth UI with super admin credentials
+1. Log in to the Authifi UI with super admin credentials
 2. Select any tenant from the tenant dropdown
 3. Navigate to **Admins** in the left navigation menu
 4. Click **Licenses**
@@ -265,7 +265,7 @@ Licenses are assigned to tenants via **Tenant Settings**.
 
 ### Enforcement
 
-License limits are enforced by the Auth service:
+License limits are enforced by the Authifi service:
 
 - **Client creation**: Blocked when Max Clients limit is reached
 - **Tenant creation**: Blocked when Max Tenants limit is reached (at platform level)

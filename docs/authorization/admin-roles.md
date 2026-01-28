@@ -1,6 +1,6 @@
-## Admin roles and privileged access (Auth service)
+## Admin roles and privileged access (Authifi service)
 
-This document describes how the Auth service models “admin” privileges and where those privileges come from:
+This document describes how the Authifi service models “admin” privileges and where those privileges come from:
 
 - **System admins** (platform-wide)
 - **Tenant admins** (tenant-wide)
@@ -121,7 +121,7 @@ This is why many “admin” APIs don’t contain an explicit “tenant admin re
 - The service supports delegating admin access across tenants using “trusted tenants” relationships.
 - Used by:
   - `packages/auth/src/controllers/trusted-tenant.controller.ts`
-  - Auth middleware and audience logic when evaluating tenant-scoped requests.
+  - Authifi middleware and audience logic when evaluating tenant-scoped requests.
 
 ---
 

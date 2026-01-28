@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document tracks the transition from "System Administrator" to "Super Administrator" terminology in the Auth service. This change was implemented to avoid confusion between application-level administrators (Auth service) and infrastructure-level administrators (OS/server management).
+This document tracks the transition from "System Administrator" to "Super Administrator" terminology in the Authifi service. This change was implemented to avoid confusion between application-level administrators (Auth service) and infrastructure-level administrators (OS/server management).
 
 **Status**: Phase 1 (Documentation) Complete  
 **Last Updated**: 2025-12-12
@@ -13,10 +13,10 @@ This document tracks the transition from "System Administrator" to "Super Admini
 
 ### Problem Statement
 
-The term "system admin" or "system administrator" is ambiguous in the context of the Auth service:
+The term "system admin" or "system administrator" is ambiguous in the context of the Authifi service:
 
 - **Infrastructure administrators** manage servers, operating systems, Kubernetes, Docker containers, and deployment infrastructure
-- **Application administrators** manage the Auth service itself, including tenants, users, applications, and security settings
+- **Application administrators** manage the Authifi service itself, including tenants, users, applications, and security settings
 
 This ambiguity causes confusion in:
 

@@ -1,28 +1,28 @@
-## LabShare Auth OAuth Client Authorization
+## Authifi OAuth Client Authorization
 
-As an [Authorization Server](https://tools.ietf.org/html/rfc6749#section-1.1), LabShare Auth provides layered authorization options for [OAuth Clients](https://tools.ietf.org/html/rfc6749#section-2), [Resource Servers](https://tools.ietf.org/html/rfc6749#section-1.1) (APIs), and `Users` registered to the system.
+As an [Authorization Server](https://tools.ietf.org/html/rfc6749#section-1.1), Authifi provides layered authorization options for [OAuth Clients](https://tools.ietf.org/html/rfc6749#section-2), [Resource Servers](https://tools.ietf.org/html/rfc6749#section-1.1) (APIs), and `Users` registered to the system.
 
 ### User Groups and AD Groups
 
-Each LabShare Auth `Tenant` can define `User Groups` and assign/remove `Users` and/or `OAuth2 Clients` to each one
+Each Authifi `Tenant` can define `User Groups` and assign/remove `Users` and/or `OAuth2 Clients` to each one
 . When a `User Group` is assigned to an `OAuth Client`, access to the `OAuth Client` will be restricted to the `User(s)` within the `User Group(s)` assigned to the `Client(s)`.
 
-#### How to restrict Client access with User Groups configured via the Auth UI
+#### How to restrict Client access with User Groups configured via the Authifi UI
 
 Initial steps
 
-- Login to the Auth UI
+- Login to the Authifi UI
 - View/create a `Tenant`
 
 ##### Adding Users to a Tenant
 
-`Users` assigned to a LabShare Auth `Tenant` can be added to the `Tenant`'s `User Groups`.
+`Users` assigned to a Authifi `Tenant` can be added to the `Tenant`'s `User Groups`.
 
 - Go to the `Users` dashboard via the left navigation menu
 - Click the `Add User` button
 - Add `Users` to the `Tenant` by email address
 
-_Note: New `Users` will only display an email address in the `Users` dashboard columns until they login for the first time. This is due to Labshare Auth brokering identities from third parties like Google rather than storing them in its own database._
+_Note: New `Users` will only display an email address in the `Users` dashboard columns until they login for the first time. This is due to Authifi brokering identities from third parties like Google rather than storing them in its own database._
 
 ##### Creating a User Group
 
@@ -95,7 +95,7 @@ Use `Roles` to group low-level `Permissions` into reusable mappings. Similarly, 
 
 ### Identity Assurance Levels
 
-When authorizing, the `acr_values` query parameter can be used to request additional levels of identity assurance when authenticating the user. Currently, LabShare Auth supports the following ACR values:
+When authorizing, the `acr_values` query parameter can be used to request additional levels of identity assurance when authenticating the user. Currently, Authifi supports the following ACR values:
 
 | ACR Value                                              | Short Name | Details                               |
 | :----------------------------------------------------- | :--------: | :------------------------------------ |

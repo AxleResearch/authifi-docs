@@ -1,8 +1,8 @@
-# Auth Service - Security Documentation
+# Authifi Service - Security Documentation
 
 ## Overview
 
-This directory contains security documentation for the Auth service, including guidance for securely configuring and operating administrative accounts in accordance with FedRAMP Recommended Secure Configuration requirements.
+This directory contains security documentation for the Authifi service, including guidance for securely configuring and operating administrative accounts in accordance with FedRAMP Recommended Secure Configuration requirements.
 
 ---
 
@@ -10,7 +10,7 @@ This directory contains security documentation for the Auth service, including g
 
 **Document**: [Security Admin Guide](./security-admin-guide.md)
 
-The Security Admin Guide provides comprehensive guidance for setting up, configuring, operating, and decommissioning administrative accounts within the Auth service.
+The Security Admin Guide provides comprehensive guidance for setting up, configuring, operating, and decommissioning administrative accounts within the Authifi service.
 
 ### Administrative Account Types Covered
 

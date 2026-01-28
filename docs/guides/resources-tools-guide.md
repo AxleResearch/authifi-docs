@@ -1,6 +1,6 @@
 # Resources and Tools Guide
 
-This guide provides comprehensive instructions for tenant administrators on managing templates, images, secrets, and scheduled jobs through the Auth service UI.
+This guide provides comprehensive instructions for tenant administrators on managing templates, images, secrets, and scheduled jobs through the Authifi UI.
 
 ## Table of Contents
 

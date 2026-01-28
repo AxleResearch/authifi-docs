@@ -1,6 +1,6 @@
 # Users and Groups Management Guide
 
-This guide provides comprehensive instructions for tenant administrators on managing users and groups through the Auth service UI.
+This guide provides comprehensive instructions for tenant administrators on managing users and groups through the Authifi UI.
 
 ## Table of Contents
 

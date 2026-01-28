@@ -333,7 +333,7 @@ No specific tenant settings are required. The feature leverages:
 
 ### Frontend Applications
 
-**ng-auth (Angular Auth UI)**:
+**ng-auth (Authifi UI)**:
 
 ```typescript
 // Token audience validation affects routing

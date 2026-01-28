@@ -1,6 +1,6 @@
 # Tenant Administrator Guide: Managing Tenant Settings
 
-This guide provides comprehensive instructions for tenant administrators on managing tenant settings through the Auth service UI.
+This guide provides comprehensive instructions for tenant administrators on managing tenant settings through the Auth UI.
 
 ## Table of Contents
 
@@ -31,7 +31,7 @@ This guide provides comprehensive instructions for tenant administrators on mana
 
 ## Overview
 
-As a **tenant administrator**, you have comprehensive control over your tenant's authentication and authorization settings, branding, and user experience. This guide covers all configuration options available through the Auth UI.
+As a **tenant administrator**, you have comprehensive control over your tenant's authentication and authorization settings, branding, and user experience. This guide covers all configuration options available through the Authifi UI.
 
 **Note**: Some features may be restricted to super administrators only, or may require elevated admin scopes. These restrictions are noted throughout this guide.
 
@@ -39,7 +39,7 @@ As a **tenant administrator**, you have comprehensive control over your tenant's
 
 ## Accessing Tenant Settings
 
-1. Log in to the Auth UI
+1. Log in to the Authifi UI
 2. Select your tenant from the tenant dropdown in the top navigation
 3. Navigate to the **Tenant** section in the left navigation menu
 4. Select the desired option from the submenu
@@ -476,7 +476,7 @@ Configure the appearance of system-generated emails sent to users.
 
 **Purpose**: Manage Cross-Origin Resource Sharing (CORS) allowed origins for your tenant.
 
-**Critical security feature**: Only origins listed here can make authenticated API requests to the Auth service from browser-based applications.
+**Critical security feature**: Only origins listed here can make authenticated API requests to the Authifi from browser-based applications.
 
 #### Adding Allowed Origins
 
