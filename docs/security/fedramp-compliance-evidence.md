@@ -1,6 +1,6 @@
 # FedRAMP Compliance Evidence
 
-This document provides evidence for FedRAMP controls FRR-RSC-01, FRR-RSC-02, and FRR-RSC-09 by referencing Authifi's publicly accessible documentation.
+To satisfy the request to address the Controls Requirements Project "(050) Create a Security Admin Guide" and provide evidence of controls FRR-RSC-01, FRR-RSC-02, and FRR-RSC-09, Axle Informatics is providing the following publicly accessible URL(s)/link(s) that address the content of the requested security admin guide or documentation.
 
 ---
 
@@ -8,9 +8,8 @@ This document provides evidence for FedRAMP controls FRR-RSC-01, FRR-RSC-02, and
 
 Documentation covering permissions, actions, and operations for administrative accounts:
 
-- **Admin Roles Overview**: [https://authifi-docs.pages.dev/authorization/admin-roles/](https://authifi-docs.pages.dev/authorization/admin-roles/)
-- **Super Admin Access Requirements**: [https://authifi-docs.pages.dev/authorization/super-admin-access/](https://authifi-docs.pages.dev/authorization/super-admin-access/)
-- **Users and Groups Administration**: [https://authifi-docs.pages.dev/guides/users-groups-admin-guide/](https://authifi-docs.pages.dev/guides/users-groups-admin-guide/)
+- **Admin Roles and Privileges**: [https://authifi.pages.dev/authorization/admin-roles/](https://authifi.pages.dev/authorization/admin-roles/)
+- **Security Overview**: [https://authifi.pages.dev/security/](https://authifi.pages.dev/security/)
 
 ---
 
@@ -18,9 +17,8 @@ Documentation covering permissions, actions, and operations for administrative a
 
 Documentation covering setup, MFA requirements, configuration, and decommissioning:
 
-- **Security Admin Guide** (admin account lifecycle, provisioning, deprovisioning): [https://authifi-docs.pages.dev/security/security-admin-guide/](https://authifi-docs.pages.dev/security/security-admin-guide/)
-- **Tenant Administration** (session management, MFA configuration): [https://authifi-docs.pages.dev/guides/tenant-admin-guide/](https://authifi-docs.pages.dev/guides/tenant-admin-guide/)
-- **SSO Integration Guide** (identity provider configuration, authentication): [https://authifi-docs.pages.dev/guides/sso-integration-guide/](https://authifi-docs.pages.dev/guides/sso-integration-guide/)
+- **Account Lifecycle Management**: [https://authifi.pages.dev/security/security-admin-guide/#account-lifecycle-management](https://authifi.pages.dev/security/security-admin-guide/#account-lifecycle-management)
+- **Top-Level Administrative Accounts**: [https://authifi.pages.dev/security/recommended-secure-configuration/#top-level-administrative-accounts](https://authifi.pages.dev/security/recommended-secure-configuration/#top-level-administrative-accounts)
 
 ---
 
@@ -28,15 +26,13 @@ Documentation covering setup, MFA requirements, configuration, and decommissioni
 
 Documentation describing admin-controlled settings with associated functions, security impacts, and recommended values:
 
-- **Recommended Secure Configuration**: [https://authifi-docs.pages.dev/security/recommended-secure-configuration/](https://authifi-docs.pages.dev/security/recommended-secure-configuration/)
-- **Authorization and RBAC**: [https://authifi-docs.pages.dev/authorization/authorization/](https://authifi-docs.pages.dev/authorization/authorization/)
-- **Monitoring and Audit Logging**: [https://authifi-docs.pages.dev/guides/monitoring-guide/](https://authifi-docs.pages.dev/guides/monitoring-guide/)
-- **Access Requests and Delegated Administration**: [https://authifi-docs.pages.dev/guides/access-requests-guide/](https://authifi-docs.pages.dev/guides/access-requests-guide/)
+- **Secure Configuration Baseline**: [https://authifi.pages.dev/security/recommended-secure-configuration/#secure-configuration-baseline](https://authifi.pages.dev/security/recommended-secure-configuration/#secure-configuration-baseline)
+- **Security Best Practices**: [https://authifi.pages.dev/security/recommended-secure-configuration/#security-best-practices](https://authifi.pages.dev/security/recommended-secure-configuration/#security-best-practices)
 
 ---
 
 ## Public Accessibility
 
-All documentation listed above is publicly accessible without authentication at:
+All the above links are publicly accessible without authentication at:
 
-**[https://authifi-docs.pages.dev/](https://authifi-docs.pages.dev/)**
+**[https://authifi.pages.dev/](https://authifi.pages.dev/)**
