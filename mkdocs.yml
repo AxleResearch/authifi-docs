@@ -1,6 +1,6 @@
 site_name: Authifi Documentation
 site_description: Public documentation for the Authifi identity and access management platform
-site_url: https://authifi-docs.pages.dev
+site_url: https://authifi.pages.dev
 
 theme:
   name: material
