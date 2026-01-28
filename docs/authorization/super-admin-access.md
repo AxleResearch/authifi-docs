@@ -1,4 +1,4 @@
-## Super Administrator access requirements (Auth service)
+## Super Administrator access requirements (Authifi service)
 
 This document lists places in the Authifi service where **Super Administrator** privileges are required **or treated as a privileged bypass**.
 

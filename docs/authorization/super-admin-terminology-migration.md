@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document tracks the transition from "System Administrator" to "Super Administrator" terminology in the Authifi service. This change was implemented to avoid confusion between application-level administrators (Auth service) and infrastructure-level administrators (OS/server management).
+This document tracks the transition from "System Administrator" to "Super Administrator" terminology in the Authifi service. This change was implemented to avoid confusion between application-level administrators (Authifi service) and infrastructure-level administrators (OS/server management).
 
 **Status**: Phase 1 (Documentation) Complete  
 **Last Updated**: 2025-12-12
