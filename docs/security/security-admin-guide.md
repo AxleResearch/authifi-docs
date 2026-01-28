@@ -823,4 +823,4 @@ All security settings are accessible via REST API:
 
 **Classification**: Public  
 **Distribution**: Unlimited  
-**URL**: https://github.com/AxleResearch/auth-monorepo/blob/main/packages/auth/docs/security/security-admin-guide.md
+**URL**: https://authifi.pages.dev/security/security-admin-guide
