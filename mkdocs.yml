@@ -72,6 +72,7 @@ nav:
     - Overview: security/README.md
     - Security Admin Guide: security/security-admin-guide.md
     - Recommended Secure Configuration: security/recommended-secure-configuration.md
+    - FedRAMP Compliance Evidence: security/fedramp-compliance-evidence.md
 
 extra:
   social:
