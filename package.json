@@ -1,0 +1,25 @@
+{
+  "name": "authifi-docs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Public documentation for the Authifi identity and access management platform.",
+  "scripts": {
+    "changeset": "changeset",
+    "changeset:add": "changeset add",
+    "changeset:status": "changeset status",
+    "version": "changeset version",
+    "release": "changeset version && git add -A && git commit -m 'chore: version packages'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AxleResearch/authifi-docs.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AxleResearch/authifi-docs/issues"
+  },
+  "homepage": "https://github.com/AxleResearch/authifi-docs#readme",
+  "devDependencies": {
+    "@changesets/cli": "^2.29.8"
+  }
+}

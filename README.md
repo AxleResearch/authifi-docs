@@ -81,15 +81,59 @@ The static site is generated in the `site/` directory.
 
 ```
 authifi-docs/
+├── .changeset/              # Changesets configuration
 ├── docs/                    # Documentation source files
 │   ├── index.md            # Home page
 │   ├── authorization/      # Authorization concepts
 │   ├── guides/             # Administrator guides
 │   └── security/           # Security documentation
 ├── mkdocs.yml              # MkDocs configuration
+├── package.json            # Node.js dependencies (for changesets)
 ├── requirements.txt        # Python dependencies
 ├── CONTRIBUTING.md         # Contributor guide
 └── README.md               # This file
+```
+
+## Versioning with Changesets
+
+This project uses [Changesets](https://github.com/changesets/changesets) to manage versioning and generate changelogs.
+
+### Adding a Changeset
+
+When you make changes that should be noted in the changelog, add a changeset:
+
+```bash
+npm run changeset:add
+```
+
+This will prompt you to:
+1. Select the type of change (major, minor, or patch)
+2. Write a summary of the change
+
+The changeset file is committed with your PR and consumed when releasing.
+
+### Version Types
+
+- **patch**: Bug fixes, typo corrections, small updates
+- **minor**: New documentation pages, significant content additions
+- **major**: Major restructuring, breaking changes to URL structure
+
+### Releasing
+
+To consume all pending changesets and update the version:
+
+```bash
+npm run version
+```
+
+This updates `package.json` version and generates/updates `CHANGELOG.md`.
+
+### Checking Status
+
+To see pending changesets:
+
+```bash
+npm run changeset:status
 ```
 
 ## Technology Stack
