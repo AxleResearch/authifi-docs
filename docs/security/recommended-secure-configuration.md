@@ -73,7 +73,7 @@ The Authifi service provides enterprise identity and access management with a hi
 
 - **Top-level administrative accounts** (Super Administrators): Full platform control, cross-tenant management
 - **Privileged accounts** (Tenant Administrators): Tenant-scoped administrative access
-- **Scoped admin accounts**: Delegated permissions for specific resources
+- **Delegated admin accounts**: Scoped permissions for specific resources
 
 **Key Security Features**:
 
@@ -119,8 +119,8 @@ The Authifi service implements three levels of administrative access:
               │
               ↓
 ┌─────────────────────────────────────┐
-│   Scoped Administrators             │  <- Privileged Accounts
-│   (ADMIN_SCOPE.* Permissions)       │
+│   Delegated Admins                  │  <- Privileged Accounts
+│   (admin::* Permissions)            │
 │   - Specific resource control       │
 │   - Limited to assigned scopes      │
 │   - Cannot modify tenant settings   │
@@ -136,10 +136,10 @@ The Authifi service implements three levels of administrative access:
 - Can create/delete tenants, manage licenses, access all tenant data
 - Bypass tenant-level permission checks
 
-**Privileged Accounts** (referred to as "Tenant Administrators" and "Scoped Admins" in Authifi):
+**Privileged Accounts** (referred to as "Tenant Administrators" and "Delegated Admins" in Authifi):
 
 - Tenant Administrators: Members of tenant admin groups or users with tenant-admin-capable permissions
-- Scoped Administrators: Users with `ADMIN_SCOPE.*` permissions for specific resources
+- Delegated Admins: Users with `admin::*` permissions for specific resources
 - Limited to assigned tenant or resource scope
 - Cannot access super administrator-level features
 
@@ -381,18 +381,20 @@ Tenant Administrators have full administrative access within a single tenant and
 - Review job logs
 - Export reports and logs
 
-### Scoped Administrator Role
+### Delegated Admin Role
 
 **Reference**: See [Access Requests Guide](../guides/access-requests-guide.md) for delegated administration with UMRS roles.
 
-Scoped Administrators have permissions limited to specific resources:
+Delegated Admins have permissions limited to specific resources:
 
 **Scope-Based Permissions**:
 
-- `ADMIN_SCOPE.users`: User management only
-- `ADMIN_SCOPE.groups`: Group management only
-- `ADMIN_SCOPE.clients`: Application management only
-- `ADMIN_SCOPE.providers`: Identity provider management only
+- `admin::users:*`: User management only
+- `admin::groups:*`: Group management only
+- `admin::clients:*`: Application management only
+- `admin::providers:*`: Identity provider management only
+
+> **Naming Convention:** By convention, delegated admin permissions use the `admin::` prefix. However, this naming convention alone does not make an entity privileged—the `isPrivileged` flag must be set.
 
 **Delegated Administration (UMRS)**:
 
@@ -416,12 +418,12 @@ Scoped Administrators have permissions limited to specific resources:
     - Requires specific permission scopes (e.g., `auth.admin.*`)
     - More granular but harder to maintain
 
-**Scoped Administrators**:
+**Delegated Admins**:
 
 - **Direct Scope Assignment**:
-    - Assign specific `ADMIN_SCOPE.*` permissions to user
+    - Assign specific `admin::*` permissions to user
     - User gains admin capabilities only for that resource type
-    - Example: Assign `ADMIN_SCOPE.users` for user management only
+    - Example: Assign `admin::users:*` for user management only
 
 - **UMRS Role Grant**:
     - Create UMRS role scoped to specific resource
@@ -501,11 +503,11 @@ Tenant administrators can configure these security settings within their tenant:
     - Review administrative actions
     - Document any suspicious activity
 
-**Scoped Administrators**:
+**Delegated Admins**:
 
 - **Remove Scope Assignments**:
     - Edit user permissions
-    - Remove `ADMIN_SCOPE.*` permissions
+    - Remove `admin::*` permissions
     - Save changes
 
 - **Revoke UMRS Grants**:
@@ -1054,7 +1056,7 @@ DELETE /auth/admin/tenants/{tenantId}/users/{userId}
     - Consistent permissions across admins
 
 - **Least Privilege**:
-    - Use scoped admin roles where possible
+    - Use delegated admin roles where possible
     - Don't grant tenant admin for single-resource management
     - Consider UMRS for delegated administration
 
@@ -1202,7 +1204,7 @@ This document addresses the following FedRAMP Recommended Secure Configuration r
 **FRR-RSC-03**: Privileged Accounts Security Settings
 
 - Covered in: [Privileged Account Security Settings](#privileged-account-security-settings)
-- Addresses: Tenant admin and scoped admin settings and implications
+- Addresses: Tenant admin and delegated admin settings and implications
 
 **FRR-RSC-04**: Secure Defaults on Provisioning
 

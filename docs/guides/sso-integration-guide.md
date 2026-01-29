@@ -712,7 +712,7 @@ When creating or editing an application via **App Dashboard**, you'll encounter 
 
 **Purpose**: Custom claims mapping and transformation using JavaScript.
 
-**Availability**: System admin or users with `ADMIN_SCOPE.UPDATE_CLIENTS` only.
+**Availability**: System admin or users with `admin::clients:edit` only.
 
 #### Claims Scripting
 

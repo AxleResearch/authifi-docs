@@ -62,8 +62,8 @@ The guide covers any user profile with elevated permissions and action privilege
 | Term                     | Definition                                                                                                                                                     |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Super Administrator**  | Application-level administrator with full control over the Authifi platform. Highest privilege level. Can manage all tenants and platform-wide configurations. |
-| **Tenant Administrator** | Administrator with full control within a single tenant. Cannot access other tenants or super admin functions.                                                  |
-| **Privileged User**      | User with specific elevated permissions (scoped admin) for particular resource types without full admin access.                                                |
+| **Tenant Administrator** | Administrator with full control within a single tenant. Cannot access other tenants or super admin functions.                                               |
+| **Privileged User**      | User with specific elevated permissions (delegated admin) for particular resource types without full admin access.                                             |
 
 > **Note**: The Authifi service codebase uses identifiers such as `DEFAULT_ROLE.SYSTEM_ADMIN` (role name: "Auth System Admin"), `systemAdmins` group, and `isSystemAdmin` checks. These refer to Super Administrator in user-facing documentation.
 
@@ -100,11 +100,11 @@ The guide covers any user profile with elevated permissions and action privilege
                                     │
                                     ▼
 ┌───────────────────────────────────────────────────────────────────┐
-│   PRIVILEGED USERS (Scoped Administrators)                        │
+│   PRIVILEGED USERS (Delegated Admins)                             │
 │   ─────────────────────────────────────────────────────────────── │
 │   • Limited to specific resource types                            │
 │   • Delegated administration via UMRS roles                       │
-│   • ADMIN_SCOPE.* permissions for targeted capabilities           │
+│   • admin::* permissions for targeted capabilities                │
 │   • Cannot modify tenant-wide settings                            │
 └───────────────────────────────────────────────────────────────────┘
 ```
@@ -231,22 +231,24 @@ Tenant Administrators have full administrative control within a single tenant. T
 
 ---
 
-### Privileged Users (Scoped Administrators)
+### Privileged Users (Delegated Admins)
 
 Privileged Users have elevated permissions for specific resource types without full tenant admin access. This enables delegated administration following the principle of least privilege.
 
 #### Admin Scope Permissions
 
-| Scope                                            | Capability                                                 | Typical Use Case            |
-| ------------------------------------------------ | ---------------------------------------------------------- | --------------------------- |
-| `ADMIN_SCOPE.ADMIN_PERMISSIONS_UPDATE`           | Create/modify privileged groups, roles, permissions        | Security team managing RBAC |
-| `ADMIN_SCOPE.UPDATE_SYSTEM_TEMPLATES`            | Create/modify system HTML and email templates              | Branding team               |
-| `ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT`              | Modify trusted IdPs, configure secondary unique attributes | IdP administrators          |
-| `ADMIN_SCOPE.IDENTITY_PROVIDER_CLAIMS_SCRIPTING` | Configure IdP claims mapping scripts                       | Integration specialists     |
-| `ADMIN_SCOPE.IDENTITY_PROVIDER_SECRETS_LIST`     | View unmasked IdP secrets in API responses                 | Integration debugging       |
-| `ADMIN_SCOPE.UPDATE_ACCESS_SCRIPTS`              | Modify SAML access scripts                                 | SAML integration team       |
-| `ADMIN_SCOPE.UPDATE_CLIENTS`                     | Update client applications                                 | Application administrators  |
-| `ADMIN_SCOPE.USER_SSH_SECRET`                    | Create/update SSH access requests                          | DevOps team                 |
+| Scope                            | Capability                                                 | Typical Use Case            |
+| -------------------------------- | ---------------------------------------------------------- | --------------------------- |
+| `admin::admin-permissions:edit`  | Create/modify privileged groups, roles, permissions        | Security team managing RBAC |
+| `admin::system-templates:edit`   | Create/modify system HTML and email templates              | Branding team               |
+| `admin::trusted-provider:edit`   | Modify trusted IdPs, configure secondary unique attributes | IdP administrators          |
+| `admin::provider-scripts:edit`   | Configure IdP claims mapping scripts                       | Integration specialists     |
+| `admin::view:idp-secrets`        | View unmasked IdP secrets in API responses                 | Integration debugging       |
+| `admin::access-scripts:edit`     | Modify SAML access scripts                                 | SAML integration team       |
+| `admin::clients:edit`            | Update client applications                                 | Application administrators  |
+| `admin::user-ssh-secret:edit`    | Create/update SSH access requests                          | DevOps team                 |
+
+> **Naming Convention:** By convention, delegated admin permissions use the `admin::` prefix. However, this naming convention alone does not make an entity privileged—the `isPrivileged` flag must be set on the permission, role, or group.
 
 #### User-Managed Role System (UMRS)
 
@@ -432,9 +434,9 @@ UMRS enables resource-level delegation where designated managers can grant speci
 
 | Step | Action                                        | Result                     |
 | ---- | --------------------------------------------- | -------------------------- |
-| 1    | Identify required `ADMIN_SCOPE.*` permissions | Scopes identified          |
+| 1    | Identify required `admin::*` permissions      | Scopes identified          |
 | 2    | Assign permissions to user                    | Permissions granted        |
-| 3    | User gains scoped admin capabilities          | Limited to assigned scopes |
+| 3    | User gains delegated admin capabilities       | Limited to assigned scopes |
 
 **Method 2: UMRS Role Grant**
 
@@ -449,7 +451,7 @@ UMRS enables resource-level delegation where designated managers can grant speci
 
 | Step | Action                             | Timing          |
 | ---- | ---------------------------------- | --------------- |
-| 1    | Remove `ADMIN_SCOPE.*` permissions | Immediate       |
+| 1    | Remove `admin::*` permissions      | Immediate       |
 | 2    | Revoke UMRS grants                 | Immediate       |
 | 3    | Revoke active sessions             | Immediate       |
 | 4    | Audit log review                   | Within 48 hours |
@@ -565,20 +567,20 @@ The following settings are controlled by Tenant Administrators (and Super Admini
 
 ### Privileged User Security Settings Reference
 
-The following capabilities are available to users with specific `ADMIN_SCOPE.*` permissions.
+The following capabilities are available to users with specific `admin::*` permissions.
 
 #### Admin Scope Capabilities
 
-| Scope                                            | Capability               | Available Operations                                    | Security Impact                    |
-| ------------------------------------------------ | ------------------------ | ------------------------------------------------------- | ---------------------------------- |
-| `ADMIN_SCOPE.ADMIN_PERMISSIONS_UPDATE`           | Privileged RBAC entities | Create/modify privileged groups, roles, permissions     | High - Authorization control       |
-| `ADMIN_SCOPE.UPDATE_SYSTEM_TEMPLATES`            | System templates         | Create/modify system HTML and email templates           | Medium - Branding/phishing risk    |
-| `ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT`              | Trusted IdP management   | Create/modify trusted IdPs, secondary unique attributes | Critical - Authentication trust    |
-| `ADMIN_SCOPE.IDENTITY_PROVIDER_CLAIMS_SCRIPTING` | Claims mapping           | Configure IdP claims mapping scripts                    | High - Authorization mapping       |
-| `ADMIN_SCOPE.IDENTITY_PROVIDER_SECRETS_LIST`     | IdP secrets visibility   | View unmasked IdP secrets in API responses              | High - Credential exposure         |
-| `ADMIN_SCOPE.UPDATE_ACCESS_SCRIPTS`              | SAML scripts             | Modify SAML access scripts                              | High - Authorization logic         |
-| `ADMIN_SCOPE.UPDATE_CLIENTS`                     | Client management        | Update client applications                              | Medium - Application configuration |
-| `ADMIN_SCOPE.USER_SSH_SECRET`                    | SSH management           | Create/update SSH access requests                       | Medium - Infrastructure access     |
+| Scope                           | Capability               | Available Operations                                    | Security Impact                    |
+| ------------------------------- | ------------------------ | ------------------------------------------------------- | ---------------------------------- |
+| `admin::admin-permissions:edit` | Privileged RBAC entities | Create/modify privileged groups, roles, permissions     | High - Authorization control       |
+| `admin::system-templates:edit`  | System templates         | Create/modify system HTML and email templates           | Medium - Branding/phishing risk    |
+| `admin::trusted-provider:edit`  | Trusted IdP management   | Create/modify trusted IdPs, secondary unique attributes | Critical - Authentication trust    |
+| `admin::provider-scripts:edit`  | Claims mapping           | Configure IdP claims mapping scripts                    | High - Authorization mapping       |
+| `admin::view:idp-secrets`       | IdP secrets visibility   | View unmasked IdP secrets in API responses              | High - Credential exposure         |
+| `admin::access-scripts:edit`    | SAML scripts             | Modify SAML access scripts                              | High - Authorization logic         |
+| `admin::clients:edit`           | Client management        | Update client applications                              | Medium - Application configuration |
+| `admin::user-ssh-secret:edit`   | SSH management           | Create/update SSH access requests                       | Medium - Infrastructure access     |
 
 #### UMRS Configuration
 
@@ -680,7 +682,7 @@ Use this endpoint to retrieve current tenant configuration for comparison agains
 | Group-based assignment | Use admin groups, not direct permissions  | High     |
 | Regular reviews        | Quarterly audit of admin group membership | High     |
 | Session management     | Use short idle timeouts (30-60 min)       | Medium   |
-| Least privilege        | Use scoped admin where possible           | Medium   |
+| Least privilege        | Use delegated admin where possible        | Medium   |
 
 ### Identity Provider Security
 

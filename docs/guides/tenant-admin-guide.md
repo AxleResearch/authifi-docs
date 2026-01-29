@@ -450,7 +450,7 @@ Configure the appearance of system-generated emails sent to users.
 
 - **Is System Template?**
   - Toggle to mark this template as a system template
-  - **Restriction**: Requires super admin or `ADMIN_SCOPE.UPDATE_SYSTEM_TEMPLATES`
+  - **Restriction**: Requires super admin or `admin::system-templates:edit`
   - System templates can be shared across tenants
 
 - **Custom FooterLinks JSON**

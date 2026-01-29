@@ -8,6 +8,8 @@ Super Administrator privileges are determined by membership in the designated Su
 
 Throughout this document, "system admin" in legacy contexts refers to what is now called "Super Administrator" in user-facing documentation to avoid confusion with infrastructure system administrators.
 
+For a consolidated overview of privileged permissions, roles, and groups, see [Privileged Access Summary](privileged-access-summary.md).
+
 ### Legend
 
 - **SA-only**: request is rejected unless the user has Super Administrator privileges.
@@ -76,12 +78,12 @@ Throughout this document, "system admin" in legacy contexts refers to what is no
 
 - **Create/update/delete privileged groups** (groups marked `isPrivileged`, including names under the `admin::` namespace)
     - **UI**: Users and Groups > Groups > + ADD GROUP / Edit / Delete
-    - **SA-or-scope** (`ADMIN_SCOPE.ADMIN_PERMISSIONS_UPDATE`)
+    - **SA-or-scope** (`admin::admin-permissions:edit`)
 
 - **Invite users to a privileged group via data-change requests**
     - `POST /auth/admin/tenants/{tenantId}/data-change-request` (when `groupId` points at a privileged group)
     - **UI**: API only
-    - **SA-or-scope** (`ADMIN_SCOPE.ADMIN_PERMISSIONS_UPDATE`)
+    - **SA-or-scope** (`admin::admin-permissions:edit`)
 
 - **Tenant user expiration job excludes system admins**
     - **UI**: N/A (automatic system behavior)
@@ -98,7 +100,7 @@ Throughout this document, "system admin" in legacy contexts refers to what is no
 - **Update SAML access scripts** (claims mapping script, claims authorization script, user-info customization script)
     - `PUT /auth/admin/tenants/{tenantId}/clients/{id}`
     - **UI**: SSO Integration > App Dashboard > Edit app > Scripts tab
-    - **SA-or-scope** (non-Super-Administrators must have the relevant elevated scopes, e.g. `ADMIN_SCOPE.UPDATE_ACCESS_SCRIPTS` and/or `ADMIN_SCOPE.UPDATE_CLIENTS`)
+    - **SA-or-scope** (non-Super-Administrators must have the relevant elevated scopes, e.g. `admin::access-scripts:edit` and/or `admin::clients:edit`)
 
 ---
 
@@ -115,41 +117,41 @@ Throughout this document, "system admin" in legacy contexts refers to what is no
 - **Create a trusted identity provider (`isTrusted: true`)**
     - `POST /auth/admin/tenants/{tenantId}/identity-providers`
     - **UI**: SSO Integration > Identity Provider Dashboard > + ADD NEW > check "Trusted"
-    - **SA-or-scope** (`ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT`)
+    - **SA-or-scope** (`admin::trusted-provider:edit`)
 
 - **Change verification status (`isTrusted`) on an existing identity provider**
     - `PATCH/PUT /auth/admin/tenants/{tenantId}/identity-providers/{id}` (when `isTrusted` changes)
     - **UI**: SSO Integration > Identity Provider Dashboard > Edit IdP > toggle "Trusted"
-    - **SA-or-scope** (`ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT`)
+    - **SA-or-scope** (`admin::trusted-provider:edit`)
 
 - **Edit a verified/trusted identity provider**
     - `PATCH/PUT /auth/admin/tenants/{tenantId}/identity-providers/{id}` when the existing provider is already trusted
     - **UI**: SSO Integration > Identity Provider Dashboard > Edit IdP
-    - **SA-or-scope** (`ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT`)
+    - **SA-or-scope** (`admin::trusted-provider:edit`)
 
 - **Set or change IdP `mfaType`**
     - Applies to create and update/replace endpoints.
     - **UI**: SSO Integration > Identity Provider Dashboard > Edit IdP > MFA settings
-    - **SA-or-scope** (`ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT`), with additional tenant-admin logic depending on whether the IdP is trusted.
+    - **SA-or-scope** (`admin::trusted-provider:edit`), with additional tenant-admin logic depending on whether the IdP is trusted.
 
 - **Set identity provider claims mapping script** (`config.scripts.mapUserProfile`)
     - `POST/PATCH/PUT /auth/admin/tenants/{tenantId}/identity-providers/{id}`
     - **UI**: SSO Integration > Identity Provider Dashboard > Edit IdP > Scripts tab
-    - **SA-or-scope** (`ADMIN_SCOPE.IDENTITY_PROVIDER_CLAIMS_SCRIPTING`) in the non-Super-Administrator path
+    - **SA-or-scope** (`admin::provider-scripts:edit`) in the non-Super-Administrator path
 
 - **Configure secondary unique attributes** (`config.secondaryUniqueAttributes`)
     - `POST/PATCH/PUT /auth/admin/tenants/{tenantId}/identity-providers/{id}`
     - **UI**: SSO Integration > Identity Provider Dashboard > Edit IdP > Advanced tab
-    - **SA-or-scope** (`ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT` is treated as a privileged bypass; otherwise blocked)
+    - **SA-or-scope** (`admin::trusted-provider:edit` is treated as a privileged bypass; otherwise blocked)
 
 - **Manage "generic OAuth2" identity providers** (type `OAUTH2`)
     - **UI**: SSO Integration > Identity Provider Dashboard > + ADD NEW > OAuth2 type
-    - **SA-or-scope** (`ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT` is treated as a privileged bypass; otherwise `ADMIN_SCOPE.IDENTITY_PROVIDER_CLAIMS_SCRIPTING` is required)
+    - **SA-or-scope** (`admin::trusted-provider:edit` is treated as a privileged bypass; otherwise `admin::provider-scripts:edit` is required)
 
 - **Identity provider secret fields in API responses** (unmasked)
     - `GET /auth/admin/tenants/{tenantId}/identity-providers/{id}`
     - **UI**: SSO Integration > Identity Provider Dashboard > View IdP (secrets shown if authorized)
-    - **SA-or-scope** (`ADMIN_SCOPE.IDENTITY_PROVIDER_SECRETS_LIST`) — secrets are masked in responses unless the caller has this scope or is a Super Administrator
+    - **SA-or-scope** (`admin::view:idp-secrets`) — secrets are masked in responses unless the caller has this scope or is a Super Administrator
 
 ---
 
@@ -163,7 +165,7 @@ Throughout this document, "system admin" in legacy contexts refers to what is no
     - `PUT /auth/admin/tenants/{tenantId}/access-roles/{id}`
     - `DELETE /auth/admin/tenants/{tenantId}/access-roles/{id}`
     - **UI**: Users and Groups > Roles > + ADD ROLE / Edit / Delete
-    - **SA-or-scope** (`ADMIN_SCOPE.ADMIN_PERMISSIONS_UPDATE`)
+    - **SA-or-scope** (`admin::admin-permissions:edit`)
     - Extra restriction: default tenant-admin role (`DEFAULT_ROLE.TENANT_ADMIN`) has additional protections against rename/removal.
 
 - **Create/update/delete privileged permissions**
@@ -174,7 +176,7 @@ Throughout this document, "system admin" in legacy contexts refers to what is no
     - `PUT /auth/admin/tenants/{tenantId}/resource-servers/{resourceServerId}/permissions/{id}`
     - `DELETE /auth/admin/tenants/{tenantId}/resource-servers/{resourceServerId}/permissions/{id}`
     - **UI**: Users and Groups > Permissions > + ADD PERMISSION / Edit / Delete
-    - **SA-or-scope** (`ADMIN_SCOPE.ADMIN_PERMISSIONS_UPDATE`)
+    - **SA-or-scope** (`admin::admin-permissions:edit`)
 
 ---
 
@@ -223,13 +225,13 @@ Throughout this document, "system admin" in legacy contexts refers to what is no
     - `POST /auth/admin/tenants/{tenantId}/html-template`
     - `PUT /auth/admin/tenants/{tenantId}/html-template/{id}`
     - **UI**: Resources and Tools > HTML Templates > + ADD / Edit (with system template flag)
-    - **SA-or-scope** (`ADMIN_SCOPE.UPDATE_SYSTEM_TEMPLATES`)
+    - **SA-or-scope** (`admin::system-templates:edit`)
 
 - **Create or update a system email template** (when `isSystemTemplate === true`)
     - `POST /auth/admin/tenants/{tenantId}/email-template`
     - `PUT /auth/admin/tenants/{tenantId}/email-template/{id}`
     - **UI**: Resources and Tools > Email Templates > + ADD / Edit (with system template flag)
-    - **SA-or-scope** (`ADMIN_SCOPE.UPDATE_SYSTEM_TEMPLATES`)
+    - **SA-or-scope** (`admin::system-templates:edit`)
 
 ---
 
@@ -332,7 +334,7 @@ Throughout this document, "system admin" in legacy contexts refers to what is no
     - `POST /auth/tenants/{tenantId}/user/ssh/ssh-request`
     - `PUT /auth/tenants/{tenantId}/user/ssh/ssh-request`
     - **UI**: API only
-    - **SA-or-scope** (`ADMIN_SCOPE.USER_SSH_SECRET`)
+    - **SA-or-scope** (`admin::user-ssh-secret:edit`)
 
 ### Uploads
 

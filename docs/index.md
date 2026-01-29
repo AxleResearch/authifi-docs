@@ -9,7 +9,8 @@ Authifi is an enterprise identity broker, access management, and application sec
 Authifi supports admin roles as well as RBAC, OAuth scopes, custom roles and permissions, scripted authorization rules, and fine-grained access control. Use the links below to learn more.
 
 - [OAuth Client Authorization](authorization/authorization.md) - User groups, API authorization, and RBAC
-- [Admin Roles](authorization/admin-roles.md) - System admin, tenant admin, and scoped admin roles
+- [Admin Roles](authorization/admin-roles.md) - System admin, tenant admin, and delegated admin roles
+- [Privileged Access Summary](authorization/privileged-access-summary.md) - Privileged permissions, roles, and groups
 - [Super Admin Access](authorization/super-admin-access.md) - Super administrator requirements and capabilities
 - [Default Application User Groups](authorization/default-application-user-groups.md) - Automatically assign users to groups after login
 - [Delegating Tenant Management](authorization/delegating-tenant-management-to-a-shared-tenant.md) - Cross-tenant access via trusted tenants
