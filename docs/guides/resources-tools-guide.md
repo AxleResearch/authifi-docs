@@ -1144,11 +1144,11 @@ async function createAuthUser(hrUser, tenantId, groupName, authToken) {
 
 ## Additional Resources
 
-- **Tenant Administrator Guide**: `packages/auth/docs/guides/tenant-admin-guide.md`
-- **SSO Integration Guide**: `packages/auth/docs/guides/sso-integration-guide.md`
-- **Monitoring Guide**: `packages/auth/docs/guides/monitoring-guide.md`
-- **Access Requests Guide**: `packages/auth/docs/guides/access-requests-guide.md`
-- **Super Admin Access Reference**: `packages/auth/docs/authorization/super-admin-access.md`
+- [Tenant Administrator Guide](tenant-admin-guide.md)
+- [SSO Integration Guide](sso-integration-guide.md)
+- [Monitoring Guide](monitoring-guide.md)
+- [Access Requests Guide](access-requests-guide.md)
+- [Super Admin Access Reference](../authorization/super-admin-access.md)
 
 ---
 

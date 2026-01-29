@@ -863,9 +863,9 @@ _(This section would cover the detailed IdP configuration dialog with all provid
 
 ## Additional Resources
 
-- **Tenant Administrator Guide**: `packages/auth/docs/guides/tenant-admin-guide.md`
-- **Super Admin Access Reference**: `packages/auth/docs/authorization/super-admin-access.md`
-- **Admin Roles Overview**: `packages/auth/docs/authorization/admin-roles.md`
+- [Tenant Administrator Guide](tenant-admin-guide.md)
+- [Super Admin Access Reference](../authorization/super-admin-access.md)
+- [Admin Roles Overview](../authorization/admin-roles.md)
 - **Authifi API Documentation**: Available via Help > API Documentation in the UI
 
 ---

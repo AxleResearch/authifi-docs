@@ -27,7 +27,7 @@ This guide provides comprehensive instructions for super administrators on manag
 - Trial period limitations
 - Resource allocation and billing control
 
-**Access restriction**: The Admins > Licenses menu option is **completely hidden** for non-system-admin users. Only users with the `ROLE_AUTH_SYSTEM_ADMIN` role can view or manage licenses.
+**Access restriction**: The Admins > Licenses menu option is **completely hidden** for non-Super-Administrator users. Only users with Super Administrator privileges can view or manage licenses.
 
 ---
 
@@ -37,7 +37,7 @@ This guide provides comprehensive instructions for super administrators on manag
 
 **Prerequisites**:
 
-- System administrator role (`ROLE_AUTH_SYSTEM_ADMIN`)
+- Super Administrator privileges
 - The Admins menu will not appear for tenant admins or regular users
 
 **Navigation**:
@@ -531,9 +531,9 @@ Production:
 
 ## Additional Resources
 
-- **Tenant Administrator Guide**: `packages/auth/docs/guides/tenant-admin-guide.md` (for license assignment process)
-- **Super Admin Access Reference**: `packages/auth/docs/authorization/super-admin-access.md`
-- **Admin Roles Overview**: `packages/auth/docs/authorization/admin-roles.md`
+- [Tenant Administrator Guide](tenant-admin-guide.md) (for license assignment process)
+- [Super Admin Access Reference](../authorization/super-admin-access.md)
+- [Admin Roles Overview](../authorization/admin-roles.md)
 
 ---
 
