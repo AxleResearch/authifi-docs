@@ -958,11 +958,11 @@ Result: Members of "project-beta-leads" can grant "project-beta-contributor" rol
 
 ## Additional Resources
 
-- **Users and Groups Management Guide**: `packages/auth/docs/guides/users-groups-admin-guide.md`
-- **SSO Integration Guide**: `packages/auth/docs/guides/sso-integration-guide.md`
-- **Tenant Administrator Guide**: `packages/auth/docs/guides/tenant-admin-guide.md`
-- **Super Admin Access Reference**: `packages/auth/docs/authorization/super-admin-access.md`
-- **Admin Roles Overview**: `packages/auth/docs/authorization/admin-roles.md`
+- [Users and Groups Management Guide](users-groups-admin-guide.md)
+- [SSO Integration Guide](sso-integration-guide.md)
+- [Tenant Administrator Guide](tenant-admin-guide.md)
+- [Super Admin Access Reference](../authorization/super-admin-access.md)
+- [Admin Roles Overview](../authorization/admin-roles.md)
 
 ---
 

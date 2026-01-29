@@ -117,7 +117,6 @@ The feature implements authorization bypass at two critical middleware points:
 #### 1. Audience Provider (Token Audience Validation)
 
 ```typescript
-// Location: src/providers/audience.provider.ts
 const trustedTenants = await this.tenantRepository
   .trustedTenants(tenantId)
   .find({
@@ -142,7 +141,6 @@ if (
 #### 2. Authifi Middleware (Scope Validation)
 
 ```typescript
-// Location: src/providers/auth-middleware.provider.ts
 const trustedTenants = await this.tenantRepository
   .trustedTenants(userTenantId)
   .find({
@@ -379,7 +377,7 @@ async action(request: RequestWithUser, response: Response): Promise<any> {
 
 ### Integration Test Coverage
 
-The feature includes comprehensive test scenarios in `test/integration/models/tenants/trusted-tenants_spec.ts`:
+The feature includes comprehensive test scenarios covering:
 
 1. **Trust Establishment**: Verify admin users can establish trust relationships
 2. **Cross-Tenant Access**: Confirm trusted tenant authorization works

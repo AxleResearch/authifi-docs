@@ -830,11 +830,11 @@ UMRS (User-Managed Role System) allows designated users to grant/revoke specific
 
 ## Additional Resources
 
-- **License Management Guide**: `packages/auth/docs/guides/license-management-guide.md` (super admins)
-- **Tenant Administrator Guide**: `packages/auth/docs/guides/tenant-admin-guide.md`
-- **SSO Integration Guide**: `packages/auth/docs/guides/sso-integration-guide.md`
-- **Super Admin Access Reference**: `packages/auth/docs/authorization/super-admin-access.md`
-- **Admin Roles Overview**: `packages/auth/docs/authorization/admin-roles.md`
+- [License Management Guide](license-management-guide.md) (Super Administrators)
+- [Tenant Administrator Guide](tenant-admin-guide.md)
+- [SSO Integration Guide](sso-integration-guide.md)
+- [Super Admin Access Reference](../authorization/super-admin-access.md)
+- [Admin Roles Overview](../authorization/admin-roles.md)
 - **Authifi API Documentation**: Available via Help > API Documentation in the UI
 
 ---

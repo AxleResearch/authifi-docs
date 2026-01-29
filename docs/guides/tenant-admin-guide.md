@@ -841,8 +841,8 @@ Available when "Use Default Email Settings" is disabled:
 
 ## Additional Resources
 
-- **Super Admin Access Reference**: `packages/auth/docs/authorization/super-admin-access.md`
-- **Admin Roles Overview**: `packages/auth/docs/authorization/admin-roles.md`
+- [Super Admin Access Reference](../authorization/super-admin-access.md)
+- [Admin Roles Overview](../authorization/admin-roles.md)
 - **Authifi API Documentation**: Available via Help > API Documentation in the UI
 
 ---
