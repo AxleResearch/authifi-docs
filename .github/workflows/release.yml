@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -23,10 +25,24 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Create Release Pull Request
-        uses: changesets/action@v1
-        with:
-          title: "chore: version packages"
-          commit: "chore: version packages"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check for changesets
+        id: changesets
+        run: |
+          if ls .changeset/*.md 1> /dev/null 2>&1 && [ "$(ls .changeset/*.md 2>/dev/null | grep -v README.md)" ]; then
+            echo "has_changesets=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changesets=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Apply version bump
+        if: steps.changesets.outputs.has_changesets == 'true'
+        run: npx changeset version
+
+      - name: Commit and push version bump
+        if: steps.changesets.outputs.has_changesets == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: version packages" || echo "No changes to commit"
+          git push
