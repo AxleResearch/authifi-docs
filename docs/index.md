@@ -32,6 +32,12 @@ Security configuration and best practices:
 - [Security Admin Guide](security/security-admin-guide.md) - Administrative account lifecycle and security
 - [Recommended Secure Configuration](security/recommended-secure-configuration.md) - FedRAMP-aligned security guidance
 
+## FedRAMP 
+
+Authifi is FedRAMP High authorized as a supporting service in the [Palantir Federal Cloud Service (PFCS-SS)](https://marketplace.fedramp.gov/products/FR2315464863).
+
+- [FedRAMP compliance evidence](security/fedramp-compliance-evidence.md)
+
 ## Support
 
 For questions or issues, please contact your Authifi administrator or support team.
