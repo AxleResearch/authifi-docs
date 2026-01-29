@@ -1356,7 +1356,7 @@ This document addresses the following FedRAMP Recommended Secure Configuration r
 
 **Feedback**:
 
-- Submit documentation feedback via: [GitHub Issues](https://github.com/AxleResearch/auth-monorepo/issues)
+- Submit documentation feedback via: [GitHub Issues](https://github.com/AxleResearch/authifi-docs/issues)
 - Report security concerns via: security@axleinfo.com
 - Request clarifications via: support@axleinfo.com
 

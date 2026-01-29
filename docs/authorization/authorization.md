@@ -37,12 +37,12 @@ _Note: New `Users` will only display an email address in the `Users` dashboard c
 - In the edit dialog for the `OAuth Client`, go to the `Groups` tab
 - Assign/remove `User Groups` to the `OAuth Client`
 
-#### How to restrict OAuth Client access by AD Group membership (EXPERIMENTAL)
+#### How to restrict OAuth Client access by AD Group membership
 
 One or more Active Directory groups can be assigned to `OAuth Clients` in order to restrict access to members of the AD Group(s).
 Currently, it is only possible to obtain AD Group information when logging in with specific Identity Providers. For example, the `Google OAuth` and `Azure OIDC` IdP does not provide AD Group information.
 
-##### Assigning AD Groups to SAML2 OAuth Clients (EXPERIMENTAL)
+##### Assigning AD Groups to SAML2 OAuth Clients
 
 - Go to the `Applications Dashboard` via the left navigation menu
 - Select an existing `saml2` application or create a new one
@@ -56,7 +56,7 @@ Example
 }
 ```
 
-##### Assigning AD Groups to SPA OAuth Clients
+##### Assigning AD Groups to Web/Native OAuth Clients
 
 - Go to the `Applications Dashboard` via the left navigation menu
 - Select an existing `web` or `native` application or create a new one
@@ -79,12 +79,6 @@ Authorize `OAuth Clients` to access a specific `API` (Resource Server).
 - Select an existing `API`
 - In the edit dialog for the `API`, go to the `Clients` tab
 - Assign/remove `Clients` to the `API`
-
-#### Example Integrations
-
-##### Node.js
-
-See: [@axleresearch/services-auth](https://github.com/ncats/auth-monorepo/tree/main/packages/services-auth#usage)
 
 ### Role Based Access Control
 
