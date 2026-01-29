@@ -118,15 +118,18 @@ The changeset file is committed with your PR and consumed when releasing.
 - **minor**: New documentation pages, significant content additions
 - **major**: Major restructuring, breaking changes to URL structure
 
-### Releasing
+### Releasing (Automated)
 
-To consume all pending changesets and update the version:
+When PRs with changesets are merged to `main`, a GitHub Action automatically:
+
+1. Creates a "Version Packages" PR with version bumps and changelog updates
+2. When that PR is merged, the version is updated in `package.json` and `CHANGELOG.md`
+
+To manually release (if needed):
 
 ```bash
 npm run version
 ```
-
-This updates `package.json` version and generates/updates `CHANGELOG.md`.
 
 ### Checking Status
 
