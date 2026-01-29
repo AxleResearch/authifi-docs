@@ -59,11 +59,11 @@ The guide covers any user profile with elevated permissions and action privilege
 
 ### Terminology
 
-| Term                     | Definition                                                                                                                                                  |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Term                     | Definition                                                                                                                                                     |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Super Administrator**  | Application-level administrator with full control over the Authifi platform. Highest privilege level. Can manage all tenants and platform-wide configurations. |
-| **Tenant Administrator** | Administrator with full control within a single tenant. Cannot access other tenants or super admin functions.                                               |
-| **Privileged User**      | User with specific elevated permissions (scoped admin) for particular resource types without full admin access.                                             |
+| **Tenant Administrator** | Administrator with full control within a single tenant. Cannot access other tenants or super admin functions.                                                  |
+| **Privileged User**      | User with specific elevated permissions (scoped admin) for particular resource types without full admin access.                                                |
 
 > **Note**: The Authifi service codebase uses identifiers such as `DEFAULT_ROLE.SYSTEM_ADMIN` (role name: "Auth System Admin"), `systemAdmins` group, and `isSystemAdmin` checks. These refer to Super Administrator in user-facing documentation.
 
@@ -119,7 +119,7 @@ Super Administrators have unrestricted access to the Authifi platform. This is t
 
 | Attribute        | Description                                                                         |
 | ---------------- | ----------------------------------------------------------------------------------- |
-| **Role Name**    | `Auth System Admin`                         |
+| **Role Name**    | `Auth System Admin`                                                                 |
 | **Group**        | `systemAdmins` (configured in `auth.defaults.systemAdminGroup`)                     |
 | **Scope**        | Platform-wide (all tenants)                                                         |
 | **Grant Method** | Membership in `systemAdmins` group or configuration in `auth.system.administrators` |
@@ -173,10 +173,10 @@ Tenant Administrators have full administrative control within a single tenant. T
 
 #### Role Definition
 
-| Attribute         | Description                                                |
-| ----------------- | ---------------------------------------------------------- |
-| **Grant Method**  | Membership in tenant admin group (configured per tenant)   |
-| **Scope**         | Single tenant                                              |
+| Attribute        | Description                                              |
+| ---------------- | -------------------------------------------------------- |
+| **Grant Method** | Membership in tenant admin group (configured per tenant) |
+| **Scope**        | Single tenant                                            |
 
 #### Permissions and Operations
 
@@ -791,8 +791,8 @@ All security settings are accessible via REST API and the Authifi UI:
 
 ## Change History
 
-| Version | Date       | Changes         | Author                  |
-| ------- | ---------- | --------------- | ----------------------- |
+| Version | Date       | Changes         | Author                     |
+| ------- | ---------- | --------------- | -------------------------- |
 | 1.0     | 2026-01-22 | Initial release | Authifi Documentation Team |
 
 ---
@@ -816,7 +816,7 @@ All security settings are accessible via REST API and the Authifi UI:
 
 **Support**:
 
-- Documentation feedback: [GitHub Issues](https://github.com/AxleResearch/auth-monorepo/issues)
+- Documentation feedback: [GitHub Issues](https://github.com/AxleResearch/authifi-docs/issues)
 - Security concerns: security@axleinfo.com
 - General support: support@axleinfo.com
 
