@@ -210,7 +210,9 @@ Super administrator assignment is controlled through system configuration, not t
     - Existing super admin can grant temporary membership to `systemAdmins` group
     - Specify expiration date/time
     - Access automatically revoked after expiration
-    - All actions during temporary access are logged with temporary flag
+    - All changes to the `systemAdmins` group trigger notifications to existing system admins and are recored in the audit logs
+    - A super admin making such a change must enter a justification which is included in the audit trail
+    - Changes to the `systemAdmins` are not persistent; they are overriden during system restarts regardless of the expiration setting
 
 - **Verify MFA Enrollment**:
     - Confirm user has MFA enabled (TOTP or WebAuthn)
