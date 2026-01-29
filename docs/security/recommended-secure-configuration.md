@@ -903,6 +903,8 @@ The Authifi service provisions new tenants with the following secure defaults:
 
 **API Endpoint**: `GET /auth/admin/tenants/{tenantId}`
 
+**UI**: Tenant > Settings (view current configuration)
+
 Returns the tenant configuration including security-relevant settings:
 
 ```json
@@ -960,9 +962,9 @@ Returns the tenant configuration including security-relevant settings:
 
 **Security Configuration API**:
 
-All security settings are accessible via REST API:
+All security settings are accessible via REST API and the Authifi UI:
 
-**Authentication**:
+**Tenant Settings** — UI: Tenant > Settings
 
 ```
 GET    /auth/admin/tenants/{tenantId}
@@ -970,7 +972,7 @@ PUT    /auth/admin/tenants/{tenantId}
 PATCH  /auth/admin/tenants/{tenantId}
 ```
 
-**Identity Providers**:
+**Identity Providers** — UI: SSO Integration > Identity Provider Dashboard
 
 ```
 GET    /auth/admin/tenants/{tenantId}/identity-providers
@@ -979,7 +981,7 @@ PUT    /auth/admin/tenants/{tenantId}/identity-providers/{idpId}
 DELETE /auth/admin/tenants/{tenantId}/identity-providers/{idpId}
 ```
 
-**Applications**:
+**Applications** — UI: SSO Integration > App Dashboard
 
 ```
 GET    /auth/admin/tenants/{tenantId}/clients
@@ -988,7 +990,7 @@ PUT    /auth/admin/tenants/{tenantId}/clients/{clientId}
 DELETE /auth/admin/tenants/{tenantId}/clients/{clientId}
 ```
 
-**Users and Groups**:
+**Users and Groups** — UI: Users and Groups > Users / Groups
 
 ```
 GET    /auth/admin/tenants/{tenantId}/users
