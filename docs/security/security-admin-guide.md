@@ -1,6 +1,6 @@
 # Authifi Service - Security Admin Guide
 
-This document provides comprehensive guidance for securely setting up, configuring, operating, and decommissioning administrative accounts within the Authifi service. It is intended for security administrators, tenant administrators, and privileged users who manage authentication and authorization functions.
+This document provides comprehensive guidance for securely setting up, configuring, operating, and decommissioning administrative accounts within the Authifi service. It is intended for security administrators, tenant administrators, and delegated admins who manage authentication and authorization functions.
 
 **Compliance**: FedRAMP Rev5 Recommended Secure Configuration
 
@@ -13,15 +13,15 @@ This document provides comprehensive guidance for securely setting up, configuri
 3. [Administrative Account Types](#administrative-account-types)
    - [Super Administrators](#super-administrators-top-level-administrative-accounts)
    - [Tenant Administrators](#tenant-administrators-privileged-accounts)
-   - [Privileged Users](#privileged-users-scoped-administrators)
+   - [Delegated Admins](#delegated-admins)
 4. [Account Lifecycle Management](#account-lifecycle-management)
    - [Super Administrator Lifecycle](#super-administrator-lifecycle)
    - [Tenant Administrator Lifecycle](#tenant-administrator-lifecycle)
-   - [Privileged User Lifecycle](#privileged-user-lifecycle)
+   - [Delegated Admin Lifecycle](#delegated-admin-lifecycle)
 5. [Security Settings Reference Tables](#security-settings-reference-tables)
    - [Super Administrator Security Settings](#super-administrator-security-settings-reference)
    - [Tenant Administrator Security Settings](#tenant-administrator-security-settings-reference)
-   - [Privileged User Security Settings](#privileged-user-security-settings-reference)
+   - [Delegated Admin Security Settings](#delegated-admin-security-settings-reference)
 6. [Recommended Secure Configuration](#recommended-secure-configuration)
 7. [Security Best Practices](#security-best-practices)
 8. [Compliance Requirements](#compliance-requirements)
@@ -63,7 +63,7 @@ The guide covers any user profile with elevated permissions and action privilege
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Super Administrator**  | Application-level administrator with full control over the Authifi platform. Highest privilege level. Can manage all tenants and platform-wide configurations. |
 | **Tenant Administrator** | Administrator with full control within a single tenant. Cannot access other tenants or super admin functions.                                               |
-| **Privileged User**      | User with specific elevated permissions (delegated admin) for particular resource types without full admin access.                                             |
+| **Delegated Admin**      | User with specific elevated permissions for particular resource types without full admin access.                                                                |
 
 > **Note**: The Authifi service codebase uses identifiers such as `DEFAULT_ROLE.SYSTEM_ADMIN` (role name: "Auth System Admin"), `systemAdmins` group, and `isSystemAdmin` checks. These refer to Super Administrator in user-facing documentation.
 
@@ -100,7 +100,7 @@ The guide covers any user profile with elevated permissions and action privilege
                                     │
                                     ▼
 ┌───────────────────────────────────────────────────────────────────┐
-│   PRIVILEGED USERS (Delegated Admins)                             │
+│   DELEGATED ADMINS (Scoped Permissions)                           │
 │   ─────────────────────────────────────────────────────────────── │
 │   • Limited to specific resource types                            │
 │   • Delegated administration via UMRS roles                       │
@@ -231,9 +231,9 @@ Tenant Administrators have full administrative control within a single tenant. T
 
 ---
 
-### Privileged Users (Delegated Admins)
+### Delegated Admins
 
-Privileged Users have elevated permissions for specific resource types without full tenant admin access. This enables delegated administration following the principle of least privilege.
+Delegated Admins have elevated permissions for specific resource types without full tenant admin access. This enables delegated administration following the principle of least privilege.
 
 #### Admin Scope Permissions
 
@@ -426,7 +426,7 @@ UMRS enables resource-level delegation where designated managers can grant speci
 
 ---
 
-### Privileged User Lifecycle
+### Delegated Admin Lifecycle
 
 #### Setup and Provisioning
 
@@ -565,7 +565,7 @@ The following settings are controlled by Tenant Administrators (and Super Admini
 
 ---
 
-### Privileged User Security Settings Reference
+### Delegated Admin Security Settings Reference
 
 The following capabilities are available to users with specific `admin::*` permissions.
 
@@ -722,7 +722,7 @@ Use this endpoint to retrieve current tenant configuration for comparison agains
 | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
 | **FRR-RSC-01**: Top-Level Admin Accounts Guidance     | [Super Administrators](#super-administrators-top-level-administrative-accounts), [Super Administrator Lifecycle](#super-administrator-lifecycle)                                                   | Access, configuration, operation, decommission   |
 | **FRR-RSC-02**: Top-Level Admin Security Settings     | [Super Administrator Security Settings Reference](#super-administrator-security-settings-reference)                                                                                                | All super admin-only settings and implications   |
-| **FRR-RSC-03**: Privileged Accounts Security Settings | [Tenant Administrator Security Settings Reference](#tenant-administrator-security-settings-reference), [Privileged User Security Settings Reference](#privileged-user-security-settings-reference) | All privileged account settings and implications |
+| **FRR-RSC-03**: Privileged Accounts Security Settings | [Tenant Administrator Security Settings Reference](#tenant-administrator-security-settings-reference), [Delegated Admin Security Settings Reference](#delegated-admin-security-settings-reference) | All privileged account settings and implications |
 | **FRR-RSC-04**: Secure Defaults on Provisioning       | [Recommended Secure Configuration](#recommended-secure-configuration)                                                                                                                              | Default values table                             |
 | **FRR-RSC-05**: Comparison Capability                 | [Configuration Comparison API](#configuration-comparison-api)                                                                                                                                      | API endpoint for comparison                      |
 | **FRR-RSC-06**: Export Capability                     | [Configuration Export](#configuration-export)                                                                                                                                                      | UI and API export                                |
