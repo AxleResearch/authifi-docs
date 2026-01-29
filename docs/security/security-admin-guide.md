@@ -119,7 +119,7 @@ Super Administrators have unrestricted access to the Authifi platform. This is t
 
 | Attribute        | Description                                                                         |
 | ---------------- | ----------------------------------------------------------------------------------- |
-| **Role Name**    | `Auth System Admin` (constant: `DEFAULT_ROLE.SYSTEM_ADMIN`)                         |
+| **Role Name**    | `Auth System Admin`                         |
 | **Group**        | `systemAdmins` (configured in `auth.defaults.systemAdminGroup`)                     |
 | **Scope**        | Platform-wide (all tenants)                                                         |
 | **Grant Method** | Membership in `systemAdmins` group or configuration in `auth.system.administrators` |
@@ -177,7 +177,6 @@ Tenant Administrators have full administrative control within a single tenant. T
 | ----------------- | ---------------------------------------------------------- |
 | **Grant Method**  | Membership in tenant admin group (configured per tenant)   |
 | **Scope**         | Single tenant                                              |
-| **Determination** | `TenantAuthorizationService.isAdmin({ tenantId, userId })` |
 
 #### Permissions and Operations
 

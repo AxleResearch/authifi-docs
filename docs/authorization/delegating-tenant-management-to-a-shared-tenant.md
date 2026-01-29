@@ -8,7 +8,7 @@ To avoid the constraint of having to be assigned to each tenant's "admins" group
 ### Steps
 
 - First, your account must be a member of the "admins" group for the tenant(s) you wish to delegate access to.
-- Next, establish a trusted tenant relationship with one or more different Tenant you want to delegate management privileges to. REST API documentation for managing trusted tenants can be found in the [Trusted Tenant API documentation](https://a-ci.ncats.io/_api/auth/docs#tag/Trusted-Tenants).
+- Next, establish a trusted tenant relationship with one or more different Tenant you want to delegate management privileges to. REST API documentation for managing trusted tenants can be found in the Trusted Tenant API documentation.
 - After assigning the Trusted Tenants, members of the "admins" group of the shared Tenant can manage the resources of any of the Trusted Tenant(s) without requiring a new access token or membership in their respective "admins" group.
 
 ### Known Limitations
