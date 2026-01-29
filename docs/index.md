@@ -12,6 +12,7 @@ Authifi supports admin roles as well as RBAC, OAuth scopes, custom roles and per
 
 - [OAuth Client Authorization](authorization/authorization.md) - User groups, API authorization, and RBAC
 - [Admin Roles](authorization/admin-roles.md) - System admin, tenant admin, and delegated admin roles
+- [Privileged Access Summary](authorization/privileged-access-summary.md) - Privileged permissions, roles, and groups
 - [Super Admin Access](authorization/super-admin-access.md) - Super administrator requirements and capabilities
 
 ### Administrator Guides

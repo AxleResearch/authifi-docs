@@ -55,6 +55,7 @@ nav:
   - Authorization:
     - Overview: authorization/authorization.md
     - Admin Roles: authorization/admin-roles.md
+    - Privileged Access Summary: authorization/privileged-access-summary.md
     - Super Admin Access: authorization/super-admin-access.md
     - Default Application User Groups: authorization/default-application-user-groups.md
     - Delegating Tenant Management: authorization/delegating-tenant-management-to-a-shared-tenant.md

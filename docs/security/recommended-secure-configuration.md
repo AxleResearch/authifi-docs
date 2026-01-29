@@ -120,7 +120,7 @@ The Authifi service implements three levels of administrative access:
               ↓
 ┌─────────────────────────────────────┐
 │   Delegated Admins                  │  <- Privileged Accounts
-│   (ADMIN_SCOPE.* Permissions)       │
+│   (admin::* Permissions)            │
 │   - Specific resource control       │
 │   - Limited to assigned scopes      │
 │   - Cannot modify tenant settings   │
@@ -139,7 +139,7 @@ The Authifi service implements three levels of administrative access:
 **Privileged Accounts** (referred to as "Tenant Administrators" and "Delegated Admins" in Authifi):
 
 - Tenant Administrators: Members of tenant admin groups or users with tenant-admin-capable permissions
-- Delegated Admins: Users with `ADMIN_SCOPE.*` permissions for specific resources
+- Delegated Admins: Users with `admin::*` permissions for specific resources
 - Limited to assigned tenant or resource scope
 - Cannot access super administrator-level features
 
@@ -389,10 +389,12 @@ Delegated Admins have permissions limited to specific resources:
 
 **Scope-Based Permissions**:
 
-- `ADMIN_SCOPE.users`: User management only
-- `ADMIN_SCOPE.groups`: Group management only
-- `ADMIN_SCOPE.clients`: Application management only
-- `ADMIN_SCOPE.providers`: Identity provider management only
+- `admin::users:*`: User management only
+- `admin::groups:*`: Group management only
+- `admin::clients:*`: Application management only
+- `admin::providers:*`: Identity provider management only
+
+> **Naming Convention:** By convention, delegated admin permissions use the `admin::` prefix. However, this naming convention alone does not make an entity privileged—the `isPrivileged` flag must be set.
 
 **Delegated Administration (UMRS)**:
 
@@ -419,9 +421,9 @@ Delegated Admins have permissions limited to specific resources:
 **Delegated Admins**:
 
 - **Direct Scope Assignment**:
-    - Assign specific `ADMIN_SCOPE.*` permissions to user
+    - Assign specific `admin::*` permissions to user
     - User gains admin capabilities only for that resource type
-    - Example: Assign `ADMIN_SCOPE.users` for user management only
+    - Example: Assign `admin::users:*` for user management only
 
 - **UMRS Role Grant**:
     - Create UMRS role scoped to specific resource
@@ -505,7 +507,7 @@ Tenant administrators can configure these security settings within their tenant:
 
 - **Remove Scope Assignments**:
     - Edit user permissions
-    - Remove `ADMIN_SCOPE.*` permissions
+    - Remove `admin::*` permissions
     - Save changes
 
 - **Revoke UMRS Grants**:
