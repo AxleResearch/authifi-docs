@@ -77,9 +77,9 @@ Users are categorized based on their privileges:
 
 #### Creating a User
 
-1. Click **+ ADD USER**
-2. Complete the user creation dialog (see [User Management Reference](#user-management-reference))
-3. Click **Save**
+- Click **+ ADD USER**
+- Complete the user creation dialog (see [User Management Reference](#user-management-reference))
+- Click **Save**
 
 #### User Operations
 
@@ -92,18 +92,18 @@ Users are categorized based on their privileges:
 
 **From another tenant**:
 
-1. Click **Import Users** > **Import from another tenant**
-2. Select source tenant
-3. Choose users to import
-4. Map to target groups (optional)
-5. Click **Import**
+- Click **Import Users** > **Import from another tenant**
+- Select source tenant
+- Choose users to import
+- Map to target groups (optional)
+- Click **Import**
 
 **From JSON file**:
 
-1. Click **Import Users** > **JSON File Import**
-2. Upload JSON file with user data
-3. Review import preview
-4. Click **Import**
+- Click **Import Users** > **JSON File Import**
+- Upload JSON file with user data
+- Review import preview
+- Click **Import**
 
 **JSON format example**:
 
@@ -157,9 +157,9 @@ Groups display the following information in the table:
 
 #### Creating a User Group
 
-1. Click **+ ADD GROUP**
-2. Complete the group creation dialog (see [User Group Management Reference](#user-group-management-reference))
-3. Click **Save**
+- Click **+ ADD GROUP**
+- Complete the group creation dialog (see [User Group Management Reference](#user-group-management-reference))
+- Click **Save**
 
 #### Group Operations
 
@@ -170,10 +170,10 @@ Groups display the following information in the table:
 
 **Use cases**:
 
-1. **Department groups**: "engineering", "sales", "marketing"
-2. **Role groups**: "developers", "managers", "admins"
-3. **Project groups**: "project-alpha-team", "project-beta-viewers"
-4. **Permission groups**: "read-only-users", "power-users"
+- **Department groups**: "engineering", "sales", "marketing"
+- **Role groups**: "developers", "managers", "admins"
+- **Project groups**: "project-alpha-team", "project-beta-viewers"
+- **Permission groups**: "read-only-users", "power-users"
 
 **Best practices**:
 
@@ -252,9 +252,9 @@ When creating or editing a user via **Users > Settings icon**, you'll encounter 
 
 **Process**:
 
-1. Click **+ ADD USER** from Users dashboard
-2. Fill in user details across tabs
-3. Click **Save**
+- Click **+ ADD USER** from Users dashboard
+- Fill in user details across tabs
+- Click **Save**
 
 ### User Settings Tab
 
@@ -556,9 +556,9 @@ When creating or editing a user group via **User Groups > Settings icon**, you'l
 
 **Process**:
 
-1. Click **+ ADD GROUP** from User Groups dashboard
-2. Fill in group details across tabs
-3. Click **Save**
+- Click **+ ADD GROUP** from User Groups dashboard
+- Fill in group details across tabs
+- Click **Save**
 
 ### Group Settings Tab
 
@@ -743,86 +743,86 @@ UMRS (User-Managed Role System) allows designated users to grant/revoke specific
 
 ### User Management Security
 
-1. **Follow least privilege**
-   - Grant minimum permissions required for job function
-   - Review and revoke unused permissions regularly
-   - Use time-limited access for temporary needs
+- **Follow least privilege**
+    - Grant minimum permissions required for job function
+    - Review and revoke unused permissions regularly
+    - Use time-limited access for temporary needs
 
-2. **Use group-based access control**
-   - Assign permissions to groups, not individual users
-   - Easier to audit and maintain
-   - Reduces error-prone individual assignments
+- **Use group-based access control**
+    - Assign permissions to groups, not individual users
+    - Easier to audit and maintain
+    - Reduces error-prone individual assignments
 
-3. **Implement strong authentication**
-   - Prefer passkeys (WebAuthn) over TOTP when possible
-   - Require MFA for admin and privileged groups
-   - Enforce MFA for sensitive applications
+- **Implement strong authentication**
+    - Prefer passkeys (WebAuthn) over TOTP when possible
+    - Require MFA for admin and privileged groups
+    - Enforce MFA for sensitive applications
 
-4. **Set appropriate expirations**
-   - Use user expiration for contractors, temps, trials
-   - Set group membership expiration for project-based access
-   - Monitor and clean up expired accounts regularly
+- **Set appropriate expirations**
+    - Use user expiration for contractors, temps, trials
+    - Set group membership expiration for project-based access
+    - Monitor and clean up expired accounts regularly
 
-5. **Audit access regularly**
-   - Review user roles and permissions quarterly
-   - Check group memberships for accuracy
-   - Use Assigned Roles/Permissions views for audits
-   - Remove unused accounts promptly
+- **Audit access regularly**
+    - Review user roles and permissions quarterly
+    - Check group memberships for accuracy
+    - Use Assigned Roles/Permissions views for audits
+    - Remove unused accounts promptly
 
 ### Group Management Security
 
-1. **Define clear group purposes**
-   - Document what each group is for
-   - Use descriptive names
-   - Avoid overlapping group responsibilities
+- **Define clear group purposes**
+    - Document what each group is for
+    - Use descriptive names
+    - Avoid overlapping group responsibilities
 
-2. **Limit privileged groups**
-   - Only mark groups as privileged when truly necessary
-   - Audit privileged group membership frequently
-   - Require justification for privileged group access
+- **Limit privileged groups**
+    - Only mark groups as privileged when truly necessary
+    - Audit privileged group membership frequently
+    - Require justification for privileged group access
 
-3. **Use namespaces for isolation**
-   - Separate production from non-production
-   - Isolate departments or projects
-   - Enforce namespace boundaries strictly
+- **Use namespaces for isolation**
+    - Separate production from non-production
+    - Isolate departments or projects
+    - Enforce namespace boundaries strictly
 
-4. **Control group membership**
-   - Require approvals for sensitive group additions
-   - Monitor group membership changes in audit logs
-   - Set up alerts for privileged group modifications
+- **Control group membership**
+    - Require approvals for sensitive group additions
+    - Monitor group membership changes in audit logs
+    - Set up alerts for privileged group modifications
 
-5. **Review role assignments**
-   - Ensure groups have only necessary roles
-   - Remove unused role assignments
-   - Document why each role is assigned
+- **Review role assignments**
+    - Ensure groups have only necessary roles
+    - Remove unused role assignments
+    - Document why each role is assigned
 
 ### Administrative Best Practices
 
-1. **Separation of duties**
-   - Don't use your admin account for daily tasks
-   - Have separate admin and user accounts
-   - Require multiple approvals for sensitive changes
+- **Separation of duties**
+    - Don't use your admin account for daily tasks
+    - Have separate admin and user accounts
+    - Require multiple approvals for sensitive changes
 
-2. **Change management**
-   - Test permission changes in non-production first
-   - Document all privilege escalations
-   - Have rollback plans for group/role changes
+- **Change management**
+    - Test permission changes in non-production first
+    - Document all privilege escalations
+    - Have rollback plans for group/role changes
 
-3. **Monitoring and alerting**
-   - Alert on privileged group membership changes
-   - Monitor failed authentication attempts
-   - Track bulk user imports/deletions
-   - Review event logs for suspicious patterns
+- **Monitoring and alerting**
+    - Alert on privileged group membership changes
+    - Monitor failed authentication attempts
+    - Track bulk user imports/deletions
+    - Review event logs for suspicious patterns
 
-4. **Data protection**
-   - Don't store sensitive data in user profiles
-   - Encrypt PII appropriately
+- **Data protection**
+    - Don't store sensitive data in user profiles
+    - Encrypt PII appropriately
    - Comply with data retention policies
    - Have user data export/deletion procedures (GDPR)
 
-5. **Access reviews**
-   - Quarterly access reviews for all users
-   - Immediate review when users change roles
+- **Access reviews**
+    - Quarterly access reviews for all users
+    - Immediate review when users change roles
    - Annual comprehensive privilege audit
    - Remove access for terminated employees immediately
 
@@ -843,11 +843,11 @@ UMRS (User-Managed Role System) allows designated users to grant/revoke specific
 
 For assistance with user and group management:
 
-1. **Check event logs** for authentication/authorization failures
-2. **Review Assigned Roles/Permissions** views for access issues
-3. **Test in non-production** before making bulk changes
-4. **Contact super administrator** for license or elevated privilege requests
-5. **Consult audit logs** for historical changes and troubleshooting
+- **Check event logs** for authentication/authorization failures
+- **Review Assigned Roles/Permissions** views for access issues
+- **Test in non-production** before making bulk changes
+- **Contact super administrator** for license or elevated privilege requests
+- **Consult audit logs** for historical changes and troubleshooting
 
 ---
 

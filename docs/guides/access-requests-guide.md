@@ -94,40 +94,40 @@ The **Access Requests** section enables self-service and delegated access manage
 
 #### Request Lifecycle
 
-1. **Submitted**: User or admin creates an access request
-2. **Pending**: Request awaits approval from authorized approver
-3. **Approved**: Approver grants access
-   - User/group is added to target group or granted UMRS role
-   - Access becomes active immediately
-4. **Rejected**: Approver denies access
-   - No permissions granted
-   - User notified of rejection
-5. **Expired**: Request deadline passed without approval
-   - Request cannot be approved after expiration
-   - User must submit a new request
+- **Submitted**: User or admin creates an access request
+- **Pending**: Request awaits approval from authorized approver
+- **Approved**: Approver grants access
+    - User/group is added to target group or granted UMRS role
+    - Access becomes active immediately
+- **Rejected**: Approver denies access
+    - No permissions granted
+    - User notified of rejection
+- **Expired**: Request deadline passed without approval
+    - Request cannot be approved after expiration
+    - User must submit a new request
 
 #### Creating an Access Request
 
-1. Click **+ ADD NEW** button
-2. Select user who needs access
-3. Choose access template (pre-configured by admin)
-4. Provide justification (optional)
-5. Submit request
-6. Request appears in pending state for approvers
+- Click **+ ADD NEW** button
+- Select user who needs access
+- Choose access template (pre-configured by admin)
+- Provide justification (optional)
+- Submit request
+- Request appears in pending state for approvers
 
 **Use case**: Admin creates request on behalf of user who doesn't have self-service access.
 
 #### Approving/Rejecting Requests
 
-1. Click **Details** icon on a pending request
-2. Review request details:
-   - Who is requesting
-   - What access they need
-   - Why (justification)
-   - When requested
-3. Click **Approve** or **Reject**
-4. Optionally provide comment
-5. Access is granted/denied immediately
+- Click **Details** icon on a pending request
+- Review request details:
+    - Who is requesting
+    - What access they need
+    - Why (justification)
+    - When requested
+- Click **Approve** or **Reject**
+- Optionally provide comment
+- Access is granted/denied immediately
 
 **Security recommendations**:
 
@@ -190,14 +190,14 @@ The **Access Requests** section enables self-service and delegated access manage
 
 #### Creating a Template
 
-1. Click **+ ADD NEW** dropdown
-2. Select template type:
-   - **RBAC Group Access**: Group membership request
-   - **Resource Access**: UMRS role grant request
-   - **RBAC Group Extension Request**: Extend group membership
-   - **Resource Extension Request**: Extend UMRS grant
-3. Configure template (see [Request Template Configuration](#request-template-configuration))
-4. Click **Save**
+- Click **+ ADD NEW** dropdown
+- Select template type:
+    - **RBAC Group Access**: Group membership request
+    - **Resource Access**: UMRS role grant request
+    - **RBAC Group Extension Request**: Extend group membership
+    - **Resource Extension Request**: Extend UMRS grant
+- Configure template (see [Request Template Configuration](#request-template-configuration))
+- Click **Save**
 
 **Security recommendations**:
 
@@ -242,14 +242,14 @@ User-Managed Role System (UMRS) enables **delegated administration**:
 
 #### Creating a UMRS Role
 
-1. Click **+ ADD User Role**
-2. Configure role:
-   - **Name\***: Unique role identifier
-   - **Description\***: What this role grants access to
-   - **Managers Group\***: Group whose members can grant this role
-   - **Resource Server\***: API or resource this role controls
-   - **Allow Grant Extension Requests**: Users can request to extend their grants
-3. Click **Save**
+- Click **+ ADD User Role**
+- Configure role:
+    - **Name\***: Unique role identifier
+    - **Description\***: What this role grants access to
+    - **Managers Group\***: Group whose members can grant this role
+    - **Resource Server\***: API or resource this role controls
+    - **Allow Grant Extension Requests**: Users can request to extend their grants
+- Click **Save**
 
 **Example configuration**:
 
@@ -275,10 +275,10 @@ Allow Grant Extension Requests: Yes
 
 **Use cases**:
 
-1. **Project-based access**: Project managers control project resource access
-2. **Team resources**: Team leads manage team-specific tools
-3. **Departmental apps**: Department heads grant access to department resources
-4. **Customer resources**: Account managers control customer data access
+- **Project-based access**: Project managers control project resource access
+- **Team resources**: Team leads manage team-specific tools
+- **Departmental apps**: Department heads grant access to department resources
+- **Customer resources**: Account managers control customer data access
 
 **Security benefits**:
 
@@ -297,8 +297,8 @@ Allow Grant Extension Requests: Yes
 
 **Dashboard structure**: Two tabs:
 
-1. **User Grants**: Individual user assignments to UMRS roles
-2. **Group Grants**: Group assignments to UMRS roles
+- **User Grants**: Individual user assignments to UMRS roles
+- **Group Grants**: Group assignments to UMRS roles
 
 #### User Grants Tab
 
@@ -403,36 +403,36 @@ Allow Grant Extension Requests: Yes
 
 #### Creating a Group Invitation
 
-1. Click **+ ADD INVITATION**
-2. Fill in invitation details:
-   - **Group\***: Select group to invite user to
-   - **User Email\***: Email address of invitee (can autocomplete existing users or enter new email)
-   - **Identity Issuer\***: Which IdP the user will authenticate with
-   - **Application URL\***: Redirect URL after accepting invitation
-   - **Expiration (minutes)**: How long invitation remains valid
-   - **Require Invitation Confirmation**: Whether user must click link to accept
-   - **Invitation Template\***: Email template for invitation message
-   - **Confirmation Template**: HTML page shown after accepting (if confirmation required)
-   - **Set membership expiration date**: Optional expiration for group membership
-3. Click **Save**
-4. Invitation email is sent immediately
+- Click **+ ADD INVITATION**
+- Fill in invitation details:
+    - **Group\***: Select group to invite user to
+    - **User Email\***: Email address of invitee (can autocomplete existing users or enter new email)
+    - **Identity Issuer\***: Which IdP the user will authenticate with
+    - **Application URL\***: Redirect URL after accepting invitation
+    - **Expiration (minutes)**: How long invitation remains valid
+    - **Require Invitation Confirmation**: Whether user must click link to accept
+    - **Invitation Template\***: Email template for invitation message
+    - **Confirmation Template**: HTML page shown after accepting (if confirmation required)
+    - **Set membership expiration date**: Optional expiration for group membership
+- Click **Save**
+- Invitation email is sent immediately
 
 #### Invitation Workflow
 
 **Without confirmation**:
 
-1. Invitation is created
-2. Email is sent to user
-3. User is automatically added to group
-4. User can access group resources immediately
+- Invitation is created
+- Email is sent to user
+- User is automatically added to group
+- User can access group resources immediately
 
 **With confirmation required**:
 
-1. Invitation is created
-2. Email is sent with confirmation link
-3. User clicks link and sees confirmation page
-4. User is added to group after confirmation
-5. User can access group resources
+- Invitation is created
+- Email is sent with confirmation link
+- User clicks link and sees confirmation page
+- User is added to group after confirmation
+- User can access group resources
 
 **Expiration behavior**:
 
@@ -448,10 +448,10 @@ Allow Grant Extension Requests: Yes
 
 **Use cases**:
 
-1. **Onboarding**: Invite new employees to "employees" group
-2. **Project teams**: Invite contractors to "project-x-contractors" group with expiration
-3. **Temporary access**: Invite auditors to "auditors" group for limited time
-4. **Self-service**: Allow users to accept invitations without admin intervention
+- **Onboarding**: Invite new employees to "employees" group
+- **Project teams**: Invite contractors to "project-x-contractors" group with expiration
+- **Temporary access**: Invite auditors to "auditors" group for limited time
+- **Self-service**: Allow users to accept invitations without admin intervention
 
 **Security recommendations**:
 
@@ -478,17 +478,17 @@ Allow Grant Extension Requests: Yes
 
 #### Creating SSH Access
 
-1. Navigate to **SSH Secrets** dashboard
-2. Fill in the form:
-   - **User Email\***: Search and select the user who needs SSH access
-     - Autocomplete searches across all tenant users
-     - Shows email, name, and identity issuer
-   - **SSH Server\***: Hostname or IP of the SSH server
-     - Example: `ssh.example.com`, `10.0.1.50`
-   - **SSH Username\***: Username for SSH login
-     - Example: `ubuntu`, `ec2-user`, user's system username
-3. Click **Create SSH Secret**
-4. JSON file downloads automatically with credentials
+- Navigate to **SSH Secrets** dashboard
+- Fill in the form:
+    - **User Email\***: Search and select the user who needs SSH access
+        - Autocomplete searches across all tenant users
+        - Shows email, name, and identity issuer
+    - **SSH Server\***: Hostname or IP of the SSH server
+        - Example: `ssh.example.com`, `10.0.1.50`
+    - **SSH Username\***: Username for SSH login
+        - Example: `ubuntu`, `ec2-user`, user's system username
+- Click **Create SSH Secret**
+- JSON file downloads automatically with credentials
 
 #### Downloaded Credentials Format
 
@@ -508,10 +508,10 @@ Allow Grant Extension Requests: Yes
 
 **For users receiving SSH access**:
 
-1. Save the `privateKey` to `~/.ssh/auth_rsa`
-2. Set permissions: `chmod 600 ~/.ssh/auth_rsa`
-3. Add public key to authorized_keys on server (admin task) or use provided config
-4. Connect: `ssh -i ~/.ssh/auth_rsa ubuntu@ssh.example.com`
+- Save the `privateKey` to `~/.ssh/auth_rsa`
+- Set permissions: `chmod 600 ~/.ssh/auth_rsa`
+- Add public key to authorized_keys on server (admin task) or use provided config
+- Connect: `ssh -i ~/.ssh/auth_rsa ubuntu@ssh.example.com`
 
 **Server-side setup** (requires server admin):
 
@@ -572,30 +572,30 @@ chmod 600 /home/ubuntu/.ssh/authorized_keys
 
 #### Creating a Batch Invite
 
-1. Click **+ BATCH INVITE**
-2. Fill in batch configuration:
-   - **Group\***: Select target group (autocomplete search)
-   - **Users\***: JSON array of email addresses
-     - **Format**: `["user1@example.com", "user2@example.com", "user3@example.com"]`
-     - Monaco code editor with syntax validation
-   - **Redirect URL\***: Where users land after accepting invitation
-   - **Identity Issuer\***: IdP users will authenticate with
-   - **Description\***: Purpose of this batch operation
-   - **Email Template\***: Template for invitation emails
-   - **Require Confirmation**: Whether users must click link to accept
-   - **Expiration (minutes)**: How long invitations remain valid (if confirmation required)
-   - **Confirmation Template**: HTML page for invitation acceptance (if confirmation required)
-3. Click **Save**
-4. Batch processing begins asynchronously
+- Click **+ BATCH INVITE**
+- Fill in batch configuration:
+    - **Group\***: Select target group (autocomplete search)
+    - **Users\***: JSON array of email addresses
+        - **Format**: `["user1@example.com", "user2@example.com", "user3@example.com"]`
+        - Monaco code editor with syntax validation
+    - **Redirect URL\***: Where users land after accepting invitation
+    - **Identity Issuer\***: IdP users will authenticate with
+    - **Description\***: Purpose of this batch operation
+    - **Email Template\***: Template for invitation emails
+    - **Require Confirmation**: Whether users must click link to accept
+    - **Expiration (minutes)**: How long invitations remain valid (if confirmation required)
+    - **Confirmation Template**: HTML page for invitation acceptance (if confirmation required)
+- Click **Save**
+- Batch processing begins asynchronously
 
 #### Batch Processing
 
 **Lifecycle**:
 
-1. **Submitted**: Batch job created and queued
-2. **Processing**: System sends invitations sequentially
-3. **Completed**: All invitations processed (may include some failures)
-4. **Failed**: Batch job encountered fatal error
+- **Submitted**: Batch job created and queued
+- **Processing**: System sends invitations sequentially
+- **Completed**: All invitations processed (may include some failures)
+- **Failed**: Batch job encountered fatal error
 
 **Monitoring progress**:
 
@@ -624,10 +624,10 @@ chmod 600 /home/ubuntu/.ssh/authorized_keys
 
 **Use cases**:
 
-1. **Class enrollment**: Invite 50 students to "course-2025-spring" group
-2. **Department onboarding**: Add 20 new hires to "engineering" group
-3. **Event access**: Grant 100 attendees access to "conference-2025" group
-4. **Partner onboarding**: Invite partner organization users to collaboration group
+- **Class enrollment**: Invite 50 students to "course-2025-spring" group
+- **Department onboarding**: Add 20 new hires to "engineering" group
+- **Event access**: Grant 100 attendees access to "conference-2025" group
+- **Partner onboarding**: Invite partner organization users to collaboration group
 
 **Best practices**:
 
@@ -815,144 +815,144 @@ Result: Members of "project-beta-leads" can grant "project-beta-contributor" rol
 
 ### Access Request Security
 
-1. **Require approval for sensitive access**
-   - Don't use auto-approval for privileged groups
-   - Require justification in requests
-   - Implement multiple-approver workflows for critical access
-   - Monitor approval patterns (who approves what)
+- **Require approval for sensitive access**
+    - Don't use auto-approval for privileged groups
+    - Require justification in requests
+    - Implement multiple-approver workflows for critical access
+    - Monitor approval patterns (who approves what)
 
-2. **Set appropriate expiration windows**
-   - Short approval windows (3-7 days) for routine access
-   - Longer windows (30 days) for complex approvals requiring research
-   - Expire requests that aren't approved promptly
-   - Clean up expired requests regularly
+- **Set appropriate expiration windows**
+    - Short approval windows (3-7 days) for routine access
+    - Longer windows (30 days) for complex approvals requiring research
+    - Expire requests that aren't approved promptly
+    - Clean up expired requests regularly
 
-3. **Audit request activity**
-   - Review approval patterns for abuse
-   - Monitor for unusual request volumes
-   - Track approver actions
-   - Alert on rejected requests (may indicate attack or confusion)
+- **Audit request activity**
+    - Review approval patterns for abuse
+    - Monitor for unusual request volumes
+    - Track approver actions
+    - Alert on rejected requests (may indicate attack or confusion)
 
-4. **Validate requesters**
-   - Ensure requester identity is verified
-   - Check for legitimate business need
-   - Verify requester is using correct IdP
-   - Watch for social engineering attempts
+- **Validate requesters**
+    - Ensure requester identity is verified
+    - Check for legitimate business need
+    - Verify requester is using correct IdP
+    - Watch for social engineering attempts
 
 ### UMRS Security
 
-1. **Carefully choose managers**
-   - Manager groups wield delegated admin power
-   - Only grant to trusted, trained individuals
-   - Review manager group membership quarterly
-   - Require security awareness training for managers
+- **Carefully choose managers**
+    - Manager groups wield delegated admin power
+    - Only grant to trusted, trained individuals
+    - Review manager group membership quarterly
+    - Require security awareness training for managers
 
-2. **Scope UMRS roles narrowly**
-   - Create resource-specific roles, not tenant-wide
-   - Limit permissions in UMRS roles to minimum required
-   - Don't create overly broad UMRS roles
-   - Regular roles for broad access; UMRS for specific resources
+- **Scope UMRS roles narrowly**
+    - Create resource-specific roles, not tenant-wide
+    - Limit permissions in UMRS roles to minimum required
+    - Don't create overly broad UMRS roles
+    - Regular roles for broad access; UMRS for specific resources
 
-3. **Enforce time limits**
-   - Always set expiration dates on UMRS grants
-   - Require re-approval for extensions
-   - Shorter expirations for higher-risk resources (30-90 days)
-   - Longer expirations for stable team access (180-365 days)
+- **Enforce time limits**
+    - Always set expiration dates on UMRS grants
+    - Require re-approval for extensions
+    - Shorter expirations for higher-risk resources (30-90 days)
+    - Longer expirations for stable team access (180-365 days)
 
-4. **Monitor delegation**
-   - Audit who is granting what access
-   - Watch for managers granting to themselves
-   - Alert on unusual grant patterns
-   - Review grant extensions for necessity
+- **Monitor delegation**
+    - Audit who is granting what access
+    - Watch for managers granting to themselves
+    - Alert on unusual grant patterns
+    - Review grant extensions for necessity
 
-5. **Separate privileges**
-   - Don't make the same group both target and manager
-   - Separate "can grant" from "has access"
-   - Prevent circular delegation patterns
+- **Separate privileges**
+    - Don't make the same group both target and manager
+    - Separate "can grant" from "has access"
+    - Prevent circular delegation patterns
 
 ### Group Invitation Security
 
-1. **Verify email addresses**
-   - Double-check email lists before batch operations
-   - Prevent typos that send invitations to wrong people
-   - Use domain validation (e.g., only @company.com)
-   - Monitor for suspicious external domains
+- **Verify email addresses**
+    - Double-check email lists before batch operations
+    - Prevent typos that send invitations to wrong people
+    - Use domain validation (e.g., only @company.com)
+    - Monitor for suspicious external domains
 
-2. **Use confirmation for new users**
-   - Require invitation acceptance click
-   - Prevents accidental group additions
-   - Gives users visibility into what access they're getting
-   - Creates audit trail of user consent
+- **Use confirmation for new users**
+    - Require invitation acceptance click
+    - Prevents accidental group additions
+    - Gives users visibility into what access they're getting
+    - Creates audit trail of user consent
 
-3. **Set membership expiration**
-   - Use for contractors, consultants, temporary staff
-   - Review and re-approve before extension
-   - Automatic cleanup when period ends
-   - Reduces orphaned access
+- **Set membership expiration**
+    - Use for contractors, consultants, temporary staff
+    - Review and re-approve before extension
+    - Automatic cleanup when period ends
+    - Reduces orphaned access
 
-4. **Monitor invitation abuse**
-   - Track who is sending invitations
-   - Alert on large batch operations
-   - Review expired invitations (may indicate incorrect emails)
-   - Watch for invitation spam patterns
+- **Monitor invitation abuse**
+    - Track who is sending invitations
+    - Alert on large batch operations
+    - Review expired invitations (may indicate incorrect emails)
+    - Watch for invitation spam patterns
 
 ### SSH Access Security
 
-1. **Treat as highly privileged**
-   - SSH access is powerful (terminal access)
-   - Require elevated admin scope for creation
-   - Limit who can generate SSH credentials
-   - Audit all SSH key generations
+- **Treat as highly privileged**
+    - SSH access is powerful (terminal access)
+    - Require elevated admin scope for creation
+    - Limit who can generate SSH credentials
+    - Audit all SSH key generations
 
-2. **Secure private keys**
-   - Transmitted once (in download)
-   - User must protect private key
-   - Consider password-protecting keys
-   - Use SSH agent for key management
+- **Secure private keys**
+    - Transmitted once (in download)
+    - User must protect private key
+    - Consider password-protecting keys
+    - Use SSH agent for key management
 
-3. **Rotate keys**
-   - Regular rotation schedule (90-180 days)
-   - Immediate rotation on compromise
-   - Remove old keys from servers
-   - Maintain key inventory
+- **Rotate keys**
+    - Regular rotation schedule (90-180 days)
+    - Immediate rotation on compromise
+    - Remove old keys from servers
+    - Maintain key inventory
 
-4. **Monitor SSH usage**
-   - Log SSH connections on servers
-   - Alert on unusual access patterns
-   - Correlate with user access grants
-   - Investigate unauthorized access attempts
+- **Monitor SSH usage**
+    - Log SSH connections on servers
+    - Alert on unusual access patterns
+    - Correlate with user access grants
+    - Investigate unauthorized access attempts
 
-5. **Server-side controls**
-   - Implement server-side key expiration
-   - Use SSH certificate authorities for short-lived certs
-   - Restrict SSH access by IP/network
-   - Enable 2FA for SSH (if supported)
+- **Server-side controls**
+    - Implement server-side key expiration
+    - Use SSH certificate authorities for short-lived certs
+    - Restrict SSH access by IP/network
+    - Enable 2FA for SSH (if supported)
 
 ### Operational Security
 
-1. **Document workflows**
-   - Clear procedures for access requests
-   - Approval SLAs (how quickly to respond)
-   - Escalation paths for urgent requests
-   - Training materials for approvers
+- **Document workflows**
+    - Clear procedures for access requests
+    - Approval SLAs (how quickly to respond)
+    - Escalation paths for urgent requests
+    - Training materials for approvers
 
-2. **Regular reviews**
-   - Weekly: Review pending requests (avoid backlog)
-   - Monthly: Audit approved access grants
-   - Quarterly: Review template configurations
-   - Annually: Comprehensive access audit
+- **Regular reviews**
+    - Weekly: Review pending requests (avoid backlog)
+    - Monthly: Audit approved access grants
+    - Quarterly: Review template configurations
+    - Annually: Comprehensive access audit
 
-3. **Automate where safe**
-   - Low-risk access can be auto-approved
-   - High-risk access requires human approval
-   - Use approval rules based on group/resource sensitivity
-   - Monitor automated approvals for abuse
+- **Automate where safe**
+    - Low-risk access can be auto-approved
+    - High-risk access requires human approval
+    - Use approval rules based on group/resource sensitivity
+    - Monitor automated approvals for abuse
 
-4. **Maintain audit trail**
-   - All requests logged with timestamps
-   - Approver identity recorded
-   - Rejection reasons documented
-   - Support forensic investigation
+- **Maintain audit trail**
+    - All requests logged with timestamps
+    - Approver identity recorded
+    - Rejection reasons documented
+    - Support forensic investigation
 
 ---
 
@@ -970,11 +970,11 @@ Result: Members of "project-beta-leads" can grant "project-beta-contributor" rol
 
 For assistance with access requests and delegated administration:
 
-1. **Check audit logs** for request and approval history
-2. **Review request templates** to ensure they're configured correctly
-3. **Test workflows** in non-production before deploying
-4. **Monitor batch operations** for failures and investigate
-5. **Contact your admin team** for policy questions or approval escalations
+- **Check audit logs** for request and approval history
+- **Review request templates** to ensure they're configured correctly
+- **Test workflows** in non-production before deploying
+- **Monitor batch operations** for failures and investigate
+- **Contact your admin team** for policy questions or approval escalations
 
 ---
 
