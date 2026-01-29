@@ -76,37 +76,37 @@ The guide covers any user profile with elevated permissions and action privilege
 ### Account Hierarchy
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│   SUPER ADMINISTRATORS (Top-Level Administrative Accounts)          │
-│   ─────────────────────────────────────────────────────────────────  │
-│   • Platform-wide control across all tenants                        │
-│   • License and quota management                                    │
-│   • Identity provider trust configuration                           │
-│   • System-level security settings                                  │
-│   • Role name: Auth System Admin                                   │
-│   • Group: systemAdmins (in default tenant)                        │
-└─────────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────┐
+│   SUPER ADMINISTRATORS (Top-Level Administrative Accounts)        │
+│   ─────────────────────────────────────────────────────────────── │
+│   • Platform-wide control across all tenants                      │
+│   • License and quota management                                  │
+│   • Identity provider trust configuration                         │
+│   • System-level security settings                                │
+│   • Role name: Auth System Admin                                  │
+│   • Group: systemAdmins (in default tenant)                       │
+└───────────────────────────────────────────────────────────────────┘
                                     │
                                     ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│   TENANT ADMINISTRATORS (Privileged Accounts - Tenant Scope)        │
-│   ─────────────────────────────────────────────────────────────────  │
-│   • Full control within assigned tenant                             │
-│   • User/group/application management                               │
-│   • Tenant-level security configuration                             │
-│   • Identity provider setup (except trust status)                   │
-│   • Access via: Admin group membership or admin permissions         │
-└─────────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────┐
+│   TENANT ADMINISTRATORS (Privileged Accounts - Tenant Scope)      │
+│   ─────────────────────────────────────────────────────────────── │
+│   • Full control within assigned tenant                           │
+│   • User/group/application management                             │
+│   • Tenant-level security configuration                           │
+│   • Identity provider setup (except trust status)                 │
+│   • Access via: Admin group membership or admin permissions       │
+└───────────────────────────────────────────────────────────────────┘
                                     │
                                     ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│   PRIVILEGED USERS (Scoped Administrators)                          │
-│   ─────────────────────────────────────────────────────────────────  │
-│   • Limited to specific resource types                              │
-│   • Delegated administration via UMRS roles                         │
-│   • ADMIN_SCOPE.* permissions for targeted capabilities             │
-│   • Cannot modify tenant-wide settings                              │
-└─────────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────┐
+│   PRIVILEGED USERS (Scoped Administrators)                        │
+│   ─────────────────────────────────────────────────────────────── │
+│   • Limited to specific resource types                            │
+│   • Delegated administration via UMRS roles                       │
+│   • ADMIN_SCOPE.* permissions for targeted capabilities           │
+│   • Cannot modify tenant-wide settings                            │
+└───────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -128,33 +128,33 @@ Super Administrators have unrestricted access to the Authifi platform. This is t
 
 **Platform Management Operations** (Super Admin Only):
 
-| Operation                       | API Endpoint                                   | Description                                                 |
-| ------------------------------- | ---------------------------------------------- | ----------------------------------------------------------- |
-| Create tenant (when restricted) | `POST /auth/admin/tenants`                     | Create new tenants when `restrictTenantCreation` is enabled |
-| Manage licenses                 | `POST/PATCH/DELETE /auth/admin/licenses`       | Create, update, and delete licenses                         |
-| Assign licenses to users        | `PUT /auth/admin/licenses/{id}/rel/{userId}`   | Associate users with licenses                               |
-| Manage issuers                  | `POST/PATCH/DELETE /auth/admin/issuers`        | Create, update, and delete token issuers                    |
-| Create jobs                     | `POST/PUT/DELETE /auth/admin/tenants/{id}/job` | Manage scheduled jobs                                       |
-| Restore audit logs              | `POST /auth/admin/tenants/{id}/audit/restore`  | Restore deleted audit records                               |
+| Operation                       | API Endpoint                                   | UI Location                                | Description                                                 |
+| ------------------------------- | ---------------------------------------------- | ------------------------------------------ | ----------------------------------------------------------- |
+| Create tenant (when restricted) | `POST /auth/admin/tenants`                     | Admins > Tenants > + ADD TENANT            | Create new tenants when `restrictTenantCreation` is enabled |
+| Manage licenses                 | `POST/PATCH/DELETE /auth/admin/licenses`       | Admins > Licenses                          | Create, update, and delete licenses                         |
+| Assign licenses to users        | `PUT /auth/admin/licenses/{id}/rel/{userId}`   | API only                                   | Associate users with licenses                               |
+| Manage issuers                  | `POST/PATCH/DELETE /auth/admin/issuers`        | API only                                   | Create, update, and delete token issuers                    |
+| Create jobs                     | `POST/PUT/DELETE /auth/admin/tenants/{id}/job` | Resources and Tools > Jobs                 | Manage scheduled jobs                                       |
+| Restore audit logs              | `POST /auth/admin/tenants/{id}/audit/restore`  | API only                                   | Restore deleted audit records                               |
 
 **Identity Provider Operations** (Super Admin Only):
 
-| Operation           | API Endpoint                                                 | Description                                       |
-| ------------------- | ------------------------------------------------------------ | ------------------------------------------------- |
-| Set AAL override    | Create/Update IdP endpoints                                  | Configure Authentication Assurance Level override |
-| Create trusted IdP  | `POST /auth/admin/tenants/{id}/identity-providers`           | Create identity provider with `isTrusted: true`   |
-| Modify trust status | `PATCH/PUT /auth/admin/tenants/{id}/identity-providers/{id}` | Change `isTrusted` flag on existing IdP           |
-| Edit trusted IdP    | `PATCH/PUT /auth/admin/tenants/{id}/identity-providers/{id}` | Modify already-trusted identity provider          |
+| Operation           | API Endpoint                                                 | UI Location                                          | Description                                       |
+| ------------------- | ------------------------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------- |
+| Set AAL override    | Create/Update IdP endpoints                                  | SSO Integration > Identity Provider Dashboard > Edit | Configure Authentication Assurance Level override |
+| Create trusted IdP  | `POST /auth/admin/tenants/{id}/identity-providers`           | SSO Integration > Identity Provider Dashboard > + ADD NEW | Create identity provider with `isTrusted: true`   |
+| Modify trust status | `PATCH/PUT /auth/admin/tenants/{id}/identity-providers/{id}` | SSO Integration > Identity Provider Dashboard > Edit | Change `isTrusted` flag on existing IdP           |
+| Edit trusted IdP    | `PATCH/PUT /auth/admin/tenants/{id}/identity-providers/{id}` | SSO Integration > Identity Provider Dashboard > Edit | Modify already-trusted identity provider          |
 
 **Security Operations** (Super Admin Only):
 
-| Operation                       | API Endpoint                                                  | Description                            |
-| ------------------------------- | ------------------------------------------------------------- | -------------------------------------- |
-| Add users to systemAdmins group | `PUT /auth/admin/tenants/{id}/groups/{id}/users/rel/{userId}` | Grant super admin access               |
-| Create global CORS origins      | `POST /auth/admin/tenants/{id}/allowed-origins`               | Create origins applying to all tenants |
-| Manage CORS allow-list          | `PATCH /auth/admin/allowed-origins/allowlist-enabled`         | Enable/disable CORS enforcement        |
-| Create global notifications     | `POST /auth/admin/tenants/{id}/system-notification`           | Create platform-wide notifications     |
-| Revert system templates         | `POST /html-templates/{id}/revert-to-system-default`          | Reset templates to defaults            |
+| Operation                       | API Endpoint                                                  | UI Location                                     | Description                            |
+| ------------------------------- | ------------------------------------------------------------- | ----------------------------------------------- | -------------------------------------- |
+| Add users to systemAdmins group | `PUT /auth/admin/tenants/{id}/groups/{id}/users/rel/{userId}` | Users and Groups > Groups > systemAdmins > Edit | Grant super admin access               |
+| Create global CORS origins      | `POST /auth/admin/tenants/{id}/allowed-origins`               | API only                                        | Create origins applying to all tenants |
+| Manage CORS allow-list          | `PATCH /auth/admin/allowed-origins/allowlist-enabled`         | API only                                        | Enable/disable CORS enforcement        |
+| Create global notifications     | `POST /auth/admin/tenants/{id}/system-notification`           | Resources and Tools > System Notifications      | Create platform-wide notifications     |
+| Revert system templates         | `POST /html-templates/{id}/revert-to-system-default`          | Resources and Tools > HTML Templates > Revert   | Reset templates to defaults            |
 
 **Bypass Capabilities** (Limits Super Admins Bypass):
 
@@ -272,10 +272,10 @@ UMRS enables resource-level delegation where designated managers can grant speci
 
 **Prerequisites**:
 
-1. Existing super administrator account to perform assignment
-2. User account exists in the platform
-3. User authenticates via a trusted identity provider (`isTrusted: true`)
-4. MFA enrolled (WebAuthn/FIDO2 strongly recommended, TOTP minimum)
+- Existing super administrator account to perform assignment
+- User account exists in the platform
+- User authenticates via a trusted identity provider (`isTrusted: true`)
+- MFA enrolled (WebAuthn/FIDO2 strongly recommended, TOTP minimum)
 
 **Provisioning Process**:
 
@@ -354,10 +354,10 @@ UMRS enables resource-level delegation where designated managers can grant speci
 
 **Secret Rotation Priority** (if applicable):
 
-1. Credentials accessed in last 30 days (highest priority)
-2. API keys and service account credentials
-3. Encryption keys (if compromise suspected)
-4. All secrets accessed during tenure (lower priority)
+- Credentials accessed in last 30 days (highest priority)
+- API keys and service account credentials
+- Encryption keys (if compromise suspected)
+- All secrets accessed during tenure (lower priority)
 
 ---
 
@@ -615,6 +615,8 @@ The Authifi service provisions new tenants with secure defaults. The following t
 
 **Endpoint**: `GET /auth/admin/tenants/{tenantId}`
 
+**UI**: Tenant > Settings (view current configuration)
+
 Use this endpoint to retrieve current tenant configuration for comparison against recommended baselines. The response includes security-relevant settings within the tenant object.
 
 **Security-Relevant Fields in Response**:
@@ -650,8 +652,8 @@ Use this endpoint to retrieve current tenant configuration for comparison agains
 
 - **UI**: Monitoring > Audit Logs > Export Audit Logs
 - **API**:
-  - `GET /auth/admin/tenants/{tenantId}/audit/export/csv`
-  - `GET /auth/admin/tenants/{tenantId}/audit/export/json`
+    - `GET /auth/admin/tenants/{tenantId}/audit/export/csv`
+    - `GET /auth/admin/tenants/{tenantId}/audit/export/json`
 
 ---
 
@@ -729,17 +731,17 @@ Use this endpoint to retrieve current tenant configuration for comparison agains
 
 ### API-Based Management
 
-All security settings are accessible via REST API:
+All security settings are accessible via REST API and the Authifi UI:
 
-| Resource           | Endpoints                                                               |
-| ------------------ | ----------------------------------------------------------------------- |
-| Tenants            | `GET/PUT/PATCH /auth/admin/tenants/{tenantId}`                          |
-| Identity Providers | `GET/POST/PUT/DELETE /auth/admin/tenants/{tenantId}/identity-providers` |
-| Applications       | `GET/POST/PUT/DELETE /auth/admin/tenants/{tenantId}/clients`            |
-| Users              | `GET/POST/PUT/DELETE /auth/admin/tenants/{tenantId}/users`              |
-| Groups             | `GET/POST/PUT/DELETE /auth/admin/tenants/{tenantId}/groups`             |
-| Allowed Origins    | `GET/POST/DELETE /auth/admin/tenants/{tenantId}/allowed-origins`        |
-| Audit Logs         | `GET /auth/admin/tenants/{tenantId}/audit-logs`                         |
+| Resource           | Endpoints                                                               | UI Location                               |
+| ------------------ | ----------------------------------------------------------------------- | ----------------------------------------- |
+| Tenants            | `GET/PUT/PATCH /auth/admin/tenants/{tenantId}`                          | Tenant > Settings                         |
+| Identity Providers | `GET/POST/PUT/DELETE /auth/admin/tenants/{tenantId}/identity-providers` | SSO Integration > Identity Provider Dashboard |
+| Applications       | `GET/POST/PUT/DELETE /auth/admin/tenants/{tenantId}/clients`            | SSO Integration > App Dashboard           |
+| Users              | `GET/POST/PUT/DELETE /auth/admin/tenants/{tenantId}/users`              | Users and Groups > Users                  |
+| Groups             | `GET/POST/PUT/DELETE /auth/admin/tenants/{tenantId}/groups`             | Users and Groups > Groups                 |
+| Allowed Origins    | `GET/POST/DELETE /auth/admin/tenants/{tenantId}/allowed-origins`        | SSO Integration > App Dashboard > Edit app > Allowed Origins |
+| Audit Logs         | `GET /auth/admin/tenants/{tenantId}/audit-logs`                         | Resources and Tools > Audit Logs          |
 
 **Complete API Documentation**: Available at `/auth/docs` (Swagger/OpenAPI) on Authifi service instances.
 

@@ -39,10 +39,10 @@ As a **tenant administrator**, you have comprehensive control over your tenant's
 
 ## Accessing Tenant Settings
 
-1. Log in to the Authifi UI
-2. Select your tenant from the tenant dropdown in the top navigation
-3. Navigate to the **Tenant** section in the left navigation menu
-4. Select the desired option from the submenu
+- Log in to the Authifi UI
+- Select your tenant from the tenant dropdown in the top navigation
+- Navigate to the **Tenant** section in the left navigation menu
+- Select the desired option from the submenu
 
 The **Tenant** menu includes:
 
@@ -480,15 +480,15 @@ Configure the appearance of system-generated emails sent to users.
 
 #### Adding Allowed Origins
 
-1. Enter the full origin URL (scheme + host only, no path)
-   - **Valid**: `https://myapp.example.com`
-   - **Invalid**: `https://myapp.example.com/path`, `myapp.example.com` (missing scheme)
+- Enter the full origin URL (scheme + host only, no path)
+    - **Valid**: `https://myapp.example.com`
+    - **Invalid**: `https://myapp.example.com/path`, `myapp.example.com` (missing scheme)
 
-2. **Global checkbox** (Super Admins Only):
-   - Mark origin as global (applies to all tenants)
-   - **Restriction**: Only super administrators can create global origins
+- **Global checkbox** (Super Admins Only):
+    - Mark origin as global (applies to all tenants)
+    - **Restriction**: Only super administrators can create global origins
 
-3. Click **Add** to save
+- Click **Add** to save
 
 #### Origin Validation Rules
 
@@ -522,12 +522,12 @@ The system enforces strict origin validation:
 
 #### Security Best Practices
 
-1. **Only add origins you control and trust**
-2. **Use HTTPS origins** (not HTTP) for production applications
-3. **Avoid wildcards** - list each origin explicitly
-4. **Remove unused origins** to minimize attack surface
-5. **Monitor the Audit Log** for origin changes (critical security event)
-6. **Never disable allow-list enforcement** in production unless absolutely necessary and time-limited
+- **Only add origins you control and trust**
+- **Use HTTPS origins** (not HTTP) for production applications
+- **Avoid wildcards** - list each origin explicitly
+- **Remove unused origins** to minimize attack surface
+- **Monitor the Audit Log** for origin changes (critical security event)
+- **Never disable allow-list enforcement** in production unless absolutely necessary and time-limited
 
 ---
 
@@ -640,11 +640,11 @@ Available when "Use Default Email Settings" is disabled:
 
 **Certificate lifecycle**:
 
-1. Upload new certificate before the old one expires
-2. Test with new certificate
-3. Set new certificate as active
-4. Monitor for issues
-5. Remove old certificate only after confirming stability
+- Upload new certificate before the old one expires
+- Test with new certificate
+- Set new certificate as active
+- Monitor for issues
+- Remove old certificate only after confirming stability
 
 **Security best practices**:
 
@@ -668,21 +668,21 @@ Available when "Use Default Email Settings" is disabled:
 
 #### Operations
 
-1. **Rotate JWK** (recommended)
-   - Generates a new key
-   - Previous key remains valid temporarily
-   - Allows zero-downtime key rotation
-   - **Use case**: Regular key rotation schedule
+- **Rotate JWK** (recommended)
+    - Generates a new key
+    - Previous key remains valid temporarily
+    - Allows zero-downtime key rotation
+    - **Use case**: Regular key rotation schedule
 
-2. **Rotate and Revoke JWK** (immediate revocation)
-   - Generates new key
-   - Immediately invalidates the old key
-   - All tokens signed with old key become invalid
-   - **Use case**: Security incident or suspected key compromise
+- **Rotate and Revoke JWK** (immediate revocation)
+    - Generates new key
+    - Immediately invalidates the old key
+    - All tokens signed with old key become invalid
+    - **Use case**: Security incident or suspected key compromise
 
-3. **Revoke JWK** (by kid)
-   - Revokes a specific key
-   - **Use case**: Targeted key invalidation
+- **Revoke JWK** (by kid)
+    - Revokes a specific key
+    - **Use case**: Targeted key invalidation
 
 **Security best practices**:
 
@@ -778,32 +778,32 @@ Available when "Use Default Email Settings" is disabled:
 
 ### Critical Security Controls
 
-1. **Always enable Admin MFA**
-   - Protects against credential theft
-   - Required for compliance in most frameworks
+- **Always enable Admin MFA**
+    - Protects against credential theft
+    - Required for compliance in most frameworks
 
-2. **Use short session lifetimes**
-   - Recommend: 1 hour maximum session, 20 minutes idle timeout
-   - Shorter for high-security tenants
+- **Use short session lifetimes**
+    - Recommend: 1 hour maximum session, 20 minutes idle timeout
+    - Shorter for high-security tenants
 
-3. **Restrict allowed origins**
-   - Only add origins you control
-   - Use HTTPS (never HTTP in production)
-   - Remove unused origins immediately
+- **Restrict allowed origins**
+    - Only add origins you control
+    - Use HTTPS (never HTTP in production)
+    - Remove unused origins immediately
 
-4. **Monitor admin actions**
-   - Review audit logs regularly for admin activity
-   - Set up alerts for sensitive operations (certificate changes, admin group modifications)
+- **Monitor admin actions**
+    - Review audit logs regularly for admin activity
+    - Set up alerts for sensitive operations (certificate changes, admin group modifications)
 
-5. **Rotate cryptographic keys**
-   - SAML certificates: Before expiration (30-60 days notice)
-   - JWKS: Every 90-180 days for routine rotation
-   - Immediately upon suspected compromise
+- **Rotate cryptographic keys**
+    - SAML certificates: Before expiration (30-60 days notice)
+    - JWKS: Every 90-180 days for routine rotation
+    - Immediately upon suspected compromise
 
-6. **Use strong authentication**
-   - Require MFA for admin accounts
-   - Use trusted identity providers (flagged as `isTrusted`)
-   - Avoid password-only authentication
+- **Use strong authentication**
+    - Require MFA for admin accounts
+    - Use trusted identity providers (flagged as `isTrusted`)
+    - Avoid password-only authentication
 
 ### Compliance Considerations
 
@@ -851,10 +851,10 @@ Available when "Use Default Email Settings" is disabled:
 
 If you encounter issues or need assistance:
 
-1. **Check audit logs** for error details
-2. **Review the Usage Report** to identify misconfigurations
-3. **Contact your super administrator** for elevated privilege requests
-4. **Consult API documentation** for advanced configurations
+- **Check audit logs** for error details
+- **Review the Usage Report** to identify misconfigurations
+- **Contact your super administrator** for elevated privilege requests
+- **Consult API documentation** for advanced configurations
 
 ---
 

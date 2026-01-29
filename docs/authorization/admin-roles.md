@@ -78,13 +78,13 @@ In user-facing documentation, the platform-wide admin role is called **"Super Ad
 
 - These scopes commonly grant access to operations that would otherwise be **Super-Administrator-only** (or allow edits on "privileged" entities).
 - Examples of elevated admin scopes used in Authifi:
-  - `ADMIN_SCOPE.ADMIN_PERMISSIONS_UPDATE` (privileged RBAC entities: admin groups/roles/permissions)
-  - `ADMIN_SCOPE.UPDATE_SYSTEM_TEMPLATES` (system templates)
-  - `ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT` (trusted/verified IdP restrictions, some IdP type restrictions)
-  - `ADMIN_SCOPE.IDENTITY_PROVIDER_CLAIMS_SCRIPTING` (IdP claims mapping scripting)
-  - `ADMIN_SCOPE.UPDATE_ACCESS_SCRIPTS` / `ADMIN_SCOPE.UPDATE_CLIENTS` (client scripting / client updates)
-  - `ADMIN_SCOPE.IDENTITY_PROVIDER_SECRETS_LIST` (unmask IdP secrets in responses)
-  - `ADMIN_SCOPE.USER_SSH_SECRET` (SSH key operations)
+    - `ADMIN_SCOPE.ADMIN_PERMISSIONS_UPDATE` (privileged RBAC entities: admin groups/roles/permissions)
+    - `ADMIN_SCOPE.UPDATE_SYSTEM_TEMPLATES` (system templates)
+    - `ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT` (trusted/verified IdP restrictions, some IdP type restrictions)
+    - `ADMIN_SCOPE.IDENTITY_PROVIDER_CLAIMS_SCRIPTING` (IdP claims mapping scripting)
+    - `ADMIN_SCOPE.UPDATE_ACCESS_SCRIPTS` / `ADMIN_SCOPE.UPDATE_CLIENTS` (client scripting / client updates)
+    - `ADMIN_SCOPE.IDENTITY_PROVIDER_SECRETS_LIST` (unmask IdP secrets in responses)
+    - `ADMIN_SCOPE.USER_SSH_SECRET` (SSH key operations)
 
 For the exact places these are enforced, see the relevant sections in [Super Admin Access](super-admin-access.md).
 
@@ -96,16 +96,16 @@ For the exact places these are enforced, see the relevant sections in [Super Adm
 
 - Many API endpoints explicitly check Super Administrator status, Tenant Administrator status, and/or specific `ADMIN_SCOPE.*` permissions.
 - Example patterns:
-  - **SA-only**: Request is rejected unless the user is a Super Administrator
-  - **SA-or-scope**: Super Administrator is allowed, otherwise requires an `ADMIN_SCOPE.*`
-  - **SA-or-tenant-admin**: Super Administrator is allowed, otherwise allows Tenant Administrators
+    - **SA-only**: Request is rejected unless the user is a Super Administrator
+    - **SA-or-scope**: Super Administrator is allowed, otherwise requires an `ADMIN_SCOPE.*`
+    - **SA-or-tenant-admin**: Super Administrator is allowed, otherwise allows Tenant Administrators
 
 ### 2) Admin override for scope failures
 
 - A large portion of `/auth/admin/tenants/{tenantId}/...` endpoints are primarily protected by **OAuth scopes**.
 - When authentication fails due to `Insufficient scope`, the authorization system can allow certain admin users to proceed:
-  - Tenant Administrator of the **target tenant** (`{tenantId}`), or
-  - Tenant Administrator of the **original token tenant** _and_ the target tenant is a **trusted tenant**.
+    - Tenant Administrator of the **target tenant** (`{tenantId}`), or
+    - Tenant Administrator of the **original token tenant** _and_ the target tenant is a **trusted tenant**.
 - This bypass is not applied to **Client Credentials** tokens.
 
 This is why many "admin" APIs don't contain an explicit "Tenant Administrator required" check: Tenant Administrators may still be able to use them even when scopes are missing.
@@ -120,56 +120,56 @@ This is why many "admin" APIs don't contain an explicit "Tenant Administrator re
 ## Common patterns and examples
 
 - **Tenant Administrators can do "anything in the tenant", except what is SA-only or scope-gated**
-  - Practically, Tenant Administrators can perform most tenant administration, but some operations remain reserved for:
-    - **Super Administrators** (SA-only), or
-    - **Scoped Administrators** (SA-or-scope), especially around privileged RBAC entities and sensitive scripting/secrets.
+    - Practically, Tenant Administrators can perform most tenant administration, but some operations remain reserved for:
+        - **Super Administrators** (SA-only), or
+        - **Scoped Administrators** (SA-or-scope), especially around privileged RBAC entities and sensitive scripting/secrets.
 
 - **Privileged RBAC entities** (admin groups/roles/permissions)
-  - Commonly enforced as **SA-or-scope** (`ADMIN_SCOPE.ADMIN_PERMISSIONS_UPDATE`).
+    - Commonly enforced as **SA-or-scope** (`ADMIN_SCOPE.ADMIN_PERMISSIONS_UPDATE`).
 
 - **Trusted identity provider controls**
-  - Commonly enforced as **SA-or-scope** (`ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT`), with additional Tenant-Administrator-specific logic for some IdP fields.
+    - Commonly enforced as **SA-or-scope** (`ADMIN_SCOPE.TRUSTED_PROVIDER_EDIT`), with additional Tenant-Administrator-specific logic for some IdP fields.
 
 - **Monitoring / reporting APIs**
-  - Often scope-gated (e.g. audit/log scopes, protected health scope), with Tenant Administrator access potentially enabled via the admin override mechanism.
+    - Often scope-gated (e.g. audit/log scopes, protected health scope), with Tenant Administrator access potentially enabled via the admin override mechanism.
 
 ---
 
 ## Securing admin accounts (best practices)
 
 - **Prefer "trusted" identity providers for admin identities**
-  - Restrict admin sign-in to identity providers that are verified/trusted and centrally managed.
-  - Avoid granting admin access to accounts authenticated via ad-hoc or weakly verified providers.
+    - Restrict admin sign-in to identity providers that are verified/trusted and centrally managed.
+    - Avoid granting admin access to accounts authenticated via ad-hoc or weakly verified providers.
 
 - **Enforce MFA for all admin-capable accounts**
-  - Require phishing-resistant MFA where possible (e.g. WebAuthn/FIDO2), at minimum TOTP.
-  - Ensure "break-glass" admin accounts are also MFA-protected (with tightly controlled recovery).
+    - Require phishing-resistant MFA where possible (e.g. WebAuthn/FIDO2), at minimum TOTP.
+    - Ensure "break-glass" admin accounts are also MFA-protected (with tightly controlled recovery).
 
 - **Apply least privilege and minimize standing access**
-  - Keep the number of **Super Administrators** small.
-  - Prefer **scoped admin access** (`ADMIN_SCOPE.*`) over Super Administrator where possible.
-  - Remove unused admin scopes; time-bound or approval-gated elevation where feasible.
+    - Keep the number of **Super Administrators** small.
+    - Prefer **scoped admin access** (`ADMIN_SCOPE.*`) over Super Administrator where possible.
+    - Remove unused admin scopes; time-bound or approval-gated elevation where feasible.
 
 - **Separate admin and day-to-day user accounts**
-  - Use dedicated admin accounts for privileged actions.
-  - Do not browse email/drive/chat from privileged accounts; reduce exposure to phishing and token theft.
+    - Use dedicated admin accounts for privileged actions.
+    - Do not browse email/drive/chat from privileged accounts; reduce exposure to phishing and token theft.
 
 - **Review admin access regularly**
-  - Periodically review:
-    - Super Administrator assignments,
-    - Tenant Administrator group membership,
-    - users holding `ADMIN_SCOPE.*` privileges,
-    - "trusted tenant" delegations.
-  - Treat emergency additions as temporary and require follow-up removal/review.
+    - Periodically review:
+        - Super Administrator assignments,
+        - Tenant Administrator group membership,
+        - users holding `ADMIN_SCOPE.*` privileges,
+        - "trusted tenant" delegations.
+    - Treat emergency additions as temporary and require follow-up removal/review.
 
 - **Monitor and audit admin activity**
-  - Audit logs should be routinely reviewed for privileged actions (RBAC changes, secrets access, IdP changes, template/script changes, tenant exports).
-  - Alert on anomalous admin behavior (new admin grants, repeated denied attempts, unusual login patterns, cross-tenant access via delegation).
+    - Audit logs should be routinely reviewed for privileged actions (RBAC changes, secrets access, IdP changes, template/script changes, tenant exports).
+    - Alert on anomalous admin behavior (new admin grants, repeated denied attempts, unusual login patterns, cross-tenant access via delegation).
 
 - **Harden sessions and tokens**
-  - Shorter session lifetimes for admin contexts; revoke sessions promptly on role removal.
-  - Rotate credentials/secrets used by admin automation; avoid long-lived tokens.
+    - Shorter session lifetimes for admin contexts; revoke sessions promptly on role removal.
+    - Rotate credentials/secrets used by admin automation; avoid long-lived tokens.
 
 - **Have an incident-ready process**
-  - Document how to revoke admin access quickly (including removing scopes, disabling accounts, revoking sessions).
-  - Validate restore/recovery paths for audit logs and configuration (and restrict restore operations appropriately).
+    - Document how to revoke admin access quickly (including removing scopes, disabling accounts, revoking sessions).
+    - Validate restore/recovery paths for audit logs and configuration (and restrict restore operations appropriately).

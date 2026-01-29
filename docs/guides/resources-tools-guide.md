@@ -89,19 +89,19 @@ The **Resources and Tools** section provides centralized management of reusable 
 
 #### Creating an Email Template
 
-1. Click **+ NEW EMAIL TEMPLATE**
-2. Fill in template details:
-   - **Template Category\***: Purpose of email (dropdown)
-     - Begin From System Default Template: Copy system template as starting point
-   - **Name\***: Unique identifier (e.g., "Custom Password Reset")
-   - **Description\***: Template purpose
-   - **Email From\***: Sender address (can use variables)
-   - **CC**: Carbon copy recipients (optional)
-   - **BCC**: Blind carbon copy recipients (optional)
-   - **Email Subject\***: Subject line (supports variables)
-   - **Email Body\***: HTML content (Handlebars template)
-3. **Preview**: Test template rendering with sample data
-4. Click **Save**
+- Click **+ NEW EMAIL TEMPLATE**
+- Fill in template details:
+    - **Template Category\***: Purpose of email (dropdown)
+        - Begin From System Default Template: Copy system template as starting point
+    - **Name\***: Unique identifier (e.g., "Custom Password Reset")
+    - **Description\***: Template purpose
+    - **Email From\***: Sender address (can use variables)
+    - **CC**: Carbon copy recipients (optional)
+    - **BCC**: Blind carbon copy recipients (optional)
+    - **Email Subject\***: Subject line (supports variables)
+    - **Email Body\***: HTML content (Handlebars template)
+- **Preview**: Test template rendering with sample data
+- Click **Save**
 
 #### Template Variables
 
@@ -144,9 +144,9 @@ This link expires in
 
 **Overriding system templates**:
 
-1. Create new template with same category as system template
-2. Custom version takes precedence
-3. To revert: Delete custom template
+- Create new template with same category as system template
+- Custom version takes precedence
+- To revert: Delete custom template
 
 #### Importing Templates
 
@@ -165,11 +165,11 @@ This link expires in
 
 **Import process**:
 
-1. Click **Import** button
-2. Select JSON file
-3. Template loads into editor
-4. Review and modify as needed
-5. Save to create template
+- Click **Import** button
+- Select JSON file
+- Template loads into editor
+- Review and modify as needed
+- Save to create template
 
 ---
 
@@ -222,20 +222,20 @@ This link expires in
 
 #### Creating an HTML Template
 
-1. Click **+ NEW HTML TEMPLATE**
-2. Fill in template details:
-   - **Name\***: Unique identifier
-   - **Type\***: Template purpose (dropdown)
-     - Login page
-     - Landing page
-     - Confirmation page
-     - Error page
-     - Begin From System Default Template: Copy system template
-   - **Description\***: Template purpose
-   - **HTML Template\***: Full HTML page (Monaco editor)
-3. **Preview**: Test rendering in new tab
-4. **History**: View previous versions (for existing templates)
-5. Click **Save**
+- Click **+ NEW HTML TEMPLATE**
+- Fill in template details:
+    - **Name\***: Unique identifier
+    - **Type\***: Template purpose (dropdown)
+        - Login page
+        - Landing page
+        - Confirmation page
+        - Error page
+        - Begin From System Default Template: Copy system template
+    - **Description\***: Template purpose
+    - **HTML Template\***: Full HTML page (Monaco editor)
+- **Preview**: Test rendering in new tab
+- **History**: View previous versions (for existing templates)
+- Click **Save**
 
 #### Template Structure
 
@@ -325,15 +325,15 @@ This link expires in
 
 #### Uploading an Image
 
-1. Click **+ UPLOAD IMAGE**
-2. Fill in image details:
-   - **Image Name\***: Descriptive name
-   - **Description**: Purpose or context
-   - **Alt Text\***: Accessibility description (for screen readers)
-   - **File Upload\***: Select image file
-3. Click **Save**
-4. Image is uploaded to CDN
-5. Public URL is generated
+- Click **+ UPLOAD IMAGE**
+- Fill in image details:
+    - **Image Name\***: Descriptive name
+    - **Description**: Purpose or context
+    - **Alt Text\***: Accessibility description (for screen readers)
+    - **File Upload\***: Select image file
+- Click **Save**
+- Image is uploaded to CDN
+- Public URL is generated
 
 **Supported formats**:
 
@@ -352,9 +352,9 @@ This link expires in
 
 **Copy public URL**:
 
-1. Find image in dashboard
-2. Click **Public URL** (copy icon)
-3. URL copied to clipboard
+- Find image in dashboard
+- Click **Public URL** (copy icon)
+- URL copied to clipboard
 
 **In email templates**:
 
@@ -383,25 +383,25 @@ This link expires in
 
 #### Image Best Practices
 
-1. **Optimization**:
-   - Compress images before upload
-   - Use appropriate format (PNG for logos, JPEG for photos)
-   - Specify dimensions to prevent layout shifts
+- **Optimization**:
+    - Compress images before upload
+    - Use appropriate format (PNG for logos, JPEG for photos)
+    - Specify dimensions to prevent layout shifts
 
-2. **Accessibility**:
-   - Always provide meaningful alt text
-   - Use descriptive image names
-   - Test with screen readers
+- **Accessibility**:
+    - Always provide meaningful alt text
+    - Use descriptive image names
+    - Test with screen readers
 
-3. **Organization**:
-   - Use consistent naming conventions
-   - Add descriptive text for context
-   - Delete unused images regularly
+- **Organization**:
+    - Use consistent naming conventions
+    - Add descriptive text for context
+    - Delete unused images regularly
 
-4. **Performance**:
-   - Images are served from CDN (fast delivery)
-   - Use responsive images for different screen sizes
-   - Consider lazy loading for large images
+- **Performance**:
+    - Images are served from CDN (fast delivery)
+    - Use responsive images for different screen sizes
+    - Consider lazy loading for large images
 
 ---
 
@@ -443,18 +443,18 @@ This link expires in
 
 #### Creating a Secret
 
-1. Click **+ NEW Secret**
-2. Fill in secret details:
-   - **Name\***: Unique identifier (e.g., "smtp_password", "api_key")
-   - **Username\***: Associated username or identifier
-   - **Description\***: Secret purpose
-   - **Secret\***: Actual secret value (encrypted at rest)
-   - **Secret Provider Type\***: Storage backend (default: Local)
-   - **Expiration Date**: Optional expiration (recommended)
-   - **Secret Write Only**: Check to make secret write-only (recommended for sensitive data)
-   - **Secret Type**: Sensitive (hidden) or Variable (readable)
-3. **System Shared** (super admin only): Make secret available to all tenants
-4. Click **Save**
+- Click **+ NEW Secret**
+- Fill in secret details:
+    - **Name\***: Unique identifier (e.g., "smtp_password", "api_key")
+    - **Username\***: Associated username or identifier
+    - **Description\***: Secret purpose
+    - **Secret\***: Actual secret value (encrypted at rest)
+    - **Secret Provider Type\***: Storage backend (default: Local)
+    - **Expiration Date**: Optional expiration (recommended)
+    - **Secret Write Only**: Check to make secret write-only (recommended for sensitive data)
+    - **Secret Type**: Sensitive (hidden) or Variable (readable)
+- **System Shared** (super admin only): Make secret available to all tenants
+- Click **Save**
 
 **Secret is encrypted** using tenant-specific key and stored securely.
 
@@ -535,10 +535,10 @@ const response = await fetch(apiUrl, {
 
 **How to rotate** (super admin only):
 
-1. Click **Rotate Key** button
-2. Confirm rotation
-3. System re-encrypts all secrets
-4. Applications continue working (no changes needed)
+- Click **Rotate Key** button
+- Confirm rotation
+- System re-encrypts all secrets
+- Applications continue working (no changes needed)
 
 **Warning**: Rotation cannot be undone.
 
@@ -604,19 +604,19 @@ const response = await fetch(apiUrl, {
 
 **System admin required**: Only super admins can create and edit jobs.
 
-1. Click **+ NEW JOB**
-2. Fill in job details:
-   - **Job Name\***: Unique identifier
-   - **Job Description**: Purpose and context
-   - **Job Type\***: Select from dropdown
-   - **Cron Schedule\***: When job runs (cron expression)
-   - **Email Recipients**: Notification recipients
-   - **Recipient Type**: Email or Group
-   - **Email Template**: Template for notifications
-   - **Custom Script**: JavaScript for Generic Job type
-   - **Job-Specific Options**: Varies by job type
-3. **Enable Job**: Check to activate immediately
-4. Click **Save**
+- Click **+ NEW JOB**
+- Fill in job details:
+    - **Job Name\***: Unique identifier
+    - **Job Description**: Purpose and context
+    - **Job Type\***: Select from dropdown
+    - **Cron Schedule\***: When job runs (cron expression)
+    - **Email Recipients**: Notification recipients
+    - **Recipient Type**: Email or Group
+    - **Email Template**: Template for notifications
+    - **Custom Script**: JavaScript for Generic Job type
+    - **Job-Specific Options**: Varies by job type
+- **Enable Job**: Check to activate immediately
+- Click **Save**
 
 #### Cron Schedule
 
@@ -729,14 +729,14 @@ return [
 
 **View job history**:
 
-1. Click **Details** (info icon) on job
-2. See all historical executions:
-   - Timestamp
-   - Status (success, failed)
-   - Duration
-   - Output logs
-   - Error messages (if failed)
-3. Filter by status or date range
+- Click **Details** (info icon) on job
+- See all historical executions:
+    - Timestamp
+    - Status (success, failed)
+    - Duration
+    - Output logs
+    - Error messages (if failed)
+- Filter by status or date range
 
 **Troubleshooting failed jobs**:
 
@@ -799,19 +799,19 @@ return [
 
 **Preview template**:
 
-1. Click **Preview** button in template editor
-2. Sample data is injected
-3. Template renders in new tab/window
-4. Review appearance and formatting
-5. Close preview and return to editor
+- Click **Preview** button in template editor
+- Sample data is injected
+- Template renders in new tab/window
+- Review appearance and formatting
+- Close preview and return to editor
 
 **Test email sending**:
 
-1. Save template
-2. Trigger action that uses template (e.g., request password reset)
-3. Check email delivery
-4. Verify rendering in different email clients
-5. Iterate as needed
+- Save template
+- Trigger action that uses template (e.g., request password reset)
+- Check email delivery
+- Verify rendering in different email clients
+- Iterate as needed
 
 ---
 
@@ -911,33 +911,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
 ### Security Recommendations
 
-1. **Use Sensitive type for all credentials**:
-   - Passwords: Always Sensitive
-   - API keys: Always Sensitive
-   - Tokens: Always Sensitive
-   - Only use Variable for non-sensitive config
+- **Use Sensitive type for all credentials**:
+    - Passwords: Always Sensitive
+    - API keys: Always Sensitive
+    - Tokens: Always Sensitive
+    - Only use Variable for non-sensitive config
 
-2. **Set expiration dates**:
-   - Force rotation every 90-180 days
-   - Shorter expiration for high-privilege secrets
-   - Set calendar reminders for expiration
+- **Set expiration dates**:
+    - Force rotation every 90-180 days
+    - Shorter expiration for high-privilege secrets
+    - Set calendar reminders for expiration
 
-3. **Least privilege**:
-   - Create separate secrets for each purpose
-   - Don't reuse secrets across systems
-   - Limit secret access to necessary jobs
+- **Least privilege**:
+    - Create separate secrets for each purpose
+    - Don't reuse secrets across systems
+    - Limit secret access to necessary jobs
 
-4. **Rotation strategy**:
-   - Rotate immediately if compromised
-   - Periodic rotation (quarterly minimum)
-   - Document rotation procedures
-   - Test applications after rotation
+- **Rotation strategy**:
+    - Rotate immediately if compromised
+    - Periodic rotation (quarterly minimum)
+    - Document rotation procedures
+    - Test applications after rotation
 
-5. **Audit secret access**:
-   - Review audit logs for secret reads
-   - Monitor for unusual access patterns
-   - Alert on secret modifications
-   - Track secret usage in jobs
+- **Audit secret access**:
+    - Review audit logs for secret reads
+    - Monitor for unusual access patterns
+    - Alert on secret modifications
+    - Track secret usage in jobs
 
 ### Common Use Cases
 
@@ -991,34 +991,34 @@ Expiration: Never
 
 ### Job Design Best Practices
 
-1. **Idempotency**:
-   - Jobs should be safe to run multiple times
-   - Check for existing state before creating resources
-   - Use atomic operations where possible
+- **Idempotency**:
+    - Jobs should be safe to run multiple times
+    - Check for existing state before creating resources
+    - Use atomic operations where possible
 
-2. **Error handling**:
-   - Wrap operations in try/catch
-   - Log errors with context
-   - Return meaningful error messages
-   - Don't swallow exceptions
+- **Error handling**:
+    - Wrap operations in try/catch
+    - Log errors with context
+    - Return meaningful error messages
+    - Don't swallow exceptions
 
-3. **Performance**:
-   - Process data in batches
-   - Set reasonable limits (don't process millions of records)
-   - Use pagination for large datasets
-   - Add timeouts for external calls
+- **Performance**:
+    - Process data in batches
+    - Set reasonable limits (don't process millions of records)
+    - Use pagination for large datasets
+    - Add timeouts for external calls
 
-4. **Logging**:
-   - Log job start and completion
-   - Log key milestones and metrics
-   - Include record counts processed
-   - Avoid logging sensitive data
+- **Logging**:
+    - Log job start and completion
+    - Log key milestones and metrics
+    - Include record counts processed
+    - Avoid logging sensitive data
 
-5. **Notifications**:
-   - Send success notification for critical jobs
-   - Always send failure notifications
-   - Include actionable error information
-   - Set appropriate recipient groups
+- **Notifications**:
+    - Send success notification for critical jobs
+    - Always send failure notifications
+    - Include actionable error information
+    - Set appropriate recipient groups
 
 ### Example Generic Job
 
@@ -1118,10 +1118,10 @@ async function createAuthUser(hrUser, tenantId, groupName, authToken) {
 
 **Check job health**:
 
-1. Navigate to Resources and Tools > Jobs
-2. Review **LatestStatus** column
-3. Look for "failed" status
-4. Click **Details** to investigate failures
+- Navigate to Resources and Tools > Jobs
+- Review **LatestStatus** column
+- Look for "failed" status
+- Click **Details** to investigate failures
 
 **Common failure reasons**:
 
@@ -1133,12 +1133,12 @@ async function createAuthUser(hrUser, tenantId, groupName, authToken) {
 
 **Remediation steps**:
 
-1. Review job execution logs
-2. Check error message and stack trace
-3. Verify external dependencies (APIs, databases)
-4. Test secret validity
-5. Update job configuration
-6. Enable job and wait for next run
+- Review job execution logs
+- Check error message and stack trace
+- Verify external dependencies (APIs, databases)
+- Test secret validity
+- Update job configuration
+- Enable job and wait for next run
 
 ---
 
@@ -1156,11 +1156,11 @@ async function createAuthUser(hrUser, tenantId, groupName, authToken) {
 
 For assistance with resources and tools:
 
-1. **Template issues**: Check syntax, preview before deploying, test with sample data
-2. **Secret problems**: Verify expiration, check secret type, test in job execution
-3. **Job failures**: Review execution logs, check Job Logs dashboard, verify dependencies
-4. **Image upload**: Check file size, verify format, ensure permissions
-5. **Contact admin team**: For system-level issues or elevated permission requests
+- **Template issues**: Check syntax, preview before deploying, test with sample data
+- **Secret problems**: Verify expiration, check secret type, test in job execution
+- **Job failures**: Review execution logs, check Job Logs dashboard, verify dependencies
+- **Image upload**: Check file size, verify format, ensure permissions
+- **Contact admin team**: For system-level issues or elevated permission requests
 
 ---
 
