@@ -63,7 +63,7 @@ The guide covers any user profile with elevated permissions and action privilege
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Super Administrator**  | Application-level administrator with full control over the Authifi platform. Highest privilege level. Can manage all tenants and platform-wide configurations. |
 | **Tenant Administrator** | Administrator with full control within a single tenant. Cannot access other tenants or super admin functions.                                               |
-| **Privileged User**      | User with specific elevated permissions (scoped admin) for particular resource types without full admin access.                                             |
+| **Privileged User**      | User with specific elevated permissions (delegated admin) for particular resource types without full admin access.                                             |
 
 > **Note**: The Authifi service codebase uses identifiers such as `DEFAULT_ROLE.SYSTEM_ADMIN` (role name: "Auth System Admin"), `systemAdmins` group, and `isSystemAdmin` checks. These refer to Super Administrator in user-facing documentation.
 
@@ -100,7 +100,7 @@ The guide covers any user profile with elevated permissions and action privilege
                                     │
                                     ▼
 ┌───────────────────────────────────────────────────────────────────┐
-│   PRIVILEGED USERS (Scoped Administrators)                        │
+│   PRIVILEGED USERS (Delegated Admins)                             │
 │   ─────────────────────────────────────────────────────────────── │
 │   • Limited to specific resource types                            │
 │   • Delegated administration via UMRS roles                       │
@@ -231,7 +231,7 @@ Tenant Administrators have full administrative control within a single tenant. T
 
 ---
 
-### Privileged Users (Scoped Administrators)
+### Privileged Users (Delegated Admins)
 
 Privileged Users have elevated permissions for specific resource types without full tenant admin access. This enables delegated administration following the principle of least privilege.
 
@@ -434,7 +434,7 @@ UMRS enables resource-level delegation where designated managers can grant speci
 | ---- | --------------------------------------------- | -------------------------- |
 | 1    | Identify required `ADMIN_SCOPE.*` permissions | Scopes identified          |
 | 2    | Assign permissions to user                    | Permissions granted        |
-| 3    | User gains scoped admin capabilities          | Limited to assigned scopes |
+| 3    | User gains delegated admin capabilities       | Limited to assigned scopes |
 
 **Method 2: UMRS Role Grant**
 
@@ -680,7 +680,7 @@ Use this endpoint to retrieve current tenant configuration for comparison agains
 | Group-based assignment | Use admin groups, not direct permissions  | High     |
 | Regular reviews        | Quarterly audit of admin group membership | High     |
 | Session management     | Use short idle timeouts (30-60 min)       | Medium   |
-| Least privilege        | Use scoped admin where possible           | Medium   |
+| Least privilege        | Use delegated admin where possible        | Medium   |
 
 ### Identity Provider Security
 

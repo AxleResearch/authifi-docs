@@ -18,7 +18,7 @@ The Security Admin Guide provides comprehensive guidance for setting up, configu
 | ------------------------- | ------------------------------------------------------------ |
 | **Super Administrators**  | Top-level administrative accounts with platform-wide control |
 | **Tenant Administrators** | Privileged accounts with full control within a single tenant |
-| **Privileged Users**      | Scoped administrators with specific elevated permissions     |
+| **Privileged Users**      | Delegated admins with specific elevated permissions          |
 
 ### Key Topics
 
@@ -61,7 +61,7 @@ Detailed security configuration guidance covering:
 
 ### For Privileged Users
 
-- [Privileged User Role Definition](./security-admin-guide.md#privileged-users-scoped-administrators)
+- [Privileged User Role Definition](./security-admin-guide.md#privileged-users-delegated-admins)
 - [Admin Scope Permissions](./security-admin-guide.md#admin-scope-capabilities)
 - [UMRS Delegated Administration](./security-admin-guide.md#user-managed-role-system-umrs)
 

@@ -4,7 +4,7 @@ This document describes how the Authifi service models "admin" privileges and wh
 
 - **Super Administrators** (platform-wide)
 - **Tenant Administrators** (tenant-wide)
-- **Scoped Administrators** (users granted elevated `ADMIN_SCOPE.*` permissions)
+- **Delegated Admins** (users granted elevated `ADMIN_SCOPE.*` permissions)
 
 It complements the detailed operation inventory in [Super Admin Access](super-admin-access.md).
 
@@ -20,7 +20,7 @@ In user-facing documentation, the platform-wide admin role is called **"Super Ad
 
 - [Super Administrators](#super-administrators)
 - [Tenant Administrators](#tenant-administrators)
-- [Scoped Administrators (admin scopes)](#scoped-administrators-admin-scopes)
+- [Delegated Admins (admin scopes)](#delegated-admins-admin-scopes)
 - [How these roles are enforced](#how-these-roles-are-enforced)
 - [Common patterns and examples](#common-patterns-and-examples)
 - [Securing admin accounts (best practices)](#securing-admin-accounts-best-practices)
@@ -63,11 +63,11 @@ In user-facing documentation, the platform-wide admin role is called **"Super Ad
 
 ---
 
-## Scoped Administrators (admin scopes)
+## Delegated Admins (admin scopes)
 
 **What it means**
 
-- "Scoped Administrators" are users who are not necessarily Super Administrators, but have elevated permissions via `ADMIN_SCOPE.*` scopes.
+- "Delegated Admins" are users who are not Super Administrators, but have elevated permissions via `ADMIN_SCOPE.*` scopes.
 
 **How it is determined**
 
@@ -122,7 +122,7 @@ This is why many "admin" APIs don't contain an explicit "Tenant Administrator re
 - **Tenant Administrators can do "anything in the tenant", except what is SA-only or scope-gated**
     - Practically, Tenant Administrators can perform most tenant administration, but some operations remain reserved for:
         - **Super Administrators** (SA-only), or
-        - **Scoped Administrators** (SA-or-scope), especially around privileged RBAC entities and sensitive scripting/secrets.
+        - **Delegated Admins** (SA-or-scope), especially around privileged RBAC entities and sensitive scripting/secrets.
 
 - **Privileged RBAC entities** (admin groups/roles/permissions)
     - Commonly enforced as **SA-or-scope** (`ADMIN_SCOPE.ADMIN_PERMISSIONS_UPDATE`).
@@ -147,7 +147,7 @@ This is why many "admin" APIs don't contain an explicit "Tenant Administrator re
 
 - **Apply least privilege and minimize standing access**
     - Keep the number of **Super Administrators** small.
-    - Prefer **scoped admin access** (`ADMIN_SCOPE.*`) over Super Administrator where possible.
+    - Prefer **delegated admin access** (`ADMIN_SCOPE.*`) over Super Administrator where possible.
     - Remove unused admin scopes; time-bound or approval-gated elevation where feasible.
 
 - **Separate admin and day-to-day user accounts**
