@@ -76,37 +76,37 @@ The guide covers any user profile with elevated permissions and action privilege
 ### Account Hierarchy
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│   SUPER ADMINISTRATORS (Top-Level Administrative Accounts)          │
-│   ─────────────────────────────────────────────────────────────────  │
-│   • Platform-wide control across all tenants                        │
-│   • License and quota management                                    │
-│   • Identity provider trust configuration                           │
-│   • System-level security settings                                  │
-│   • Role name: Auth System Admin                                   │
-│   • Group: systemAdmins (in default tenant)                        │
-└─────────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────┐
+│   SUPER ADMINISTRATORS (Top-Level Administrative Accounts)        │
+│   ─────────────────────────────────────────────────────────────── │
+│   • Platform-wide control across all tenants                      │
+│   • License and quota management                                  │
+│   • Identity provider trust configuration                         │
+│   • System-level security settings                                │
+│   • Role name: Auth System Admin                                  │
+│   • Group: systemAdmins (in default tenant)                       │
+└───────────────────────────────────────────────────────────────────┘
                                     │
                                     ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│   TENANT ADMINISTRATORS (Privileged Accounts - Tenant Scope)        │
-│   ─────────────────────────────────────────────────────────────────  │
-│   • Full control within assigned tenant                             │
-│   • User/group/application management                               │
-│   • Tenant-level security configuration                             │
-│   • Identity provider setup (except trust status)                   │
-│   • Access via: Admin group membership or admin permissions         │
-└─────────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────┐
+│   TENANT ADMINISTRATORS (Privileged Accounts - Tenant Scope)      │
+│   ─────────────────────────────────────────────────────────────── │
+│   • Full control within assigned tenant                           │
+│   • User/group/application management                             │
+│   • Tenant-level security configuration                           │
+│   • Identity provider setup (except trust status)                 │
+│   • Access via: Admin group membership or admin permissions       │
+└───────────────────────────────────────────────────────────────────┘
                                     │
                                     ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│   PRIVILEGED USERS (Scoped Administrators)                          │
-│   ─────────────────────────────────────────────────────────────────  │
-│   • Limited to specific resource types                              │
-│   • Delegated administration via UMRS roles                         │
-│   • ADMIN_SCOPE.* permissions for targeted capabilities             │
-│   • Cannot modify tenant-wide settings                              │
-└─────────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────┐
+│   PRIVILEGED USERS (Scoped Administrators)                        │
+│   ─────────────────────────────────────────────────────────────── │
+│   • Limited to specific resource types                            │
+│   • Delegated administration via UMRS roles                       │
+│   • ADMIN_SCOPE.* permissions for targeted capabilities           │
+│   • Cannot modify tenant-wide settings                            │
+└───────────────────────────────────────────────────────────────────┘
 ```
 
 ---
