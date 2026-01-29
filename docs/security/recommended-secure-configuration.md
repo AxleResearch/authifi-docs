@@ -102,7 +102,7 @@ The Authifi service implements three levels of administrative access:
 ```
 ┌─────────────────────────────────────┐
 │   Super Administrators              │  <- Top-Level Administrative Accounts
-│   (Authifi System Admin role)          │
+│   (Authifi System Admin role)       │
 │   - Platform-wide control           │
 │   - All tenant access               │
 │   - License management              │
@@ -184,46 +184,40 @@ Super Administrators have unrestricted access to the Authifi platform and can:
 - Override tenant-level security restrictions
 - Manage JWKS key rotation
 
-### Creating Super Administrators
+### Creating Temporary Super Administrators
+
+Super administrator assignment is controlled through system configuration, not through the standard UI workflow. However, in exceptional circumstances a user may be granted temporay super admin access.
 
 **Prerequisites**:
 
-- Existing super administrator account required to perform assignment
-- User account must already exist in the platform
+- Operation may only be performed by an existing super administrator account
+- User account must already exist in the platform and be validated
 - User must authenticate via a trusted identity provider
-
-**Process**:
-
-Super administrator assignment is controlled through system configuration, not through the standard UI workflow.
-
-- **Add User to systemAdmins Group**:
-    - Existing super admin accesses system configuration
-    - Adds target user account to the `systemAdmins` group (legacy group name)
-    - This action automatically:
-        - Grants `Auth System Admin` role
-        - Triggers security alerts to all existing super admins
-        - Creates detailed audit log entry
-        - Provides platform-wide access
-
-- **Temporary Super Admin Access** (Optional):
-    - For time-limited super admin needs (e.g., incident response, audits)
-    - Existing super admin can grant temporary membership to `systemAdmins` group
-    - Specify expiration date/time
-    - Access automatically revoked after expiration
-    - All changes to the `systemAdmins` group trigger notifications to existing system admins and are recored in the audit logs
-    - A super admin making such a change must enter a justification which is included in the audit trail
-    - Changes to the `systemAdmins` are not persistent; they are overriden during system restarts regardless of the expiration setting
-
-- **Verify MFA Enrollment**:
+- Account must have MFA configured
     - Confirm user has MFA enabled (TOTP or WebAuthn)
     - Enforce MFA requirement at identity provider level
     - Document MFA device registration
     - WebAuthn/FIDO2 strongly recommended for super admins
 
+**Process**:
+
+- Existing super admin accesses system configuration
+- Adds target user account to the `systemAdmins` group with and expiration date/time. This action automatically:
+
+   - Grants `Auth System Admin` role
+   - Triggers security alerts to all existing super admins
+   - Creates detailed audit log entry
+   - Provides platform-wide access
+
+- **Revocation** 
+    - Access is automatically revoked upon a system restart or upon expiration
+    - A system admin may manually revoke temporary super admin status by removing the account from the `systemAdmins` group
+    - Revocation events trigger auditing and alerts
+
 - **Security Alerts**:
+
     - All existing super admins receive alert notification
-    - Alert includes: user email, granting admin, timestamp, temporary/permanent
-    - Provides 24-hour window for review/challenge
+    - Alert includes: user email, granting admin, timestamp, expiration
     - Unexplained grants should be investigated immediately
 
 **Security Checklist**:
@@ -235,7 +229,7 @@ Super administrator assignment is controlled through system configuration, not t
 - [ ] All existing super admins notified
 - [ ] User acknowledged security responsibilities
 - [ ] Backup contact information recorded
-- [ ] Temporary access expiration set (if applicable)
+- [ ] Temporary access expiration set
 
 ### Super Administrator Security Settings
 
@@ -265,7 +259,7 @@ Super administrator assignment is controlled through system configuration, not t
 **Process**:
 
 - **Immediate Actions**:
-    - Existing super admin removes user from `systemAdmins` group via system configuration
+    - Existing super admin removes user from `systemAdmins` group via system configuration and triggers a system restart
     - This action automatically:
         - Removes `Auth System Admin` role
         - Triggers security alerts to all remaining super admins
@@ -309,7 +303,6 @@ Super administrator assignment is controlled through system configuration, not t
 
 - Super admins can grant themselves additional roles in any tenant
 - Can modify identity provider trust settings
-- Can bypass MFA requirements for other users (not recommended)
 - **Mitigation**: Regular audit of super admin role assignments, separation of duties
 
 **Data Access**:
