@@ -122,8 +122,11 @@ The changeset file is committed with your PR and consumed when releasing.
 
 When PRs with changesets are merged to `main`, a GitHub Action automatically:
 
-1. Creates a "Version Packages" PR with version bumps and changelog updates
-2. When that PR is merged, the version is updated in `package.json` and `CHANGELOG.md`
+1. Detects pending changesets
+2. Applies version bumps directly to `package.json` and `CHANGELOG.md`
+3. Commits and pushes the changes
+
+No manual intervention required.
 
 To manually release (if needed):
 
