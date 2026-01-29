@@ -313,10 +313,10 @@ Super administrator assignment is controlled through system configuration, not t
 **Data Access**:
 
 - Full read access to all tenant data including:
-  - User personal information
-  - Authentication credentials (hashed)
-  - Audit logs and activity
-  - Application configurations
+    - User personal information
+    - Authentication credentials (hashed)
+    - Audit logs and activity
+    - Application configurations
 - **Mitigation**: Enforce least privilege, limit number of super admins, comprehensive logging
 
 **Configuration Changes**:
@@ -589,14 +589,14 @@ Tenant administrators can configure these security settings within their tenant:
 **Tenant-Level Settings**:
 
 - **Session Lifetime**: Maximum authenticated session duration (default: 8 hours)
-  - Recommend shorter for admin contexts (2-4 hours)
-  - Balance security with usability
+    - Recommend shorter for admin contexts (2-4 hours)
+    - Balance security with usability
 - **Idle Session Lifetime**: Inactivity timeout (default: 1 hour)
-  - Recommend 15-30 minutes for high-security tenants
-  - Prevents abandoned session exploitation
+    - Recommend 15-30 minutes for high-security tenants
+    - Prevents abandoned session exploitation
 - **Refresh Token Lifetime**: Long-lived token validity (default: 30 days)
-  - Allows applications to refresh access without re-authentication
-  - Recommend shorter for sensitive applications (7-14 days)
+    - Allows applications to refresh access without re-authentication
+    - Recommend shorter for sensitive applications (7-14 days)
 
 **Security Implications**:
 
@@ -610,25 +610,25 @@ Tenant administrators can configure these security settings within their tenant:
 **Super Admin Configuration**:
 
 - **Is Trusted**: Enables elevated privileges for users from this IdP
-  - Only enable for enterprise-managed, well-secured IdPs
-  - Trusted IdPs can be used for admin accounts
-  - Non-trusted IdPs have restricted access
+    - Only enable for enterprise-managed, well-secured IdPs
+    - Trusted IdPs can be used for admin accounts
+    - Non-trusted IdPs have restricted access
 - **AAL Override**: Set authentication assurance level
-  - AAL1: Single-factor authentication
-  - AAL2: Multi-factor authentication
-  - AAL3: Hardware-based cryptographic authentication
+    - AAL1: Single-factor authentication
+    - AAL2: Multi-factor authentication
+    - AAL3: Hardware-based cryptographic authentication
 - **MFA Type**: Specify MFA method for this IdP
-  - Informs authorization decisions
-  - Should match actual IdP configuration
+    - Informs authorization decisions
+    - Should match actual IdP configuration
 
 **Tenant Admin Configuration**:
 
 - **Claims Mapping**: Map IdP claims to user attributes
-  - Use claims scripting for complex transformations
-  - Validate mapped claims (don't trust blindly)
+    - Use claims scripting for complex transformations
+    - Validate mapped claims (don't trust blindly)
 - **Scopes**: Request appropriate scopes from IdP
-  - Minimize data requested (privacy principle)
-  - Request only necessary user information
+    - Minimize data requested (privacy principle)
+    - Request only necessary user information
 
 **Security Implications**:
 
@@ -810,14 +810,14 @@ Tenant administrators can configure these security settings within their tenant:
 **Security Alerts** (Automatic):
 
 - **Super Admin Changes**: Triggered when user added to or removed from `systemAdmins` group
-  - All existing super admins receive immediate notification
-  - Includes: user email, action (add/remove), granting admin, timestamp, temporary flag
-  - 24-hour review window for challenge
+    - All existing super admins receive immediate notification
+    - Includes: user email, action (add/remove), granting admin, timestamp, temporary flag
+    - 24-hour review window for challenge
 - **Privileged Action Alerts**: Configurable alerts for high-risk operations
-  - Identity provider trust changes
-  - Tenant deletion or suspension
-  - Bulk user modifications
-  - Secret key rotation
+    - Identity provider trust changes
+    - Tenant deletion or suspension
+    - Bulk user modifications
+    - Secret key rotation
 
 **Reference**: See [Monitoring and Logging Guide](../guides/monitoring-guide.md) for event log usage.
 

@@ -652,8 +652,8 @@ Use this endpoint to retrieve current tenant configuration for comparison agains
 
 - **UI**: Monitoring > Audit Logs > Export Audit Logs
 - **API**:
-  - `GET /auth/admin/tenants/{tenantId}/audit/export/csv`
-  - `GET /auth/admin/tenants/{tenantId}/audit/export/json`
+    - `GET /auth/admin/tenants/{tenantId}/audit/export/csv`
+    - `GET /auth/admin/tenants/{tenantId}/audit/export/json`
 
 ---
 
