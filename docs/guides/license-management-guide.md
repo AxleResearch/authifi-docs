@@ -42,10 +42,10 @@ This guide provides comprehensive instructions for super administrators on manag
 
 **Navigation**:
 
-1. Log in to the Authifi UI with super admin credentials
-2. Select any tenant from the tenant dropdown
-3. Navigate to **Admins** in the left navigation menu
-4. Click **Licenses**
+- Log in to the Authifi UI with super admin credentials
+- Select any tenant from the tenant dropdown
+- Navigate to **Admins** in the left navigation menu
+- Click **Licenses**
 
 ---
 
@@ -80,12 +80,12 @@ The Licenses dashboard displays all configured license tiers in a table format.
 
 **Steps**:
 
-1. Click **+ ADD LICENSE** button
-2. Fill in the license creation dialog:
-   - **Name\***: Unique identifier for the license tier
-   - **Max Tenants**: Tenant quota (0 = unlimited)
-   - **Max Clients**: Application quota per tenant (0 = unlimited)
-3. Click **Save**
+- Click **+ ADD LICENSE** button
+- Fill in the license creation dialog:
+    - **Name\***: Unique identifier for the license tier
+    - **Max Tenants**: Tenant quota (0 = unlimited)
+    - **Max Clients**: Application quota per tenant (0 = unlimited)
+- Click **Save**
 
 **Validation**:
 
@@ -120,11 +120,11 @@ Max Clients: 50 (each tenant can have up to 50 applications)
 
 **Steps**:
 
-1. Click the **Settings** icon (gear) next to the license
-2. Modify license properties:
-   - **Max Tenants**: Update tenant quota
-   - **Max Clients**: Update application quota
-3. Click **Save**
+- Click the **Settings** icon (gear) next to the license
+- Modify license properties:
+    - **Max Tenants**: Update tenant quota
+    - **Max Clients**: Update application quota
+- Click **Save**
 
 **Impact of changes**:
 
@@ -157,9 +157,9 @@ Max Clients: 50 (each tenant can have up to 50 applications)
 
 **Steps**:
 
-1. Click the **Delete** icon (trash) next to the license
-2. Confirm deletion in the dialog
-3. License is permanently removed
+- Click the **Delete** icon (trash) next to the license
+- Confirm deletion in the dialog
+- License is permanently removed
 
 **Pre-deletion checklist**:
 
@@ -249,11 +249,11 @@ Licenses are assigned to tenants via **Tenant Settings**.
 
 ### How to Assign a License to a Tenant
 
-1. Navigate to **Tenant > Settings**
-2. Click **Edit**
-3. Go to the **Metadata** tab
-4. In **License Assignment** dropdown, select the license
-5. Click **Save**
+- Navigate to **Tenant > Settings**
+- Click **Edit**
+- Go to the **Metadata** tab
+- In **License Assignment** dropdown, select the license
+- Click **Save**
 
 **Note**: License assignment is available in the tenant edit dialog's Metadata section. Only super administrators can change tenant license assignments.
 
@@ -399,91 +399,91 @@ Production:
 
 ### Security
 
-1. **Restrict access to super admins only**
-   - License management affects billing and resource allocation
-   - Limit super admin role to trusted personnel
-   - Audit super admin actions regularly
+- **Restrict access to super admins only**
+    - License management affects billing and resource allocation
+    - Limit super admin role to trusted personnel
+    - Audit super admin actions regularly
 
-2. **Monitor license changes**
-   - Review audit logs for license modifications
-   - Alert on unexpected license deletions or quota changes
-   - Track who made changes and when
+- **Monitor license changes**
+    - Review audit logs for license modifications
+    - Alert on unexpected license deletions or quota changes
+    - Track who made changes and when
 
-3. **Validate license assignments**
-   - Ensure tenants have appropriate licenses
-   - Prevent unauthorized license tier escalations
-   - Implement approval workflows for license upgrades (external to Authifi system)
+- **Validate license assignments**
+    - Ensure tenants have appropriate licenses
+    - Prevent unauthorized license tier escalations
+    - Implement approval workflows for license upgrades (external to Authifi system)
 
-4. **Protect quota integrity**
-   - Don't set limits that could be easily bypassed
-   - Monitor for quota circumvention attempts
-   - Investigate accounts repeatedly hitting limits
+- **Protect quota integrity**
+    - Don't set limits that could be easily bypassed
+    - Monitor for quota circumvention attempts
+    - Investigate accounts repeatedly hitting limits
 
 ### Operational
 
-1. **Plan capacity**
-   - Set limits based on infrastructure capacity
-   - Monitor aggregate resource usage across all tenants
-   - Plan scaling before reaching platform limits
+- **Plan capacity**
+    - Set limits based on infrastructure capacity
+    - Monitor aggregate resource usage across all tenants
+    - Plan scaling before reaching platform limits
 
-2. **Document license tiers**
-   - Maintain clear documentation of what each tier includes
-   - Publish tier limits in customer-facing documentation
-   - Keep internal runbooks for tier management
+- **Document license tiers**
+    - Maintain clear documentation of what each tier includes
+    - Publish tier limits in customer-facing documentation
+    - Keep internal runbooks for tier management
 
-3. **Monitor quota usage**
-   - Track tenants approaching their limits
-   - Proactive outreach for upgrade opportunities
-   - Alert operations team when limits are reached
+- **Monitor quota usage**
+    - Track tenants approaching their limits
+    - Proactive outreach for upgrade opportunities
+    - Alert operations team when limits are reached
 
-4. **Version control license definitions**
-   - Document when licenses were created/modified
-   - Track historical limit changes
-   - Maintain changelog for compliance
+- **Version control license definitions**
+    - Document when licenses were created/modified
+    - Track historical limit changes
+    - Maintain changelog for compliance
 
-5. **Test limit enforcement**
-   - Verify quota limits are properly enforced
-   - Test error handling when limits are exceeded
-   - Validate that unlimited (0) works correctly
+- **Test limit enforcement**
+    - Verify quota limits are properly enforced
+    - Test error handling when limits are exceeded
+    - Validate that unlimited (0) works correctly
 
 ### Billing and Commercial
 
-1. **Align with pricing model**
-   - Ensure license limits match published pricing tiers
-   - Keep licenses synchronized with billing system
-   - Update licenses when pricing changes
+- **Align with pricing model**
+    - Ensure license limits match published pricing tiers
+    - Keep licenses synchronized with billing system
+    - Update licenses when pricing changes
 
-2. **Handle upgrades/downgrades**
-   - Document upgrade process (increase limits)
-   - Define downgrade policy (reduce limits)
-   - Communicate changes to affected tenants
+- **Handle upgrades/downgrades**
+    - Document upgrade process (increase limits)
+    - Define downgrade policy (reduce limits)
+    - Communicate changes to affected tenants
 
-3. **Audit license assignments**
-   - Regularly review tenant-to-license mappings
-   - Identify tenants on incorrect licenses
-   - Ensure billing matches assigned licenses
+- **Audit license assignments**
+    - Regularly review tenant-to-license mappings
+    - Identify tenants on incorrect licenses
+    - Ensure billing matches assigned licenses
 
-4. **Grace periods for limit breaches**
-   - Consider allowing temporary overages
-   - Notify tenants approaching limits
-   - Provide upgrade path before hard enforcement
+- **Grace periods for limit breaches**
+    - Consider allowing temporary overages
+    - Notify tenants approaching limits
+    - Provide upgrade path before hard enforcement
 
 ### Compliance
 
-1. **Record retention**
-   - Maintain records of license assignments
-   - Track license changes for auditing
-   - Correlate with billing records
+- **Record retention**
+    - Maintain records of license assignments
+    - Track license changes for auditing
+    - Correlate with billing records
 
-2. **Access audit**
-   - Log all license management operations
-   - Review who accessed license management UI
-   - Investigate unauthorized access attempts
+- **Access audit**
+    - Log all license management operations
+    - Review who accessed license management UI
+    - Investigate unauthorized access attempts
 
-3. **Contractual obligations**
-   - Ensure licenses enforce contractual limits
-   - Validate limits match customer agreements
-   - Document exceptions with approval
+- **Contractual obligations**
+    - Ensure licenses enforce contractual limits
+    - Validate limits match customer agreements
+    - Document exceptions with approval
 
 ---
 
@@ -495,12 +495,12 @@ Production:
 
 **Solution**:
 
-1. Check tenant's assigned license (Tenant Settings > Metadata)
-2. View current client count vs. Max Clients limit
-3. Options:
-   - Upgrade tenant to higher license tier
-   - Increase Max Clients for current license
-   - Have tenant delete unused clients
+- Check tenant's assigned license (Tenant Settings > Metadata)
+- View current client count vs. Max Clients limit
+- Options:
+    - Upgrade tenant to higher license tier
+    - Increase Max Clients for current license
+    - Have tenant delete unused clients
 
 ### License Quota Not Enforcing
 
@@ -508,10 +508,10 @@ Production:
 
 **Checks**:
 
-1. Verify license is correctly assigned to tenant
-2. Check if Max Clients is set to `0` (unlimited)
-3. Review audit logs for recent license changes
-4. Confirm no system-admin bypass in place
+- Verify license is correctly assigned to tenant
+- Check if Max Clients is set to `0` (unlimited)
+- Review audit logs for recent license changes
+- Confirm no system-admin bypass in place
 
 **Resolution**: Contact development team if enforcement is truly broken.
 
@@ -521,9 +521,9 @@ Production:
 
 **Reasons**:
 
-1. Attempting to delete "Default License" (not allowed)
-2. License is currently assigned to tenants (best practice: re-assign first)
-3. Not logged in as super admin
+- Attempting to delete "Default License" (not allowed)
+- License is currently assigned to tenants (best practice: re-assign first)
+- Not logged in as super admin
 
 **Solution**: Re-assign affected tenants to different licenses before deleting.
 
@@ -541,11 +541,11 @@ Production:
 
 For assistance with license management:
 
-1. **Review audit logs** for recent license changes
-2. **Check tenant assignments** to verify correct licenses
-3. **Monitor quota usage** in tenant dashboards
-4. **Consult platform documentation** for commercial/billing policies
-5. **Contact platform administrators** for policy questions
+- **Review audit logs** for recent license changes
+- **Check tenant assignments** to verify correct licenses
+- **Monitor quota usage** in tenant dashboards
+- **Consult platform documentation** for commercial/billing policies
+- **Contact platform administrators** for policy questions
 
 ---
 

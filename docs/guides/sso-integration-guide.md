@@ -75,13 +75,13 @@ The **SSO Integration** section enables you to:
 
 #### Creating a New Application
 
-1. Click **ADD NEW** dropdown
-2. Select application type:
-   - **Simple Confidential**: Quick setup for server-side web apps
-   - **Simple Public**: Quick setup for SPAs/mobile apps
-   - **Advanced**: Full configuration options
-3. Fill in required information (see [Application Configuration Reference](#application-client-configuration-reference))
-4. Click **Save**
+- Click **ADD NEW** dropdown
+- Select application type:
+    - **Simple Confidential**: Quick setup for server-side web apps
+    - **Simple Public**: Quick setup for SPAs/mobile apps
+    - **Advanced**: Full configuration options
+- Fill in required information (see [Application Configuration Reference](#application-client-configuration-reference))
+- Click **Save**
 
 **Security recommendations**:
 
@@ -220,16 +220,16 @@ Permissions in the Authifi system map to OAuth 2.0 scopes. When a client request
 
 #### Creating a New API
 
-1. Click **ADD NEW**
-2. Enter API details:
-   - **Name**: Human-readable name (e.g., "User Management API")
-   - **Identifier**: Unique URI (e.g., "https://api.example.com/users")
-     - **Important**: This becomes the `aud` (audience) claim in tokens
-   - **Access Token Duration**: Token lifetime in seconds (default: 86400 = 24 hours)
-3. Assign client applications that should have access
-4. Configure custom claims (optional, super admin only)
-5. Create API-specific roles and permissions (see tabs)
-6. Click **Save**
+- Click **ADD NEW**
+- Enter API details:
+    - **Name**: Human-readable name (e.g., "User Management API")
+    - **Identifier**: Unique URI (e.g., "https://api.example.com/users")
+        - **Important**: This becomes the `aud` (audience) claim in tokens
+    - **Access Token Duration**: Token lifetime in seconds (default: 86400 = 24 hours)
+- Assign client applications that should have access
+- Configure custom claims (optional, super admin only)
+- Create API-specific roles and permissions (see tabs)
+- Click **Save**
 
 **Security recommendations**:
 
@@ -279,11 +279,11 @@ Permissions in the Authifi system map to OAuth 2.0 scopes. When a client request
 
 #### Permission Lifecycle
 
-1. **Define** API permissions (e.g., `read:orders`, `write:orders`)
-2. **Group** into API roles (e.g., "order-manager" = read + write)
-3. **Assign** roles to users
-4. **Request** permissions when client obtains access token
-5. **Validate** permissions in API when processing requests
+- **Define** API permissions (e.g., `read:orders`, `write:orders`)
+- **Group** into API roles (e.g., "order-manager" = read + write)
+- **Assign** roles to users
+- **Request** permissions when client obtains access token
+- **Validate** permissions in API when processing requests
 
 **Security recommendations**:
 
@@ -326,44 +326,44 @@ Permissions in the Authifi system map to OAuth 2.0 scopes. When a client request
 
 **Simple Setup (Google)**:
 
-1. Click **ADD NEW** > **Simple Google**
-2. Enter:
-   - **Display Name**: Shown to users (e.g., "Sign in with Google")
-   - **Client ID**: From Google Cloud Console
-   - **Client Secret**: From Google Cloud Console
-3. Configure:
-   - **Enabled**: Toggle to activate
-   - **MFA Type**: Optional (TOTP, Passkey)
-   - **Is Trusted**: Mark as verified IdP (affects MFA requirements)
-4. Click **Save**
+- Click **ADD NEW** > **Simple Google**
+- Enter:
+    - **Display Name**: Shown to users (e.g., "Sign in with Google")
+    - **Client ID**: From Google Cloud Console
+    - **Client Secret**: From Google Cloud Console
+- Configure:
+    - **Enabled**: Toggle to activate
+    - **MFA Type**: Optional (TOTP, Passkey)
+    - **Is Trusted**: Mark as verified IdP (affects MFA requirements)
+- Click **Save**
 
 **Advanced Setup (Generic OIDC)**:
 
-1. Click **ADD NEW** > **Other**
-2. Select **Type**: "oidc"
-3. Configure:
-   - **Display Name**: User-facing name
-   - **Identifier**: Unique name for routing
-   - **Issuer URL**: IdP's OpenID configuration endpoint
-   - **Client ID & Secret**: From IdP
-   - **Scopes**: openid, profile, email (minimum)
-   - **Claims Mapping**: Map IdP claims to user attributes
-4. Test connection
-5. Click **Save**
+- Click **ADD NEW** > **Other**
+- Select **Type**: "oidc"
+- Configure:
+    - **Display Name**: User-facing name
+    - **Identifier**: Unique name for routing
+    - **Issuer URL**: IdP's OpenID configuration endpoint
+    - **Client ID & Secret**: From IdP
+    - **Scopes**: openid, profile, email (minimum)
+    - **Claims Mapping**: Map IdP claims to user attributes
+- Test connection
+- Click **Save**
 
 **SAML Configuration**:
 
-1. Click **ADD NEW** > **SAML**
-2. Configure:
-   - **Display Name**: User-facing name
-   - **Entity ID**: IdP's entity identifier
-   - **SSO URL**: IdP's single sign-on endpoint
-   - **Certificate**: IdP's X.509 signing certificate
-   - **Attribute Mapping**: Map SAML assertions to user attributes
-3. Download Authifi metadata XML
-4. Upload metadata to your IdP
-5. Test SAML flow
-6. Click **Save**
+- Click **ADD NEW** > **SAML**
+- Configure:
+    - **Display Name**: User-facing name
+    - **Entity ID**: IdP's entity identifier
+    - **SSO URL**: IdP's single sign-on endpoint
+    - **Certificate**: IdP's X.509 signing certificate
+    - **Attribute Mapping**: Map SAML assertions to user attributes
+- Download Authifi metadata XML
+- Upload metadata to your IdP
+- Test SAML flow
+- Click **Save**
 
 #### Provider Security Settings
 
@@ -436,10 +436,10 @@ An issuer defines:
 
 #### Use Cases
 
-1. **Environment separation**: Isolate dev, staging, production
-2. **Customer segmentation**: Separate data for different customers in multi-tenant SaaS
-3. **Business unit isolation**: Different departments with independent resources
-4. **Compliance boundaries**: Separate regions/jurisdictions (GDPR, HIPAA)
+- **Environment separation**: Isolate dev, staging, production
+- **Customer segmentation**: Separate data for different customers in multi-tenant SaaS
+- **Business unit isolation**: Different departments with independent resources
+- **Compliance boundaries**: Separate regions/jurisdictions (GDPR, HIPAA)
 
 **Example namespace structure**:
 
@@ -754,110 +754,110 @@ _(This section would cover the detailed IdP configuration dialog with all provid
 
 ### Application Security
 
-1. **Use the principle of least privilege**
-   - Grant only required permissions
-   - Use fine-grained permissions over broad roles
-   - Regularly review and revoke unnecessary access
+- **Use the principle of least privilege**
+    - Grant only required permissions
+    - Use fine-grained permissions over broad roles
+    - Regularly review and revoke unnecessary access
 
-2. **Implement defense in depth**
-   - Use PKCE for all public clients (SPAs, mobile)
-   - Enable client authentication for confidential clients
-   - Rotate secrets regularly
-   - Implement token validation in your applications
-   - Use short-lived access tokens
+- **Implement defense in depth**
+    - Use PKCE for all public clients (SPAs, mobile)
+    - Enable client authentication for confidential clients
+    - Rotate secrets regularly
+    - Implement token validation in your applications
+    - Use short-lived access tokens
 
-3. **Secure redirect URIs**
-   - Use exact match (no wildcards)
-   - HTTPS only in production
-   - Validate on both client and server side
-   - Avoid open redirect vulnerabilities
+- **Secure redirect URIs**
+    - Use exact match (no wildcards)
+    - HTTPS only in production
+    - Validate on both client and server side
+    - Avoid open redirect vulnerabilities
 
-4. **Protect client secrets**
-   - Never commit to source control
-   - Store in secure vaults (e.g., AWS Secrets Manager, Azure Key Vault)
-   - Rotate every 90-180 days
-   - Monitor for exposure (secret scanning tools)
+- **Protect client secrets**
+    - Never commit to source control
+    - Store in secure vaults (e.g., AWS Secrets Manager, Azure Key Vault)
+    - Rotate every 90-180 days
+    - Monitor for exposure (secret scanning tools)
 
-5. **Monitor and audit**
-   - Review audit logs regularly
-   - Set up alerts for suspicious authentication patterns
-   - Track token issuance and validation
-   - Monitor for unusual permission grants
+- **Monitor and audit**
+    - Review audit logs regularly
+    - Set up alerts for suspicious authentication patterns
+    - Track token issuance and validation
+    - Monitor for unusual permission grants
 
 ### Identity Provider Security
 
-1. **Vet providers carefully**
-   - Only mark truly trustworthy IdPs as "Is Trusted"
-   - Prefer enterprise IdPs over social for sensitive applications
-   - Validate IdP certificates (SAML)
-   - Test thoroughly before production
+- **Vet providers carefully**
+    - Only mark truly trustworthy IdPs as "Is Trusted"
+    - Prefer enterprise IdPs over social for sensitive applications
+    - Validate IdP certificates (SAML)
+    - Test thoroughly before production
 
-2. **Enforce MFA**
-   - Enable MFA requirements at provider level
-   - Use phishing-resistant MFA (WebAuthn/FIDO2) where possible
-   - Require MFA for admin accounts
+- **Enforce MFA**
+    - Enable MFA requirements at provider level
+    - Use phishing-resistant MFA (WebAuthn/FIDO2) where possible
+    - Require MFA for admin accounts
 
-3. **Secure claims mapping**
-   - Validate all IdP claims
-   - Don't trust user-modifiable attributes for authorization decisions
-   - Use immutable identifiers (subject/nameID, not email)
-   - Test claims mapping with various user scenarios
+- **Secure claims mapping**
+    - Validate all IdP claims
+    - Don't trust user-modifiable attributes for authorization decisions
+    - Use immutable identifiers (subject/nameID, not email)
+    - Test claims mapping with various user scenarios
 
-4. **Manage IdP certificates**
-   - Monitor expiration
-   - Rotate before expiration
-   - Validate certificate chains
-   - Use strong signing algorithms (RSA-2048 minimum, prefer RSA-4096 or ECC)
+- **Manage IdP certificates**
+    - Monitor expiration
+    - Rotate before expiration
+    - Validate certificate chains
+    - Use strong signing algorithms (RSA-2048 minimum, prefer RSA-4096 or ECC)
 
 ### API Security
 
-1. **Validate tokens**
-   - Verify signature (use JWKS from issuer)
-   - Check audience (`aud` claim matches your API identifier)
-   - Verify expiration (`exp` claim)
-   - Validate issuer (`iss` claim)
+- **Validate tokens**
+    - Verify signature (use JWKS from issuer)
+    - Check audience (`aud` claim matches your API identifier)
+    - Verify expiration (`exp` claim)
+    - Validate issuer (`iss` claim)
 
-2. **Implement scope-based authorization**
-   - Check required scopes in API endpoints
-   - Use least privilege (narrow scopes)
-   - Separate read and write scopes
-   - Document scope requirements
+- **Implement scope-based authorization**
+    - Check required scopes in API endpoints
+    - Use least privilege (narrow scopes)
+    - Separate read and write scopes
+    - Document scope requirements
 
-3. **Use separate permission models**
-   - Create API-specific permissions
-   - Don't reuse app permissions for APIs
-   - Use namespaced permissions (e.g., `api:users:read`)
+- **Use separate permission models**
+    - Create API-specific permissions
+    - Don't reuse app permissions for APIs
+    - Use namespaced permissions (e.g., `api:users:read`)
 
-4. **Set appropriate token lifetimes**
-   - Shorter for sensitive APIs (300-900 seconds)
-   - Longer for low-sensitivity APIs (3600-7200 seconds)
-   - Balance security with user experience
+- **Set appropriate token lifetimes**
+    - Shorter for sensitive APIs (300-900 seconds)
+    - Longer for low-sensitivity APIs (3600-7200 seconds)
+    - Balance security with user experience
 
 ### Operational Security
 
-1. **Follow change management**
-   - Test configuration changes in non-production first
-   - Document all production changes
-   - Have rollback plans
-   - Notify affected parties before breaking changes
+- **Follow change management**
+    - Test configuration changes in non-production first
+    - Document all production changes
+    - Have rollback plans
+    - Notify affected parties before breaking changes
 
-2. **Maintain contact information**
-   - Keep contacts current
-   - Assign contacts to all applications
-   - Document escalation procedures
-   - Test communication channels
+- **Maintain contact information**
+    - Keep contacts current
+    - Assign contacts to all applications
+    - Document escalation procedures
+    - Test communication channels
 
-3. **Regularly review configuration**
-   - Quarterly access reviews
-   - Remove unused applications, APIs, providers
-   - Update outdated configurations
-   - Refresh certificates before expiration
+- **Regularly review configuration**
+    - Quarterly access reviews
+    - Remove unused applications, APIs, providers
+    - Update outdated configurations
+    - Refresh certificates before expiration
 
-4. **Backup and disaster recovery**
-   - Export critical configurations regularly
-   - Store backups securely
-   - Test restoration procedures
-   - Document recovery steps
+- **Backup and disaster recovery**
+    - Export critical configurations regularly
+    - Store backups securely
+    - Test restoration procedures
+    - Document recovery steps
 
 ---
 
@@ -874,11 +874,11 @@ _(This section would cover the detailed IdP configuration dialog with all provid
 
 For assistance with SSO integration:
 
-1. **Check audit logs** for error details
-2. **Test in non-production** before deploying to production
-3. **Review provider-specific documentation** for IdP configuration
-4. **Contact your super administrator** for elevated privilege requests
-5. **Consult API documentation** for advanced scenarios
+- **Check audit logs** for error details
+- **Test in non-production** before deploying to production
+- **Review provider-specific documentation** for IdP configuration
+- **Contact your super administrator** for elevated privilege requests
+- **Consult API documentation** for advanced scenarios
 
 ---
 

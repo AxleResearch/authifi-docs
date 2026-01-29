@@ -256,10 +256,10 @@ graph LR
 
 ### Access Control Requirements
 
-1. **Admin Privileges**: Only tenant administrators can establish trust relationships
-2. **Identity Provider Validation**: Users must authenticate via trusted identity providers
-3. **Unidirectional Trust**: Trust relationships are one-way (A trusts B ≠ B trusts A)
-4. **Audit Logging**: All authorization decisions are logged with full context
+- **Admin Privileges**: Only tenant administrators can establish trust relationships
+- **Identity Provider Validation**: Users must authenticate via trusted identity providers
+- **Unidirectional Trust**: Trust relationships are one-way (A trusts B ≠ B trusts A)
+- **Audit Logging**: All authorization decisions are logged with full context
 
 ### Security Boundaries
 
@@ -379,11 +379,11 @@ async action(request: RequestWithUser, response: Response): Promise<any> {
 
 The feature includes comprehensive test scenarios covering:
 
-1. **Trust Establishment**: Verify admin users can establish trust relationships
-2. **Cross-Tenant Access**: Confirm trusted tenant authorization works
-3. **Access Denial**: Ensure non-trusted relationships are blocked
-4. **Error Handling**: Test invalid tenant IDs and unauthorized users
-5. **Trust Removal**: Verify access revocation when trust is removed
+- **Trust Establishment**: Verify admin users can establish trust relationships
+- **Cross-Tenant Access**: Confirm trusted tenant authorization works
+- **Access Denial**: Ensure non-trusted relationships are blocked
+- **Error Handling**: Test invalid tenant IDs and unauthorized users
+- **Trust Removal**: Verify access revocation when trust is removed
 
 ### Test Example
 
@@ -417,9 +417,9 @@ it('allows cross-tenant resource management with trusted tenant relationship', a
 
 ### Explicit Limitations
 
-1. **Client Credentials Exclusion**: Service-to-service tokens cannot use trusted tenant features
-2. **Partial Endpoint Coverage**: Some Authifi endpoints may not recognize trusted tenant relationships
-3. **Identity Provider Dependency**: Requires authentication via trusted identity providers
+- **Client Credentials Exclusion**: Service-to-service tokens cannot use trusted tenant features
+- **Partial Endpoint Coverage**: Some Authifi endpoints may not recognize trusted tenant relationships
+- **Identity Provider Dependency**: Requires authentication via trusted identity providers
 
 ### Architectural Constraints
 

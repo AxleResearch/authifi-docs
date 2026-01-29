@@ -272,10 +272,10 @@ UMRS enables resource-level delegation where designated managers can grant speci
 
 **Prerequisites**:
 
-1. Existing super administrator account to perform assignment
-2. User account exists in the platform
-3. User authenticates via a trusted identity provider (`isTrusted: true`)
-4. MFA enrolled (WebAuthn/FIDO2 strongly recommended, TOTP minimum)
+- Existing super administrator account to perform assignment
+- User account exists in the platform
+- User authenticates via a trusted identity provider (`isTrusted: true`)
+- MFA enrolled (WebAuthn/FIDO2 strongly recommended, TOTP minimum)
 
 **Provisioning Process**:
 
@@ -354,10 +354,10 @@ UMRS enables resource-level delegation where designated managers can grant speci
 
 **Secret Rotation Priority** (if applicable):
 
-1. Credentials accessed in last 30 days (highest priority)
-2. API keys and service account credentials
-3. Encryption keys (if compromise suspected)
-4. All secrets accessed during tenure (lower priority)
+- Credentials accessed in last 30 days (highest priority)
+- API keys and service account credentials
+- Encryption keys (if compromise suspected)
+- All secrets accessed during tenure (lower priority)
 
 ---
 
