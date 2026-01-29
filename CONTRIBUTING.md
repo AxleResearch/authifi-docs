@@ -203,38 +203,9 @@ nav:
 
 ## Local Development (Optional)
 
-If you want to preview changes locally before pushing:
+If you want to preview changes locally before pushing, see the [Local Development](README.md#local-development) section in the README for setup instructions.
 
-### Prerequisites
-
-- Python 3.8 or later
-- pip (Python package manager)
-
-### Setup
-
-```bash
-# Set up a virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
-
-# Install dependencies
-python3 -m pip install -r requirements.txt
-
-# Start local development server
-mkdocs serve
-```
-
-Open http://127.0.0.1:8000 in your browser to see the documentation.
-
-Changes to `.md` files will automatically reload in the browser.
-
-### Building the Site
-
-```bash
-mkdocs build
-```
-
-This creates the static site in the `site/` folder.
+Changes to `.md` files will automatically reload in the browser when running `mkdocs serve`.
 
 ## Need Help?
 
