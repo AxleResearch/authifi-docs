@@ -2,7 +2,7 @@
 
 Public documentation for the Authifi identity and access management platform.
 
-**Live Site**: [https://authifi-docs.pages.dev](https://authifi-docs.pages.dev) *(after Cloudflare Pages setup)*
+**Live Site**: [https://authifi.pages.dev](https://authifi.pages.dev)
 
 ## For Documentation Writers
 
@@ -35,7 +35,7 @@ To deploy this documentation site:
 Once connected, every pull request will automatically get a preview URL. Contributors will see a comment on their PR with a link like:
 
 ```
-https://abc123.authifi-docs.pages.dev
+https://abc123.authifi.pages.dev
 ```
 
 ### 3. Custom Domain (Optional)

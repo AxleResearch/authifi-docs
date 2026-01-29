@@ -94,13 +94,13 @@ Every pull request automatically gets a **preview deployment** so you can see ex
 Look for a comment from the Cloudflare Pages bot on your pull request. It will include a link like:
 
 ```
-https://abc123.authifi-docs.pages.dev
+https://abc123.authifi.pages.dev
 ```
 
 You can also find the preview URL in the **Checks** section of your PR:
 
 1. Scroll down to the checks at the bottom of your PR
-2. Look for "Cloudflare Pages" 
+2. Look for "Cloudflare Pages"
 3. Click **Details** to go directly to the preview
 
 ### What to check in the preview
@@ -116,8 +116,8 @@ Before requesting a review, verify:
 
 ### Preview vs. Production
 
-- **Preview URL**: `https://<build-id>.authifi-docs.pages.dev` — unique to each PR
-- **Production URL**: `https://authifi-docs.pages.dev` — updated when PRs are merged to `main`
+- **Preview URL**: `https://<build-id>.authifi.pages.dev` — unique to each PR
+- **Production URL**: `https://authifi.pages.dev` — updated when PRs are merged to `main`
 
 ---
 
@@ -173,13 +173,13 @@ Use admonition syntax for callouts:
 
 ```markdown
 !!! note
-    This is a note with additional information.
+This is a note with additional information.
 
 !!! warning
-    This is a warning about potential issues.
+This is a warning about potential issues.
 
 !!! tip
-    This is a helpful tip.
+This is a helpful tip.
 ```
 
 ### Links
@@ -198,7 +198,7 @@ Example addition to `mkdocs.yml`:
 ```yaml
 nav:
   - Guides:
-    - Your New Guide: guides/your-new-guide.md
+      - Your New Guide: guides/your-new-guide.md
 ```
 
 ## Local Development (Optional)

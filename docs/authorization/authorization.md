@@ -4,8 +4,7 @@ As an [Authorization Server](https://tools.ietf.org/html/rfc6749#section-1.1), A
 
 ### User Groups and AD Groups
 
-Each Authifi `Tenant` can define `User Groups` and assign/remove `Users` and/or `OAuth2 Clients` to each one
-. When a `User Group` is assigned to an `OAuth Client`, access to the `OAuth Client` will be restricted to the `User(s)` within the `User Group(s)` assigned to the `Client(s)`.
+Each Authifi `Tenant` can define `User Groups` and assign/remove `Users` and/or `OAuth2 Clients` to each one. When a `User Group` is assigned to an `OAuth Client`, access to the `OAuth Client` will be restricted to the `User(s)` within the `User Group(s)` assigned to the `Client(s)`.
 
 #### How to restrict Client access with User Groups configured via the Authifi UI
 

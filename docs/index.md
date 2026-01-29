@@ -1,10 +1,8 @@
 # Authifi Documentation
 
-Authifi is an enterprise identity broker, access management and application security platform providing with an emphasis on security, collaboration, and ease of use.
- 
+Authifi is an enterprise identity broker, access management, and application security platform with an emphasis on security, collaboration, and ease of use.
 
 ## Getting Started
-
 
 ### Authorization
 
@@ -13,6 +11,9 @@ Authifi supports admin roles as well as RBAC, OAuth scopes, custom roles and per
 - [OAuth Client Authorization](authorization/authorization.md) - User groups, API authorization, and RBAC
 - [Admin Roles](authorization/admin-roles.md) - System admin, tenant admin, and scoped admin roles
 - [Super Admin Access](authorization/super-admin-access.md) - Super administrator requirements and capabilities
+- [Default Application User Groups](authorization/default-application-user-groups.md) - Automatically assign users to groups after login
+- [Delegating Tenant Management](authorization/delegating-tenant-management-to-a-shared-tenant.md) - Cross-tenant access via trusted tenants
+- [Trusted Tenant Implementation](authorization/trusted-tenant-implementation.md) - Configure cross-tenant management relationships
 
 ### Administrator Guides
 
@@ -22,7 +23,9 @@ Step-by-step guides for tenant administrators:
 - [Users and Groups](guides/users-groups-admin-guide.md) - Manage users, groups, roles, and permissions
 - [SSO Integration](guides/sso-integration-guide.md) - Configure applications and identity providers
 - [Access Requests](guides/access-requests-guide.md) - Self-service access and delegated administration
+- [License Management](guides/license-management-guide.md) - Manage platform licenses (super admins)
 - [Monitoring and Logging](guides/monitoring-guide.md) - Audit logs, event logs, and security monitoring
+- [Resources and Tools](guides/resources-tools-guide.md) - Templates, images, secrets, and scheduled jobs
 
 ### Security
 
@@ -32,7 +35,7 @@ Security configuration and best practices:
 - [Security Admin Guide](security/security-admin-guide.md) - Administrative account lifecycle and security
 - [Recommended Secure Configuration](security/recommended-secure-configuration.md) - FedRAMP-aligned security guidance
 
-## FedRAMP 
+## FedRAMP
 
 Authifi is FedRAMP High authorized as a supporting service in the [Palantir Federal Cloud Service (PFCS-SS)](https://marketplace.fedramp.gov/products/FR2315464863).
 
