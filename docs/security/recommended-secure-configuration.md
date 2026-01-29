@@ -196,33 +196,33 @@ Super Administrators have unrestricted access to the Authifi platform and can:
 
 Super administrator assignment is controlled through system configuration, not through the standard UI workflow.
 
-1. **Add User to systemAdmins Group**:
-   - Existing super admin accesses system configuration
-   - Adds target user account to the `systemAdmins` group (legacy group name)
-   - This action automatically:
-     - Grants `Auth System Admin` role
-     - Triggers security alerts to all existing super admins
-     - Creates detailed audit log entry
-     - Provides platform-wide access
+- **Add User to systemAdmins Group**:
+    - Existing super admin accesses system configuration
+    - Adds target user account to the `systemAdmins` group (legacy group name)
+    - This action automatically:
+        - Grants `Auth System Admin` role
+        - Triggers security alerts to all existing super admins
+        - Creates detailed audit log entry
+        - Provides platform-wide access
 
-2. **Temporary Super Admin Access** (Optional):
-   - For time-limited super admin needs (e.g., incident response, audits)
-   - Existing super admin can grant temporary membership to `systemAdmins` group
-   - Specify expiration date/time
-   - Access automatically revoked after expiration
-   - All actions during temporary access are logged with temporary flag
+- **Temporary Super Admin Access** (Optional):
+    - For time-limited super admin needs (e.g., incident response, audits)
+    - Existing super admin can grant temporary membership to `systemAdmins` group
+    - Specify expiration date/time
+    - Access automatically revoked after expiration
+    - All actions during temporary access are logged with temporary flag
 
-3. **Verify MFA Enrollment**:
-   - Confirm user has MFA enabled (TOTP or WebAuthn)
-   - Enforce MFA requirement at identity provider level
-   - Document MFA device registration
-   - WebAuthn/FIDO2 strongly recommended for super admins
+- **Verify MFA Enrollment**:
+    - Confirm user has MFA enabled (TOTP or WebAuthn)
+    - Enforce MFA requirement at identity provider level
+    - Document MFA device registration
+    - WebAuthn/FIDO2 strongly recommended for super admins
 
-4. **Security Alerts**:
-   - All existing super admins receive alert notification
-   - Alert includes: user email, granting admin, timestamp, temporary/permanent
-   - Provides 24-hour window for review/challenge
-   - Unexplained grants should be investigated immediately
+- **Security Alerts**:
+    - All existing super admins receive alert notification
+    - Alert includes: user email, granting admin, timestamp, temporary/permanent
+    - Provides 24-hour window for review/challenge
+    - Unexplained grants should be investigated immediately
 
 **Security Checklist**:
 
@@ -262,44 +262,44 @@ Super administrator assignment is controlled through system configuration, not t
 
 **Process**:
 
-1. **Immediate Actions**:
-   - Existing super admin removes user from `systemAdmins` group via system configuration
-   - This action automatically:
-     - Removes `Auth System Admin` role
-     - Triggers security alerts to all remaining super admins
-     - Creates audit log entry with reason
-   - Revoke all active sessions immediately
-   - Revoke all active OAuth grants
-   - Document decommission reason and approvals
+- **Immediate Actions**:
+    - Existing super admin removes user from `systemAdmins` group via system configuration
+    - This action automatically:
+        - Removes `Auth System Admin` role
+        - Triggers security alerts to all remaining super admins
+        - Creates audit log entry with reason
+    - Revoke all active sessions immediately
+    - Revoke all active OAuth grants
+    - Document decommission reason and approvals
 
-2. **Audit Review**:
-   - Export audit logs for departing admin's actions (last 90 days minimum)
-   - Review for unauthorized or suspicious activity
-   - Pay special attention to:
-     - Recent privilege escalations
-     - Secret access or modifications
-     - Tenant or IdP configuration changes
-     - Unusual after-hours activity
-   - Document findings in security log
-   - Escalate any suspicious findings to security team
+- **Audit Review**:
+    - Export audit logs for departing admin's actions (last 90 days minimum)
+    - Review for unauthorized or suspicious activity
+    - Pay special attention to:
+        - Recent privilege escalations
+        - Secret access or modifications
+        - Tenant or IdP configuration changes
+        - Unusual after-hours activity
+    - Document findings in security log
+    - Escalate any suspicious findings to security team
 
-3. **Secret Rotation** (if applicable):
-   - Rotate shared secrets accessed by departing admin
-   - Update API keys and service account credentials
-   - Regenerate encryption keys if compromise suspected
-   - Review all secrets accessed in last 30 days (audit logs)
-   - Priority rotation for sensitive credentials
+- **Secret Rotation** (if applicable):
+    - Rotate shared secrets accessed by departing admin
+    - Update API keys and service account credentials
+    - Regenerate encryption keys if compromise suspected
+    - Review all secrets accessed in last 30 days (audit logs)
+    - Priority rotation for sensitive credentials
 
-4. **Account Retention**:
-   - Maintain user account for audit trail purposes
-   - Account remains disabled but not deleted
-   - Remove from all other privileged groups
-   - Retain for compliance period (7 years for SOC 2)
+- **Account Retention**:
+    - Maintain user account for audit trail purposes
+    - Account remains disabled but not deleted
+    - Remove from all other privileged groups
+    - Retain for compliance period (7 years for SOC 2)
 
-5. **Security Notification**:
-   - All remaining super admins notified of removal
-   - Security team notified if emergency removal
-   - Document in change management system
+- **Security Notification**:
+    - All remaining super admins notified of removal
+    - Security team notified if emergency removal
+    - Document in change management system
 
 ### Super Administrator Security Implications
 
@@ -410,29 +410,29 @@ Scoped Administrators have permissions limited to specific resources:
 
 **Tenant Administrators**:
 
-1. **Via Group Membership** (Recommended):
-   - Create or identify tenant admin group
-   - Add user to admin group
-   - Group membership grants tenant admin capabilities
-   - Automatically applies to all tenant resources
+- **Via Group Membership** (Recommended):
+    - Create or identify tenant admin group
+    - Add user to admin group
+    - Group membership grants tenant admin capabilities
+    - Automatically applies to all tenant resources
 
-2. **Via Permission Assignment**:
-   - Assign tenant-admin-capable permissions directly to user
-   - Requires specific permission scopes (e.g., `auth.admin.*`)
-   - More granular but harder to maintain
+- **Via Permission Assignment**:
+    - Assign tenant-admin-capable permissions directly to user
+    - Requires specific permission scopes (e.g., `auth.admin.*`)
+    - More granular but harder to maintain
 
 **Scoped Administrators**:
 
-1. **Direct Scope Assignment**:
-   - Assign specific `ADMIN_SCOPE.*` permissions to user
-   - User gains admin capabilities only for that resource type
-   - Example: Assign `ADMIN_SCOPE.users` for user management only
+- **Direct Scope Assignment**:
+    - Assign specific `ADMIN_SCOPE.*` permissions to user
+    - User gains admin capabilities only for that resource type
+    - Example: Assign `ADMIN_SCOPE.users` for user management only
 
-2. **UMRS Role Grant**:
-   - Create UMRS role scoped to specific resource
-   - Designate manager group
-   - Managers grant role to users as needed
-   - Supports time-limited access
+- **UMRS Role Grant**:
+    - Create UMRS role scoped to specific resource
+    - Designate manager group
+    - Managers grant role to users as needed
+    - Supports time-limited access
 
 ### Privileged Account Security Settings
 
@@ -455,34 +455,34 @@ Scoped Administrators have permissions limited to specific resources:
 
 Tenant administrators can configure these security settings within their tenant:
 
-1. **Multi-Factor Authentication**:
-   - Enable Admin MFA: Require MFA for all tenant admin actions
-   - Always Require MFA When Set: Enforce MFA for users with MFA enrolled
-   - Enable TOTP: Enable TOTP MFA (also controls reset capabilities)
-   - TOTP Suspension Threshold: Failed TOTP attempts before suspension
-   - TOTP Lockout Threshold: Failed TOTP attempts before lockout
-   - TOTP Suspension Period: Duration of TOTP suspension
+- **Multi-Factor Authentication**:
+    - Enable Admin MFA: Require MFA for all tenant admin actions
+    - Always Require MFA When Set: Enforce MFA for users with MFA enrolled
+    - Enable TOTP: Enable TOTP MFA (also controls reset capabilities)
+    - TOTP Suspension Threshold: Failed TOTP attempts before suspension
+    - TOTP Lockout Threshold: Failed TOTP attempts before lockout
+    - TOTP Suspension Period: Duration of TOTP suspension
 
-2. **Session Management**:
-   - Session Lifetime: Maximum authenticated session duration
-   - Idle Session Lifetime: Inactivity timeout
-   - Refresh Token Lifetime: Refresh token validity period
+- **Session Management**:
+    - Session Lifetime: Maximum authenticated session duration
+    - Idle Session Lifetime: Inactivity timeout
+    - Refresh Token Lifetime: Refresh token validity period
 
-3. **Login Security**:
-   - Login page customization (disclaimer, warnings)
-   - Background images and branding
-   - Do not skip login page: Force login page display
+- **Login Security**:
+    - Login page customization (disclaimer, warnings)
+    - Background images and branding
+    - Do not skip login page: Force login page display
 
-4. **User Security**:
-   - User alert settings: Email notifications for login events
-   - Account expiration policies
-   - Password policy enforcement (via identity provider)
+- **User Security**:
+    - User alert settings: Email notifications for login events
+    - Account expiration policies
+    - Password policy enforcement (via identity provider)
 
-5. **Application Security**:
-   - Allowed origins (CORS): Restrict application origins
-   - Allow-list enabled: Enforce allowed origins
-   - Discovery mode: Automatic origin discovery
-   - Client authentication methods (client_secret, private_key_jwt, etc.)
+- **Application Security**:
+    - Allowed origins (CORS): Restrict application origins
+    - Allow-list enabled: Enforce allowed origins
+    - Discovery mode: Automatic origin discovery
+    - Client authentication methods (client_secret, private_key_jwt, etc.)
 
 **Reference**: See [Tenant Administrator Guide](../guides/tenant-admin-guide.md) for complete configuration details.
 
@@ -490,33 +490,33 @@ Tenant administrators can configure these security settings within their tenant:
 
 **Tenant Administrators**:
 
-1. **Remove from Admin Group**:
-   - Remove user from tenant admin group
-   - User immediately loses tenant admin capabilities
-   - Existing sessions remain valid until expiration
+- **Remove from Admin Group**:
+    - Remove user from tenant admin group
+    - User immediately loses tenant admin capabilities
+    - Existing sessions remain valid until expiration
 
-2. **Revoke Sessions**:
-   - Navigate to Monitoring > Sessions
-   - Filter by user
-   - Revoke all active sessions
-   - User must re-authenticate with reduced privileges
+- **Revoke Sessions**:
+    - Navigate to Monitoring > Sessions
+    - Filter by user
+    - Revoke all active sessions
+    - User must re-authenticate with reduced privileges
 
-3. **Audit Review**:
-   - Export audit logs for departing admin (last 90 days)
-   - Review administrative actions
-   - Document any suspicious activity
+- **Audit Review**:
+    - Export audit logs for departing admin (last 90 days)
+    - Review administrative actions
+    - Document any suspicious activity
 
 **Scoped Administrators**:
 
-1. **Remove Scope Assignments**:
-   - Edit user permissions
-   - Remove `ADMIN_SCOPE.*` permissions
-   - Save changes
+- **Remove Scope Assignments**:
+    - Edit user permissions
+    - Remove `ADMIN_SCOPE.*` permissions
+    - Save changes
 
-2. **Revoke UMRS Grants**:
-   - Navigate to Access Requests > Access Grants
-   - Filter by user
-   - Revoke all UMRS role assignments
+- **Revoke UMRS Grants**:
+    - Navigate to Access Requests > Access Grants
+    - Filter by user
+    - Revoke all UMRS role assignments
 
 ### Privileged Account Security Implications
 
@@ -861,43 +861,43 @@ The Authifi service provisions new tenants with the following secure defaults:
 
 **For Production Tenants**:
 
-1. **Authentication**:
-   - Enable Admin MFA: true
-   - Always Require MFA When Set: true
-   - Session Lifetime: 4-8 hours (depending on security requirements)
-   - Idle Session Timeout: 30-60 minutes
-   - Refresh Token Lifetime: 7-14 days (reduce for sensitive applications)
+- **Authentication**:
+    - Enable Admin MFA: true
+    - Always Require MFA When Set: true
+    - Session Lifetime: 4-8 hours (depending on security requirements)
+    - Idle Session Timeout: 30-60 minutes
+    - Refresh Token Lifetime: 7-14 days (reduce for sensitive applications)
 
-2. **Identity Providers**:
-   - Use trusted identity providers for admin accounts
-   - Enable MFA at identity provider level
-   - Configure AAL2 or AAL3 for sensitive applications
-   - Validate claims mapping carefully
+- **Identity Providers**:
+    - Use trusted identity providers for admin accounts
+    - Enable MFA at identity provider level
+    - Configure AAL2 or AAL3 for sensitive applications
+    - Validate claims mapping carefully
 
-3. **Authorization**:
-   - Apply least privilege principle
-   - Regular role/permission audits (quarterly)
-   - Document role assignments and justifications
-   - Use UMRS for delegated administration where appropriate
+- **Authorization**:
+    - Apply least privilege principle
+    - Regular role/permission audits (quarterly)
+    - Document role assignments and justifications
+    - Use UMRS for delegated administration where appropriate
 
-4. **Monitoring**:
-   - Audit Log Retention: 365+ days
-   - Enable user alert settings for suspicious activity
-   - Regular review of admin actions (weekly)
-   - Export audit logs for long-term storage
+- **Monitoring**:
+    - Audit Log Retention: 365+ days
+    - Enable user alert settings for suspicious activity
+    - Regular review of admin actions (weekly)
+    - Export audit logs for long-term storage
 
-5. **Applications**:
-   - Use PKCE for all OAuth flows (when supported)
-   - Require client authentication for confidential clients
-   - Set short access token lifetimes (15-60 minutes)
-   - Validate redirect URIs strictly
-   - Rotate client secrets quarterly
+- **Applications**:
+    - Use PKCE for all OAuth flows (when supported)
+    - Require client authentication for confidential clients
+    - Set short access token lifetimes (15-60 minutes)
+    - Validate redirect URIs strictly
+    - Rotate client secrets quarterly
 
-6. **Secrets**:
-   - Use Sensitive type for all credentials
-   - Set expiration (90-180 days)
-   - Rotate immediately on compromise
-   - Limit secret access to necessary jobs only
+- **Secrets**:
+    - Use Sensitive type for all credentials
+    - Set expiration (90-180 days)
+    - Rotate immediately on compromise
+    - Limit secret access to necessary jobs only
 
 ### Configuration Comparison
 
@@ -928,11 +928,11 @@ Returns the tenant configuration including security-relevant settings:
 
 **Comparison Process**:
 
-1. Retrieve current configuration via API
-2. Compare against recommended baseline
-3. Identify deviations
-4. Assess security implications of deviations
-5. Remediate or document exceptions
+- Retrieve current configuration via API
+- Compare against recommended baseline
+- Identify deviations
+- Assess security implications of deviations
+- Remediate or document exceptions
 
 ### Configuration Export
 
@@ -1009,182 +1009,182 @@ DELETE /auth/admin/tenants/{tenantId}/users/{userId}
 
 **Super Administrators**:
 
-1. **Minimize Count**:
-   - Limit super admin accounts to 2-5 individuals
-   - Document business justification for each
-   - Review quarterly and remove unnecessary accounts
-   - Use temporary super admin access for short-term needs
+- **Minimize Count**:
+    - Limit super admin accounts to 2-5 individuals
+    - Document business justification for each
+    - Review quarterly and remove unnecessary accounts
+    - Use temporary super admin access for short-term needs
 
-2. **Dedicated Accounts**:
-   - Separate admin accounts from day-to-day user accounts
-   - Use naming convention (e.g., `admin-firstname.lastname@domain`)
-   - Never share admin credentials
-   - Individual accountability required
+- **Dedicated Accounts**:
+    - Separate admin accounts from day-to-day user accounts
+    - Use naming convention (e.g., `admin-firstname.lastname@domain`)
+    - Never share admin credentials
+    - Individual accountability required
 
-3. **Strong Authentication**:
-   - Require trusted identity provider
-   - Enforce hardware-based MFA (WebAuthn/FIDO2)
-   - Minimum: TOTP with backup device
-   - Never use SMS or email as MFA
+- **Strong Authentication**:
+    - Require trusted identity provider
+    - Enforce hardware-based MFA (WebAuthn/FIDO2)
+    - Minimum: TOTP with backup device
+    - Never use SMS or email as MFA
 
-4. **Session Security**:
-   - Use short session lifetimes (2-4 hours)
-   - Always log out when done
-   - Never save admin passwords in browser
-   - Use password manager for admin credentials
+- **Session Security**:
+    - Use short session lifetimes (2-4 hours)
+    - Always log out when done
+    - Never save admin passwords in browser
+    - Use password manager for admin credentials
 
-5. **Access from Secure Locations**:
-   - Use company-managed devices only
-   - Avoid public WiFi for admin access
-   - Consider IP allowlist for admin access
-   - Use VPN when accessing remotely
+- **Access from Secure Locations**:
+    - Use company-managed devices only
+    - Avoid public WiFi for admin access
+    - Consider IP allowlist for admin access
+    - Use VPN when accessing remotely
 
-6. **Security Alert Monitoring**:
-   - All super admins must monitor security alerts
-   - Respond to `systemAdmins` group change alerts within 24 hours
-   - Challenge unexplained admin additions immediately
-   - Maintain current contact information for alerts
+- **Security Alert Monitoring**:
+    - All super admins must monitor security alerts
+    - Respond to `systemAdmins` group change alerts within 24 hours
+    - Challenge unexplained admin additions immediately
+    - Maintain current contact information for alerts
 
-7. **Change Management**:
-   - Document all super admin additions/removals
-   - Require approval from at least one other super admin
-   - Use temporary access for auditors and contractors
-   - Set clear expiration dates for temporary access
+- **Change Management**:
+    - Document all super admin additions/removals
+    - Require approval from at least one other super admin
+    - Use temporary access for auditors and contractors
+    - Set clear expiration dates for temporary access
 
 **Tenant Administrators**:
 
-1. **Group-Based Assignment**:
-   - Use admin groups instead of direct permission assignments
-   - Easier to audit and manage
-   - Consistent permissions across admins
+- **Group-Based Assignment**:
+    - Use admin groups instead of direct permission assignments
+    - Easier to audit and manage
+    - Consistent permissions across admins
 
-2. **Least Privilege**:
-   - Use scoped admin roles where possible
-   - Don't grant tenant admin for single-resource management
-   - Consider UMRS for delegated administration
+- **Least Privilege**:
+    - Use scoped admin roles where possible
+    - Don't grant tenant admin for single-resource management
+    - Consider UMRS for delegated administration
 
-3. **Regular Reviews**:
-   - Audit admin group membership quarterly
-   - Remove departing employees immediately
-   - Review admin actions in audit logs monthly
+- **Regular Reviews**:
+    - Audit admin group membership quarterly
+    - Remove departing employees immediately
+    - Review admin actions in audit logs monthly
 
-4. **MFA Enforcement**:
-   - Enable "Enable Admin MFA" tenant setting
-   - Require MFA enrollment for all admins
-   - Monitor for MFA bypass attempts
+- **MFA Enforcement**:
+    - Enable "Enable Admin MFA" tenant setting
+    - Require MFA enrollment for all admins
+    - Monitor for MFA bypass attempts
 
 ### Identity Provider Security
 
-1. **Trusted Identity Providers**:
-   - Only mark IdPs as "trusted" if:
-     - IdP is enterprise-managed and secured
-     - IdP enforces strong authentication
-     - IdP has comprehensive audit logging
-     - IdP vendor is reputable
-   - Never trust public IdPs (Google, Facebook) for admin access
+- **Trusted Identity Providers**:
+    - Only mark IdPs as "trusted" if:
+        - IdP is enterprise-managed and secured
+        - IdP enforces strong authentication
+        - IdP has comprehensive audit logging
+        - IdP vendor is reputable
+    - Never trust public IdPs (Google, Facebook) for admin access
 
-2. **Claims Validation**:
-   - Validate all mapped claims
-   - Don't trust user-supplied claims for authorization
-   - Use claims scripting defensively
-   - Sanitize inputs in claims scripts
+- **Claims Validation**:
+    - Validate all mapped claims
+    - Don't trust user-supplied claims for authorization
+    - Use claims scripting defensively
+    - Sanitize inputs in claims scripts
 
-3. **MFA at IdP Level**:
-   - Configure MFA at identity provider
-   - Don't rely solely on Authifi service MFA
-   - Prefer IdP-enforced MFA for admins
+- **MFA at IdP Level**:
+    - Configure MFA at identity provider
+    - Don't rely solely on Authifi service MFA
+    - Prefer IdP-enforced MFA for admins
 
-4. **Regular Testing**:
-   - Test IdP connections regularly
-   - Monitor for authentication failures
-   - Alert on IdP configuration changes
+- **Regular Testing**:
+    - Test IdP connections regularly
+    - Monitor for authentication failures
+    - Alert on IdP configuration changes
 
 ### Application Security
 
-1. **Client Authentication**:
-   - Use `private_key_jwt` for confidential clients (most secure)
-   - `client_secret_post` is acceptable minimum
-   - Never use `none` for production applications
-   - Rotate client secrets quarterly
+- **Client Authentication**:
+    - Use `private_key_jwt` for confidential clients (most secure)
+    - `client_secret_post` is acceptable minimum
+    - Never use `none` for production applications
+    - Rotate client secrets quarterly
 
-2. **Redirect URI Validation**:
-   - Explicitly list all valid redirect URIs
-   - Use exact matches (no wildcards)
-   - HTTPS required for production
-   - Monitor for redirect URI changes
+- **Redirect URI Validation**:
+    - Explicitly list all valid redirect URIs
+    - Use exact matches (no wildcards)
+    - HTTPS required for production
+    - Monitor for redirect URI changes
 
-3. **Token Lifetimes**:
-   - Access tokens: 15-60 minutes
-   - Refresh tokens: 7-14 days (sensitive apps), 30 days (standard)
-   - ID tokens: Same as access tokens
-   - Shorter lifetimes reduce exposure window
+- **Token Lifetimes**:
+    - Access tokens: 15-60 minutes
+    - Refresh tokens: 7-14 days (sensitive apps), 30 days (standard)
+    - ID tokens: Same as access tokens
+    - Shorter lifetimes reduce exposure window
 
-4. **PKCE Enforcement**:
-   - Require PKCE for all OAuth flows
-   - Prevents authorization code interception
-   - Mandatory for SPAs and mobile apps
+- **PKCE Enforcement**:
+    - Require PKCE for all OAuth flows
+    - Prevents authorization code interception
+    - Mandatory for SPAs and mobile apps
 
 ### Secret Management
 
-1. **Secret Classification**:
-   - Always use Sensitive type for:
-     - Passwords
-     - API keys and tokens
-     - Private keys
-     - Database credentials
-   - Use Variable type only for non-sensitive config
+- **Secret Classification**:
+    - Always use Sensitive type for:
+        - Passwords
+        - API keys and tokens
+        - Private keys
+        - Database credentials
+    - Use Variable type only for non-sensitive config
 
-2. **Expiration Policies**:
-   - Set expiration for all secrets (90-180 days)
-   - Shorter for high-privilege secrets (30-90 days)
-   - Calendar reminders for rotation
-   - Automate rotation where possible
+- **Expiration Policies**:
+    - Set expiration for all secrets (90-180 days)
+    - Shorter for high-privilege secrets (30-90 days)
+    - Calendar reminders for rotation
+    - Automate rotation where possible
 
-3. **Access Control**:
-   - Limit secret access to necessary jobs only
-   - Don't expose secrets to users
-   - Audit secret access regularly
-   - Alert on secret modifications
+- **Access Control**:
+    - Limit secret access to necessary jobs only
+    - Don't expose secrets to users
+    - Audit secret access regularly
+    - Alert on secret modifications
 
-4. **Rotation Procedures**:
-   - Rotate immediately on compromise
-   - Test after rotation (verify applications still work)
-   - Document rotation procedures
-   - Maintain rotation audit trail
+- **Rotation Procedures**:
+    - Rotate immediately on compromise
+    - Test after rotation (verify applications still work)
+    - Document rotation procedures
+    - Maintain rotation audit trail
 
 ### Monitoring and Incident Response
 
-1. **Continuous Monitoring**:
-   - Review audit logs weekly (admin actions)
-   - Monitor event logs daily (failed logins)
-   - Set up alerts for:
-     - Multiple failed logins
-     - New admin account creation
-     - Identity provider changes
-     - After-hours admin activity
+- **Continuous Monitoring**:
+    - Review audit logs weekly (admin actions)
+    - Monitor event logs daily (failed logins)
+    - Set up alerts for:
+        - Multiple failed logins
+        - New admin account creation
+        - Identity provider changes
+        - After-hours admin activity
 
-2. **Incident Response**:
-   - Document incident response procedures
-   - Include Authifi service in IR playbooks
-   - Know how to:
-     - Revoke sessions immediately
-     - Remove admin privileges
-     - Export audit logs
-     - Rotate secrets
-     - Lock accounts
+- **Incident Response**:
+    - Document incident response procedures
+    - Include Authifi service in IR playbooks
+    - Know how to:
+        - Revoke sessions immediately
+        - Remove admin privileges
+        - Export audit logs
+        - Rotate secrets
+        - Lock accounts
 
-3. **Regular Reviews**:
-   - **Daily**: Failed login monitoring
-   - **Weekly**: Admin action audit
-   - **Monthly**: Application and IdP configuration review
-   - **Quarterly**: Comprehensive access review (all admins, roles, permissions)
-   - **Annually**: Security posture assessment
+- **Regular Reviews**:
+    - **Daily**: Failed login monitoring
+    - **Weekly**: Admin action audit
+    - **Monthly**: Application and IdP configuration review
+    - **Quarterly**: Comprehensive access review (all admins, roles, permissions)
+    - **Annually**: Security posture assessment
 
-4. **Audit Log Protection**:
-   - Export logs regularly (weekly)
-   - Store exports securely off-platform
-   - Long retention period (7 years for SOC 2)
-   - Protect from tampering (write-once storage)
+- **Audit Log Protection**:
+    - Export logs regularly (weekly)
+    - Store exports securely off-platform
+    - Long retention period (7 years for SOC 2)
+    - Protect from tampering (write-once storage)
 
 ---
 
@@ -1310,35 +1310,35 @@ This document addresses the following FedRAMP Recommended Secure Configuration r
 
 **For SOC 2 / FedRAMP Audits**:
 
-1. **Access Control** (AC):
-   - Admin role assignments
-   - MFA enrollment records
-   - Session management configuration
-   - Least privilege evidence
+- **Access Control** (AC):
+    - Admin role assignments
+    - MFA enrollment records
+    - Session management configuration
+    - Least privilege evidence
 
-2. **Audit and Accountability** (AU):
-   - Audit log exports (comprehensive)
-   - Event log exports (login activity)
-   - Admin action reviews
-   - Incident investigation logs
+- **Audit and Accountability** (AU):
+    - Audit log exports (comprehensive)
+    - Event log exports (login activity)
+    - Admin action reviews
+    - Incident investigation logs
 
-3. **Configuration Management** (CM):
-   - Baseline configuration documentation
-   - Configuration change logs
-   - Security setting exports
-   - Change approval records
+- **Configuration Management** (CM):
+    - Baseline configuration documentation
+    - Configuration change logs
+    - Security setting exports
+    - Change approval records
 
-4. **Identification and Authentication** (IA):
-   - Identity provider configurations
-   - MFA enforcement evidence
-   - Authentication policy documentation
-   - Trusted IdP justifications
+- **Identification and Authentication** (IA):
+    - Identity provider configurations
+    - MFA enforcement evidence
+    - Authentication policy documentation
+    - Trusted IdP justifications
 
-5. **System and Communications Protection** (SC):
-   - TLS/HTTPS enforcement
-   - Encryption at rest configuration
-   - Key management procedures
-   - Secret rotation records
+- **System and Communications Protection** (SC):
+    - TLS/HTTPS enforcement
+    - Encryption at rest configuration
+    - Key management procedures
+    - Secret rotation records
 
 ---
 
