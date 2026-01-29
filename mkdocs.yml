@@ -79,4 +79,6 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/axleresearch/authifi-docs
 
-copyright: Copyright &copy; 2026 Axle Informatics, LLC. All rights reserved.
+copyright: >
+  <img src="/assets/axle-icon.png" alt="Axle Informatics" style="height: 24px; vertical-align: middle; margin-right: 8px;">
+  Copyright &copy; 2026 Axle Informatics, LLC. All rights reserved.
