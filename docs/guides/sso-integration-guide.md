@@ -8,10 +8,10 @@ This guide provides comprehensive instructions for tenant administrators on mana
 - [SSO Integration Menu Options](#sso-integration-menu-options)
   - [App Dashboard](#app-dashboard)
   - [Contacts](#contacts)
-  - [App Roles](#app-roles)
+  - [App Roles (Client Roles)](#app-roles-client-roles)
   - [App Permissions](#app-permissions)
   - [API Dashboard](#api-dashboard)
-  - [API Roles](#api-roles)
+  - [API Roles (Access Roles)](#api-roles-access-roles)
   - [API Permissions](#api-permissions)
   - [Providers](#providers)
   - [Issuers](#issuers)
@@ -118,19 +118,21 @@ The **SSO Integration** section enables you to:
 
 ---
 
-### App Roles
+### App Roles (Client Roles)
 
 **Location**: SSO Integration > App Roles
 
-**Purpose**: Define coarse-grained authorization roles for applications. Roles group related permissions together.
+**Purpose**: Define authorization roles scoped to a specific client application. App Roles (also called **Client Roles**) are used by the application for its own internal authorization decisions (e.g., controlling UI features, enabling functionality).
 
 #### What you can do
 
-- **Create roles**: Define roles like "viewer", "editor", "admin"
-- **Assign permissions**: Group multiple permissions into a role
-- **Assign to users**: Grant roles to users (via Users and Groups section)
+- **Create roles**: Define roles like "viewer", "editor", "admin" for a specific app
+- **Assign permissions**: Group multiple app permissions into a role
+- **Assign to users/groups**: Grant roles to users or groups (via Users and Groups section)
 - **View role assignments**: See which users have which roles
 - **Delete unused roles**: Clean up role definitions
+
+> **Note**: App Roles (Client Roles) are distinct from API Roles (Access Roles). Use App Roles for client-side authorization decisions. Use [API Roles](#api-roles-access-roles) for controlling access to API resources.
 
 #### Role vs. Permission
 
@@ -240,27 +242,56 @@ Permissions in the Authifi system map to OAuth 2.0 scopes. When a client request
 
 ---
 
-### API Roles
+### API Roles (Access Roles)
 
 **Location**: SSO Integration > API Roles
 
-**Purpose**: Define authorization roles specific to individual APIs (separate from app-level roles).
+**Purpose**: Define authorization roles specific to individual APIs (separate from app-level roles). API Roles are also referred to as **Access Roles** in some contexts (e.g., user management screens).
 
 #### What you can do
 
-- **Create API-specific roles**: Define roles scoped to one API
+- **Create API-specific roles**: Define roles scoped to one API (resource server)
 - **Assign permissions**: Group API permissions into roles
-- **Assign to users**: Grant API roles to users
+- **Assign to users/groups**: Grant API roles to users via groups. Users receive roles that are assigned to groups that they belong to.
 - **Separate concerns**: Use different role sets for different APIs
 
 #### API Roles vs. App Roles
 
-- **App Roles**: Global within the tenant, apply across multiple apps
-- **API Roles**: Scoped to a specific API resource server
+- **App Roles** (Client Roles): Scoped to a specific client application. Used by the app for its own internal authorization logic (e.g., controlling UI features or local functionality).
+- **API Roles** (Access Roles): Scoped to an API resource server. Used for controlling access to API endpoints and resources.
 
-**Use case**: A user might be an "admin" in the "User Management API" but only a "viewer" in the "Billing API".
+**When to use each**:
 
-**Best practice**: Create API-specific roles when different APIs have distinct authorization models.
+- Use **App Roles** when the client application needs to make authorization decisions locally (e.g., showing/hiding UI elements, enabling features)
+- Use **API Roles** when the API needs to authorize requests from clients (e.g., determining what data a user can access)
+
+**Example**: A user might have an "editor" App Role in a document editing app (controlling what UI features they see). If an app uses an API for managing the documents, a user may have a "read-only" API Role for the Documents API (controlling what API operations they can perform).
+
+#### Retrieving API Roles via UserInfo
+
+To include a user's API Roles (Access Roles) in the UserInfo endpoint response, request the `access_roles` scope when initiating the authorization flow:
+
+```
+GET /authorize?
+  response_type=code&
+  client_id=YOUR_CLIENT_ID&
+  scope=openid profile access_roles&
+  redirect_uri=YOUR_REDIRECT_URI
+```
+
+The UserInfo response will then include the user's API roles:
+
+```json
+{
+  "sub": "user-id",
+  "name": "Jane Doe",
+    ...
+  "access_roles": [
+    "editor", 
+    "reviewer"
+  ]
+}
+```
 
 ---
 
