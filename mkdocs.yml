@@ -66,6 +66,7 @@ nav:
     - SSO Integration: guides/sso-integration-guide.md
     - Access Requests: guides/access-requests-guide.md
     - License Management: guides/license-management-guide.md
+    - Logout Confirmation: guides/logout-confirmation-guide.md
     - Monitoring and Logging: guides/monitoring-guide.md
     - Resources and Tools: guides/resources-tools-guide.md
   - Security:
