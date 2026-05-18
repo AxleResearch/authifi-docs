@@ -26,6 +26,7 @@ Step-by-step guides for tenant administrators:
 - [Access Requests](guides/access-requests-guide.md) - Self-service access and delegated administration
 - [License Management](guides/license-management-guide.md) - Manage platform licenses (super admins)
 - [Monitoring and Logging](guides/monitoring-guide.md) - Audit logs, event logs, and security monitoring
+- [NHE Delegated Tokens](guides/nhe-delegated-tokens.md) - Short-lived tokens for LLM agents and automated pipelines
 - [Resources and Tools](guides/resources-tools-guide.md) - Templates, images, secrets, and scheduled jobs
 
 ### Security
