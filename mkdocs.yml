@@ -68,6 +68,7 @@ nav:
     - License Management: guides/license-management-guide.md
     - Logout Confirmation: guides/logout-confirmation-guide.md
     - Monitoring and Logging: guides/monitoring-guide.md
+    - NHE Delegated Tokens: guides/nhe-delegated-tokens.md
     - Resources and Tools: guides/resources-tools-guide.md
   - Security:
     - Overview: security/README.md
