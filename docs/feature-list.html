@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Authifi Identity Broker — Feature List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #eff6ff;
+      --surface: #ffffff;
+      --surface-alt: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --success: #059669;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+      --shadow-lg: 0 4px 6px rgba(0,0,0,.07), 0 16px 40px rgba(0,0,0,.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--surface-alt); color: var(--text); line-height: 1.6; font-size: 15px; }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #312e81 100%); color: #fff; padding: 80px 40px 72px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); border-radius: 100px; padding: 4px 14px 4px 8px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #bfdbfe; margin-bottom: 20px; }
+    .hero-badge svg { width: 14px; height: 14px; }
+    .hero h1 { font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.15; margin-bottom: 16px; }
+    .hero h1 span { color: #93c5fd; }
+    .hero p { font-size: 1.125rem; color: #cbd5e1; max-width: 620px; margin: 0 auto; }
+
+    /* LAYOUT */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid var(--border); }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
+    .section-title { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; letter-spacing: -.02em; margin-bottom: 10px; }
+    .section-sub { color: var(--text-muted); max-width: 580px; margin-bottom: 40px; }
+
+    /* HIGHLIGHTS */
+    .highlights-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .highlight-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; display: flex; align-items: flex-start; gap: 18px; transition: box-shadow .2s, transform .2s; box-shadow: var(--shadow); }
+    .highlight-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+    .highlight-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .highlight-icon svg { width: 24px; height: 24px; }
+    .hi-blue   { background: #eff6ff; color: #2563eb; }
+    .hi-violet { background: #f5f3ff; color: #7c3aed; }
+    .hi-teal   { background: #f0fdfa; color: #0d9488; }
+    .hi-rose   { background: #fff1f2; color: #e11d48; }
+    .hi-amber  { background: #fffbeb; color: #d97706; }
+    .hi-green  { background: #f0fdf4; color: #16a34a; }
+    .hi-indigo { background: #eef2ff; color: #4f46e5; }
+    .hi-sky    { background: #f0f9ff; color: #0284c7; }
+    .hi-orange { background: #fff7ed; color: #ea580c; }
+    .hi-emerald{ background: #ecfdf5; color: #059669; }
+    .highlight-card h3 { font-size: .925rem; font-weight: 700; margin-bottom: 5px; }
+    .highlight-card p { font-size: .84rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* SUMMARY TABLE */
+    .summary-table-wrap { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow); }
+    .summary-table { width: 100%; border-collapse: collapse; }
+    .summary-table thead th { background: #f1f5f9; padding: 12px 20px; text-align: left; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--text-muted); border-bottom: 1px solid var(--border); }
+    .summary-table tbody tr:not(:last-child) td { border-bottom: 1px solid var(--border); }
+    .summary-table tbody tr:hover td { background: #f8fafc; }
+    .summary-table td { padding: 12px 20px; vertical-align: top; }
+    .summary-table td:first-child { font-weight: 600; font-size: .875rem; white-space: nowrap; }
+    .summary-table td:last-child { font-size: .875rem; color: var(--text-muted); }
+    .tag { display: inline-block; background: var(--primary-light); color: var(--primary-dark); border-radius: 4px; padding: 1px 7px; font-size: .75rem; font-weight: 600; margin: 1px 2px 1px 0; }
+    .tag-green { background: #f0fdf4; color: #166534; }
+    .tag-violet { background: #f5f3ff; color: #5b21b6; }
+    .tag-amber { background: #fffbeb; color: #92400e; }
+
+    /* DETAIL CARDS */
+    .detail-sections { display: flex; flex-direction: column; gap: 32px; }
+    .detail-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .detail-card-header { display: flex; align-items: center; gap: 14px; padding: 20px 24px; border-bottom: 1px solid var(--border); background: #fafafa; }
+    .detail-card-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .detail-card-icon svg { width: 18px; height: 18px; }
+    .detail-card-header h2 { font-size: 1rem; font-weight: 700; }
+    .detail-card-header span { font-size: .8rem; color: var(--text-muted); margin-left: 2px; }
+    .detail-card-body { padding: 24px; }
+    .feature-group { margin-bottom: 24px; }
+    .feature-group:last-child { margin-bottom: 0; }
+    .feature-group-title { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+
+    /* FEATURE LIST */
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 8px; font-size: .875rem; line-height: 1.5; }
+    .feature-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); flex-shrink: 0; margin-top: 7px; }
+    .feature-list li code { background: #f1f5f9; color: #334155; font-family: 'JetBrains Mono','Fira Code',monospace; font-size: .78rem; padding: 1px 5px; border-radius: 4px; }
+    .feature-list-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; }
+
+    /* INLINE TABLE */
+    .inline-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+    .inline-table th { background: #f8fafc; padding: 8px 12px; text-align: left; font-weight: 600; color: var(--text-muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; border-bottom: 1px solid var(--border); }
+    .inline-table td { padding: 8px 12px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+    .inline-table tr:last-child td { border-bottom: none; }
+    .inline-table td:first-child { font-weight: 600; white-space: nowrap; }
+    .inline-table td:last-child { color: var(--text-muted); }
+    .inline-table td code { background: #f1f5f9; color: #334155; font-size: .77rem; padding: 1px 5px; border-radius: 4px; font-family: 'JetBrains Mono','Fira Code',monospace; }
+    .table-wrap { border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+
+    /* HIERARCHY */
+    .hierarchy { display: flex; flex-direction: column; margin: 8px 0 16px; }
+    .hier-row { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-left: 3px solid var(--border); font-size: .875rem; }
+    .hier-row:nth-child(1) { border-color: #2563eb; background: #eff6ff; font-weight: 700; color: #1e40af; }
+    .hier-row:nth-child(2) { border-color: #7c3aed; background: #f5f3ff; font-weight: 600; color: #5b21b6; padding-left: 32px; }
+    .hier-row:nth-child(3) { border-color: #0d9488; background: #f0fdfa; font-weight: 600; color: #0f766e; padding-left: 48px; }
+    .hier-row:nth-child(4) { border-color: #e11d48; background: #fff1f2; font-weight: 600; color: #9f1239; padding-left: 64px; }
+    .hier-label { font-size: .72rem; font-weight: 500; opacity: .65; margin-left: auto; }
+
+    /* ADMIN TIERS */
+    .admin-tiers { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .admin-tier { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: var(--radius-sm); font-size: .875rem; }
+    .admin-tier.t1 { background: #fef2f2; border-left: 4px solid #dc2626; }
+    .admin-tier.t2 { background: #fffbeb; border-left: 4px solid #d97706; }
+    .admin-tier.t3 { background: #eff6ff; border-left: 4px solid #2563eb; }
+    .admin-tier.t4 { background: #f8fafc; border-left: 4px solid #64748b; }
+    .admin-tier strong { font-weight: 700; min-width: 160px; }
+    .admin-tier span { color: var(--text-muted); font-size: .83rem; }
+
+    /* SECURITY GRID */
+    .security-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+    .security-item { background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; }
+    .security-item h4 { font-size: .825rem; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+    .security-item h4 svg { width: 14px; height: 14px; color: var(--success); }
+    .security-item p { font-size: .8rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PROTOCOL BADGES */
+    .protocol-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .protocol-badge { display: inline-flex; align-items: center; padding: 6px 12px; border-radius: 100px; font-size: .8rem; font-weight: 600; border: 1.5px solid; }
+    .pb-oidc  { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
+    .pb-saml  { background: #f5f3ff; color: #7c3aed; border-color: #ddd6fe; }
+    .pb-wsfed { background: #fdf4ff; color: #a21caf; border-color: #f0abfc; }
+    .pb-ldap  { background: #f0fdfa; color: #0d9488; border-color: #99f6e4; }
+    .pb-local { background: #f1f5f9; color: #64748b; border-color: #cbd5e1; font-style: italic; }
+
+    /* STANDARDS TABLE */
+    .standards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+    .standard-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; display: flex; gap: 12px; align-items: flex-start; }
+    .standard-badge { background: #0f172a; color: #fff; font-size: .7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .standard-item p { font-size: .82rem; color: var(--text-muted); line-height: 1.45; }
+    .standard-item strong { display: block; font-size: .875rem; font-weight: 700; margin-bottom: 2px; }
+
+    /* FOOTER */
+    footer { background: #0f172a; color: #64748b; text-align: center; padding: 32px 24px; font-size: .85rem; }
+    footer strong { color: #94a3b8; }
+
+    @media (max-width: 768px) {
+      .hero { padding: 52px 24px 48px; }
+      section { padding: 48px 0; }
+      .highlights-grid, .feature-list-2col, .security-grid, .standards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+    Identity &amp; Access Management Platform
+  </div>
+  <h1>Authifi Identity Broker<br/><span>Feature Overview</span></h1>
+  <p>A dynamically configurable, multi-tenant authentication and authorization platform built for enterprise, research, and government applications.</p>
+</div>
+
+<!-- HIGHLIGHTS -->
+<section style="background: var(--surface);">
+  <div class="container">
+    <div class="section-label">Why Authifi</div>
+    <h2 class="section-title">Built for Enterprise. Ready for Government.</h2>
+    <p class="section-sub">Authifi delivers a comprehensive identity platform combining standards compliance, deep security controls, and a user-friendly management experience.</p>
+    <div class="highlights-grid">
+
+      <div class="highlight-card">
+        <div class="highlight-icon hi-blue">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        </div>
+        <div><h3>FedRAMP High Compliance</h3><p>Security controls aligned with the FedRAMP High baseline — audit logging, access control, session management, input validation, and OWASP C10-compliant error handling.</p></div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-icon hi-violet">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+        </div>
+        <div><h3>Advanced Security Features</h3><p>FIDO2/WebAuthn passkeys, TOTP MFA, fail-closed trusted IdP enforcement, JWE-encrypted secrets, TOCTOU mitigations, SAST code scanning, antivirus file scanning, and rate limiting.</p></div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-icon hi-teal">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3"/></svg>
+        </div>
+        <div><h3>User-Friendly Management Console</h3><p>A full-featured Angular admin UI covers tenant, user, group, client, IdP, RBAC, secrets, jobs, templates, and audit logs — all without touching the API.</p></div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-icon hi-amber">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>
+        </div>
+        <div><h3>Extensive Customization &amp; Extension Support</h3><p>Custom JavaScript scripting for IdP claims mapping and access control, Handlebars templates for login pages and emails, tenant branding uploads, and pluggable secret backends.</p></div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-icon hi-green">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+        </div>
+        <div><h3>User Self-Service</h3><p>Users can reset passwords, verify email, enroll TOTP and WebAuthn credentials, manage trusted devices, configure notification preferences, and permanently delete their accounts per GDPR Art. 17.</p></div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-icon hi-indigo">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"/></svg>
+        </div>
+        <div><h3>Streamlined Access Management Workflows</h3><p>Self-service access requests, access review and recertification, group membership extensions, expiry warnings, and delegated admin scopes reduce admin burden and speed up provisioning.</p></div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-icon hi-rose">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/></svg>
+        </div>
+        <div><h3>Comprehensive Audit &amp; Compliance</h3><p>Immutable chained audit logs, usage reporting with Excel exports, GDPR-compliant account erasure with preserved legal records, and NHE token audit trail for AI agent activity.</p></div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-icon hi-sky">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+        </div>
+        <div><h3>Broad Protocol Support</h3><p>OIDC, OAuth 2.0, SAML 2.0, WS-Federation, LDAP, and GA4GH Passport in a single platform — enabling federation with any enterprise, academic, or government identity provider.</p></div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-icon hi-orange">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+        </div>
+        <div><h3>AI Agent &amp; Machine Identity Ready</h3><p>First-class Non-Human Entity (NHE) delegation tokens let LLM agents and automated pipelines act on behalf of users with short-lived, narrowly scoped tokens and a full audit trail.</p></div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-icon hi-emerald">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div><h3>Standards Compliant</h3><p>OAuth 2.0, OIDC, SAML 2.0, WS-Federation, FIDO2/WebAuthn, GA4GH Passport v1, RFC 8693 Token Exchange, DPoP, and OWASP C10 — built on open, auditable standards.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE SUMMARY TABLE -->
+<section style="background: var(--surface-alt);">
+  <div class="container">
+    <div class="section-label">At a Glance</div>
+    <h2 class="section-title">Feature Summary</h2>
+    <p class="section-sub">All major capability areas at a glance.</p>
+    <div class="summary-table-wrap">
+      <table class="summary-table">
+        <thead><tr><th>Category</th><th>Key Capabilities</th></tr></thead>
+        <tbody>
+          <tr><td>Authentication Protocols</td><td><span class="tag">OIDC</span><span class="tag">SAML 2.0</span><span class="tag">WS-Federation</span><span class="tag">LDAP</span><span class="tag">Local</span></td></tr>
+          <tr><td>OAuth 2.0 / OIDC Flows</td><td><span class="tag">Authorization Code</span><span class="tag">Client Credentials</span><span class="tag">Token Exchange</span><span class="tag">Refresh Token</span><span class="tag">PKCE</span></td></tr>
+          <tr><td>Multi-Factor Authentication</td><td><span class="tag">TOTP / RFC 6238</span><span class="tag">WebAuthn / FIDO2</span><span class="tag">Recovery Codes</span><span class="tag">Trusted Devices</span><span class="tag">Step-Up Auth</span></td></tr>
+          <tr><td>Multi-Tenancy</td><td><span class="tag">Isolated Collections</span><span class="tag">Shared Workspaces</span><span class="tag">Trusted Tenants</span><span class="tag">Per-Tenant Config</span></td></tr>
+          <tr><td>Authorization &amp; RBAC</td><td><span class="tag">4-Tier Admin Model</span><span class="tag">Delegated Scopes</span><span class="tag">ACR / Assurance Levels</span><span class="tag">Privileged Entity Protection</span></td></tr>
+          <tr><td>Custom Attribute Mapping</td><td><span class="tag">SAML mapClaims</span><span class="tag">OIDC Claim Transform</span><span class="tag">NameID Formats</span><span class="tag">Secondary Unique Attrs</span></td></tr>
+          <tr><td>Secret Management</td><td><span class="tag">HashiCorp Vault</span><span class="tag">Passbolt</span><span class="tag">Local JWE</span><span class="tag">Key Rotation</span></td></tr>
+          <tr><td>Machine Identity &amp; Delegation</td><td><span class="tag">NHE Tokens</span><span class="tag">RFC 8693 Token Exchange</span><span class="tag">DPoP / RFC 9449</span><span class="tag">Audit Trail</span></td></tr>
+          <tr><td>Research Identity</td><td><span class="tag">GA4GH Passport v1</span><span class="tag">Visa Issuance</span><span class="tag">ORCID Integration</span><span class="tag">Linked Identities</span></td></tr>
+          <tr><td>User Self-Service</td><td><span class="tag">Password Reset</span><span class="tag">MFA Enrollment</span><span class="tag">Session Management</span><span class="tag">GDPR Erasure</span></td></tr>
+          <tr><td>Access &amp; Recertification Workflows</td><td><span class="tag">Self-Service Requests</span><span class="tag">Approval Flows</span><span class="tag">Access Review</span><span class="tag">Inactive User Removal</span></td></tr>
+          <tr><td>Reporting &amp; Audit</td><td><span class="tag">Excel Usage Reports</span><span class="tag">Login Analytics</span><span class="tag">Chained Audit Logs</span><span class="tag">NHE Audit Trail</span></td></tr>
+          <tr><td>Customization &amp; Branding</td><td><span class="tag">Login Page Templates</span><span class="tag">Email Templates</span><span class="tag">Tenant Branding</span><span class="tag">FedRAMP Upload Controls</span></td></tr>
+          <tr><td>Security &amp; Compliance</td><td><span class="tag">FedRAMP High</span><span class="tag">GDPR Art. 17</span><span class="tag">OWASP C10</span><span class="tag">Antivirus</span><span class="tag">TOCTOU Fixes</span></td></tr>
+          <tr><td>Developer Integrations</td><td><span class="tag">OpenAPI / Swagger</span><span class="tag">Angular SDK</span><span class="tag">React SDK</span><span class="tag">CLI</span><span class="tag">Grafana Proxy</span></td></tr>
+          <tr><td>Platform &amp; Infrastructure</td><td><span class="tag">High Availability</span><span class="tag">Redis Clustering</span><span class="tag">Docker</span><span class="tag">OpenTelemetry</span><span class="tag">Prometheus</span></td></tr>
+          <tr><td>Standards Compliance</td><td><span class="tag">OAuth 2.0</span><span class="tag">OIDC</span><span class="tag">SAML 2.0</span><span class="tag">FIDO2</span><span class="tag">GA4GH Passport</span><span class="tag">FedRAMP High</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILED FEATURES -->
+<section style="background: var(--surface);">
+  <div class="container">
+    <div class="section-label">Feature Details</div>
+    <h2 class="section-title">Detailed Capabilities</h2>
+    <p class="section-sub">A comprehensive breakdown of every feature area.</p>
+    <div class="detail-sections">
+
+      <!-- 1. Authentication Protocols -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-blue"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33"/></svg></div>
+          <h2>Authentication Protocols <span>— 5 protocols</span></h2>
+        </div>
+        <div class="detail-card-body">
+          <div class="protocol-badges">
+            <span class="protocol-badge pb-oidc">OpenID Connect</span><span class="protocol-badge pb-saml">SAML 2.0</span><span class="protocol-badge pb-wsfed">WS-Federation</span><span class="protocol-badge pb-ldap">LDAP</span><span class="protocol-badge pb-local">Local Login (testing only)</span>
+          </div>
+          <div class="feature-group">
+            <div class="feature-group-title">OpenID Connect / OAuth 2.0</div>
+            <ul class="feature-list feature-list-2col">
+              <li>Full OIDC provider (node-oidc-provider)</li><li>Authorization Code, Client Credentials, Refresh Token</li>
+              <li>Token Exchange (RFC 8693) for NHE delegation</li><li>PKCE for public clients</li>
+              <li>JWT and opaque access token modes</li><li>Per-tenant <code>.well-known</code> discovery</li>
+              <li><code>private_key_jwt</code>, <code>client_secret_post</code>, <code>client_secret_basic</code></li><li>Custom claims via scripting hooks</li>
+            </ul>
+          </div>
+          <div class="feature-group">
+            <div class="feature-group-title">SAML 2.0</div>
+            <ul class="feature-list feature-list-2col">
+              <li>IdP and SP modes</li><li>Single Logout (SLO) with multiple bindings</li>
+              <li>Configurable attribute mapping and NameID format</li><li>Per-tenant SAML metadata endpoints</li>
+            </ul>
+          </div>
+          <div class="feature-group">
+            <div class="feature-group-title">WS-Federation &amp; LDAP</div>
+            <ul class="feature-list feature-list-2col">
+              <li>ADFS / Azure AD WS-Fed support</li><li>SharePoint relying party integration</li>
+              <li>LDAP / Active Directory authentication</li><li>Credential lookup via secret manager</li>
+            </ul>
+          </div>
+          <div class="feature-group">
+            <div class="feature-group-title" style="color:#94a3b8;">Local Login <span style="font-weight:400;text-transform:none;letter-spacing:0;">— Testing &amp; Development Only</span></div>
+            <p style="font-size:.825rem;color:#94a3b8;margin-bottom:10px;font-style:italic;">Local username/password accounts are not recommended for production. All production deployments should authenticate through a federated identity provider.</p>
+            <ul class="feature-list feature-list-2col" style="opacity:.6;">
+              <li>Username and password authentication</li><li>Configurable password policies</li>
+              <li>Account lockout with configurable thresholds</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. MFA -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-violet"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg></div>
+          <h2>Multi-Factor Authentication <span>— TOTP · WebAuthn · Recovery Codes</span></h2>
+        </div>
+        <div class="detail-card-body">
+          <ul class="feature-list feature-list-2col">
+            <li><strong>TOTP</strong> — RFC 6238 (Google Authenticator, Authy, etc.)</li>
+            <li><strong>WebAuthn / FIDO2</strong> — hardware keys &amp; biometrics (passkeys)</li>
+            <li><strong>Recovery Codes</strong> — NIST-compliant, PBKDF2-hashed</li>
+            <li><strong>Trusted Device Management</strong> — configurable lifetime (default 30 days)</li>
+            <li><strong>MFA Enforcement</strong> — per tenant, client, IdP, or user</li>
+            <li><strong>Step-Up Authentication</strong> — re-prompt for sensitive operations</li>
+            <li><strong>Account Lockout</strong> — dual-strike suspension then permanent lockout</li>
+            <li><strong>Admin MFA Reset</strong> — via <code>admin::mfa:reset</code> scope</li>
+            <li><strong>Emergency MFA Disable</strong> — hosted admin unlock flow</li>
+            <li><strong>MFA Selector UI</strong> — user-friendly method selection</li>
+            <li>Configurable TOTP clock drift tolerance</li>
+            <li>HTTP-only, secure cookie device tokens</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3. Multi-Tenancy -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-teal"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg></div>
+          <h2>Multi-Tenancy &amp; Organizational Hierarchy</h2>
+        </div>
+        <div class="detail-card-body">
+          <div class="hierarchy">
+            <div class="hier-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg> Collection <span class="hier-label">Isolated tenant tree · delegated admin boundary</span></div>
+            <div class="hier-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg> Workspace / Tenant <span class="hier-label">Per-tenant IdPs, clients, session config, endpoints</span></div>
+            <div class="hier-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg> Team / Group <span class="hier-label">Carries permissions · expiry dates · membership roles</span></div>
+            <div class="hier-row"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg> User / Person <span class="hier-label">Global identity or per-collection isolated account</span></div>
+          </div>
+          <ul class="feature-list feature-list-2col">
+            <li>Unlimited tenant creation</li><li>Isolated collections — fully separate user pools</li>
+            <li>Shared mode — single global identity</li><li>Cross-tenant trust (Trusted Tenants)</li>
+            <li>Per-tenant MFA enforcement settings</li><li>Per-tenant session lifetime configuration</li>
+            <li>Delegated collection administration</li><li>Restrict tenant creation to Super Admins (optional)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 4. RBAC -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-indigo"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/></svg></div>
+          <h2>Authorization &amp; RBAC <span>— 4-Tier Model</span></h2>
+        </div>
+        <div class="detail-card-body">
+          <div class="admin-tiers">
+            <div class="admin-tier t1"><strong>Super Administrator</strong><span>Platform-wide access · only tier that can create/assign privileged entities · bypasses most checks</span></div>
+            <div class="admin-tier t2"><strong>Tenant Administrator</strong><span>Full admin within one tenant · cannot manage privileged entities or exceed own authority</span></div>
+            <div class="admin-tier t3"><strong>Delegated Admin</strong><span>Targeted elevated permissions via granular <code>ADMIN_SCOPE.*</code> scopes assigned by Super Admins</span></div>
+            <div class="admin-tier t4"><strong>Regular User</strong><span>Access controlled by group membership, roles, and permissions</span></div>
+          </div>
+          <div class="feature-group">
+            <div class="feature-group-title">Identity Assurance Levels</div>
+            <ul class="feature-list">
+              <li>Configurable ACR (Authentication Context Class Reference) values per application</li>
+              <li>Enforce minimum assurance levels for access to sensitive resources</li>
+              <li>Supports elevated identity assurance for high-security workflows</li>
+            </ul>
+          </div>
+          <div class="feature-group">
+            <div class="feature-group-title">Groups, Roles &amp; Permissions</div>
+            <ul class="feature-list feature-list-2col">
+              <li>Membership roles: Member, Manager, Owner</li><li>Membership expiration and warning dates</li>
+              <li>Member-initiated extension requests</li><li>AD Group support (Azure AD group claims)</li>
+              <li>Client Roles (OAuth Client + Tenant)</li><li>Access Roles (Resource Server + Tenant)</li>
+              <li>Fine-grained permission model</li><li>Privileged entity protection (isPrivileged flag)</li>
+            </ul>
+          </div>
+          <div class="feature-group">
+            <div class="feature-group-title">Delegated Admin Scopes</div>
+            <div class="table-wrap">
+              <table class="inline-table">
+                <thead><tr><th>Scope</th><th>Purpose</th></tr></thead>
+                <tbody>
+                  <tr><td><code>admin::mfa:reset</code></td><td>Reset any user's MFA</td></tr>
+                  <tr><td><code>admin::access-scripts:edit</code></td><td>Modify client authorization scripts</td></tr>
+                  <tr><td><code>admin::provider-scripts:edit</code></td><td>Modify IdP claims mapping scripts</td></tr>
+                  <tr><td><code>admin::view:idp-secrets</code></td><td>View unmasked IdP secrets</td></tr>
+                  <tr><td><code>admin::global-secrets:edit</code></td><td>Modify global/system-wide secrets</td></tr>
+                  <tr><td><code>admin::trusted-provider:edit</code></td><td>Modify trusted identity providers</td></tr>
+                  <tr><td><code>admin::system-templates:edit</code></td><td>Modify system HTML/email templates</td></tr>
+                  <tr><td><code>admin::jobs:edit</code></td><td>Create/modify scheduled jobs</td></tr>
+                  <tr><td><code>admin::sendmail:use</code></td><td>Send emails via Authifi API</td></tr>
+                  <tr><td><code>admin::user-ssh-secret:edit</code></td><td>Manage user SSH key operations</td></tr>
+                  <tr><td><code>admin::admin-permissions:edit</code></td><td>Modify non-privileged RBAC entities</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Custom Attribute Mapping -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-sky"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg></div>
+          <h2>Custom Attribute Mapping &amp; Claims Scripting</h2>
+        </div>
+        <div class="detail-card-body">
+          <ul class="feature-list feature-list-2col">
+            <li>SAML assertion claim remapping via <code>mapClaims</code> scripts</li>
+            <li>OIDC claim transformation and enrichment</li>
+            <li>WSFed claim output configuration</li>
+            <li>Secondary unique attributes (username, UPN, display name)</li>
+            <li>NameID format configuration per IdP</li>
+            <li>Claim priority and fallback rules</li>
+            <li>Per-IdP JavaScript profile mapping scripts</li>
+            <li>Extra token claims injection hooks at issuance</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 6. Access Restrictions -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-rose"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg></div>
+          <h2>Per-Application Access Restrictions</h2>
+        </div>
+        <div class="detail-card-body">
+          <p style="font-size:.875rem;color:var(--text-muted);margin-bottom:16px;">Restrictions are evaluated sequentially — a user must pass <strong>all</strong> configured restrictions to gain access.</p>
+          <div class="table-wrap" style="margin-bottom:16px;">
+            <table class="inline-table">
+              <thead><tr><th>Type</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td>Group Restrictions</td><td>Require membership in Authifi User Groups or Active Directory Groups</td></tr>
+                <tr><td>Custom Authorization Scripts</td><td>JavaScript with access to user, groups, connection, and IP address — return true/false</td></tr>
+                <tr><td>Email Whitelist / Blacklist</td><td>Allow or deny specific email addresses; global or per-identity-provider</td></tr>
+                <tr><td>Domain Whitelist / Blacklist</td><td>Allow or deny email domains with automatic subdomain matching; per-identity-provider</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="feature-list">
+            <li>Tenant Admin bypass for system clients</li>
+            <li>Subdomain matching is automatic (e.g., <code>example.com</code> also matches <code>sub.example.com</code>)</li>
+            <li>Script context: <code>ctx.secrets.user</code>, <code>ctx.secrets.groups</code>, <code>ctx.secrets.ipAddress</code>, <code>ctx.secrets.connection</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 7. Secret Management -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-amber"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"/></svg></div>
+          <h2>Secret Management <span>— Vault · Passbolt · Local</span></h2>
+        </div>
+        <div class="detail-card-body">
+          <div class="table-wrap" style="margin-bottom:16px;">
+            <table class="inline-table">
+              <thead><tr><th>Backend</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td>HashiCorp Vault</td><td>Enterprise secret storage with transit encryption and key rotation</td></tr>
+                <tr><td>Passbolt</td><td>Collaborative password manager with team secret sharing</td></tr>
+                <tr><td>Local (JWE)</td><td>Database-backed storage with JWE encryption and per-tenant/per-user keys</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="feature-list feature-list-2col">
+            <li>User, Tenant, and System ownership levels</li><li>Encryption key rotation per user or tenant</li>
+            <li>Secret sharing across tenants (system tenant only)</li><li>Sensitive vs. non-sensitive classification</li>
+            <li>Optional expiration dates on secrets</li><li>Fine-grained REST API permission scopes</li>
+            <li>SSH key storage and management</li><li>Secrets masked in UI by default</li>
+            <li>PEM format certificate management</li><li>Certificate expiration tracking</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 8. NHE -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-orange"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg></div>
+          <h2>Machine Identity &amp; NHE Delegation Tokens <span>— AI &amp; Automation Ready</span></h2>
+        </div>
+        <div class="detail-card-body">
+          <p style="font-size:.875rem;color:var(--text-muted);margin-bottom:16px;">Non-Human Entities (NHEs) are registered automated actors — LLM agents, pipelines, and daemons — that receive short-lived tokens delegated from a user session.</p>
+          <ul class="feature-list feature-list-2col">
+            <li>Register NHEs with identifiers and delegation policies</li>
+            <li>OAuth 2.0 Token Exchange (RFC 8693) delegation</li>
+            <li><code>act</code> claim for delegation traceability</li>
+            <li>IETF AAP draft <code>agent</code> structured claim</li>
+            <li>Scope downscoping — cannot exceed user's permissions</li>
+            <li>Optional DPoP proof-of-possession (RFC 9449)</li>
+            <li>Configurable short lifetimes (default 5 minutes)</li>
+            <li>Full audit trail under delegating user's identity</li>
+            <li>Per-tenant and per-client enable/disable controls</li>
+            <li>Dedicated NHE audit log API</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 9. GA4GH -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-sky"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/></svg></div>
+          <h2>GA4GH Passport &amp; Research Identity</h2>
+        </div>
+        <div class="detail-card-body">
+          <p style="font-size:.875rem;color:var(--text-muted);margin-bottom:16px;">Full implementation of GA4GH Passport v1 and the AAI OpenID Connect Profile for biomedical research identity. Enables controlled-access data authorization across institutions.</p>
+          <ul class="feature-list feature-list-2col">
+            <li>Visa signing with tenant RSA keys</li><li>Passport assembly in OIDC token exchange</li>
+            <li>Linked Identities visas from federated logins</li><li>ORCID researcher identity integration</li>
+            <li>External visa ingestion from Passport Brokers</li><li>Visa policy enforcement (allOf / anyOf)</li>
+            <li>Trusted Issuer Registry with JWKS URIs</li><li>TTL-based JWKS caching</li>
+            <li><code>by</code> claim filtering (dac, system, self, peer)</li><li>Automatic expiry and revocation enforcement</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 10. User Self-Service -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-green"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+          <h2>User Self-Service &amp; GDPR Compliance</h2>
+        </div>
+        <div class="detail-card-body">
+          <ul class="feature-list feature-list-2col">
+            <li>Secure email-based password reset</li><li>Email verification at registration and on change</li>
+            <li>TOTP self-enrollment and management</li><li>WebAuthn credential self-registration</li>
+            <li>Trusted device management and removal</li><li>Profile and linked identity management</li>
+            <li>Notification preference configuration</li><li>Active session viewing and termination</li>
+          </ul>
+          <div class="feature-group" style="margin-top:20px;">
+            <div class="feature-group-title">GDPR Art. 17 Account Erasure</div>
+            <ul class="feature-list">
+              <li>Requires authenticated session + recent MFA verification + email confirmation</li>
+              <li>Immediately revokes all sessions, tokens, and trusted devices</li>
+              <li>Background job purges all personal data — idempotent, 5 retries with exponential backoff</li>
+              <li>Audit logs and sign-in events preserved for legal compliance (Art. 17(3)(e))</li>
+              <li>CI-enforced coverage: every user-referencing column must declare purge / preserve / anonymize / cascade</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Access Request Workflows -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-indigo"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div>
+          <h2>Access Request Workflows</h2>
+        </div>
+        <div class="detail-card-body">
+          <ul class="feature-list feature-list-2col">
+            <li>Self-service access request submission</li><li>Approval workflows with email notifications</li>
+            <li>Handlebars-based email and HTML templates</li><li>Audit history per request</li>
+            <li>REST API for submission and approval</li><li>Extension points for custom approval rules</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 12. Recertification Workflows -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-teal"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/></svg></div>
+          <h2>Recertification &amp; Access Review Workflows</h2>
+        </div>
+        <div class="detail-card-body">
+          <ul class="feature-list feature-list-2col">
+            <li><strong>Access Review &amp; Attestation</strong> — structured review cycles for validating ongoing user access</li>
+            <li><strong>Automated Inactive User Removal</strong> — configurable inactivity thresholds trigger group removal</li>
+            <li><strong>Warning Periods</strong> — notify users before access is removed</li>
+            <li><strong>Configurable Activity Thresholds</strong> — define "active" usage per group or application</li>
+            <li><strong>Email Notifications</strong> — automated alerts for expiring access and recertification requests</li>
+            <li><strong>Scheduled Recertification Jobs</strong> — QuickJS job scripts for weekly/monthly review cycles</li>
+            <li>Group membership validation</li>
+            <li>Excel export of access review results</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 13. Audit Logging -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-rose"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z"/></svg></div>
+          <h2>Audit Logging &amp; Compliance</h2>
+        </div>
+        <div class="detail-card-body">
+          <ul class="feature-list feature-list-2col">
+            <li>Comprehensive audit trail for all auth &amp; authz events</li>
+            <li>Database-backed audit log with chaining</li>
+            <li>Audit log restoration (Super Admin only)</li>
+            <li>Email notification log</li>
+            <li>Login event history</li>
+            <li>NHE token audit log</li>
+            <li>Upload operation audit logs</li>
+            <li>OWASP C10-compliant error handling</li>
+            <li>GDPR Art. 17 preserved legal records</li>
+            <li>FedRAMP High security controls</li>
+            <li>Configurable log retention (by size or date)</li>
+            <li>OpenTelemetry integration for distributed tracing</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 14. Usage Reporting -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-violet"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg></div>
+          <h2>Usage Reporting</h2>
+        </div>
+        <div class="detail-card-body">
+          <ul class="feature-list feature-list-2col">
+            <li>Login event tracking — success/failure metrics per user, client, and IdP</li>
+            <li>Weekly usage report generation with Excel export</li>
+            <li>Daily unique user counts and activity summaries</li>
+            <li>Client-specific usage analytics</li>
+            <li>Identity provider usage tracking</li>
+            <li>Custom report templates via QuickJS job scripts</li>
+            <li>Login analytics REST API for programmatic access</li>
+            <li>Visual analytics dashboard in Admin UI</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 15. Customization & Branding -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-amber"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg></div>
+          <h2>Customization, Templating &amp; Branding</h2>
+        </div>
+        <div class="detail-card-body">
+          <ul class="feature-list feature-list-2col">
+            <li><strong>Login Page Templates</strong> — per-tenant and per-client branded pages</li>
+            <li><strong>Error Page Templates</strong> — custom error page rendering</li>
+            <li><strong>Email Templates</strong> — Handlebars HTML with variable substitution</li>
+            <li><strong>HTML Templates</strong> — general templating with version history</li>
+            <li><strong>Landing Page Templates</strong> — configurable landing pages</li>
+            <li><strong>Tenant Branding</strong> — upload logos and background images per tenant</li>
+            <li><strong>Image Caching</strong> — ETag-based caching for performance</li>
+            <li><strong>FedRAMP Upload Controls</strong> — centralized upload authorization (enabled/disabled, admin-only modes)</li>
+            <li>System Template Management (Super Admin or delegated)</li>
+            <li>Template version history</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 16. Security Controls -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-rose"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.752h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008H12v-.008z"/></svg></div>
+          <h2>Security Controls</h2>
+        </div>
+        <div class="detail-card-body">
+          <div class="security-grid">
+            <div class="security-item"><h4><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Input Validation</h4><p>AJV schema validation + custom validators. <code>safe-http-uri</code> format for URL fields prevents SSRF.</p></div>
+            <div class="security-item"><h4><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>OWASP C10 Error Handling</h4><p>Generic user-facing messages with unique error IDs. No stack traces to clients.</p></div>
+            <div class="security-item"><h4><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Secrets Encryption at Rest</h4><p>All secrets encrypted with JWE. Key rotation per user and per tenant.</p></div>
+            <div class="security-item"><h4><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Fail-Closed Trusted IdP</h4><p>Super Admin authorization requires a trusted IdP claim. Tokens without the claim are denied — no issuer-based fallback.</p></div>
+            <div class="security-item"><h4><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Rate Limiting</h4><p>Configurable per-endpoint rate limiting to mitigate brute-force and credential stuffing.</p></div>
+            <div class="security-item"><h4><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>CORS &amp; CSP</h4><p>Configurable allowed origins per client. CSP report endpoint. Anti-caching headers on sensitive pages.</p></div>
+            <div class="security-item"><h4><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>SAST &amp; Antivirus</h4><p>CodeQL static analysis in CI/CD. ClamAV for file upload scanning with graceful degradation and TLS proxy support.</p></div>
+            <div class="security-item"><h4><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>TOCTOU Mitigations</h4><p>Race condition vulnerability tracking and systematic fixes across authentication-critical code paths.</p></div>
+            <div class="security-item"><h4><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>TLS Everywhere</h4><p>SSL/TLS for database (including RDS profiles), Redis, and antivirus daemon connections.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17. Developer Experience -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-sky"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg></div>
+          <h2>Developer Experience &amp; Integrations</h2>
+        </div>
+        <div class="detail-card-body">
+          <div class="feature-group">
+            <div class="feature-group-title">APIs &amp; Documentation</div>
+            <ul class="feature-list">
+              <li>Full OpenAPI / Swagger documentation at <code>/docs</code></li>
+              <li>REST APIs for all management operations</li>
+              <li>Public API endpoint catalog</li>
+            </ul>
+          </div>
+          <div class="feature-group">
+            <div class="feature-group-title">Client Libraries</div>
+            <ul class="feature-list">
+              <li><strong>Angular</strong> — OIDC client, RBAC directives, advanced search, generated API client</li>
+              <li><strong>React</strong> — generated TypeScript API client</li>
+              <li><strong>Node.js</strong> — middleware package for protecting backend API services</li>
+            </ul>
+          </div>
+          <div class="feature-group">
+            <div class="feature-group-title">Command-Line Interface (CLI)</div>
+            <ul class="feature-list feature-list-2col">
+              <li>Tenant creation and management automation</li>
+              <li>User provisioning and batch operations</li>
+              <li>Identity provider configuration</li>
+              <li>Database migration execution</li>
+              <li>Backup and restore operations</li>
+              <li>Bulk user imports and exports</li>
+              <li>Health checks and diagnostics</li>
+              <li>PKCE challenge generation for OAuth flows</li>
+              <li>Scripted administrative tasks</li>
+              <li>CI/CD pipeline integration</li>
+            </ul>
+          </div>
+          <div class="feature-group">
+            <div class="feature-group-title">Third-Party Integrations</div>
+            <ul class="feature-list feature-list-2col">
+              <li>Azure Active Directory (OIDC + SAML + WSFed)</li>
+              <li>Google / GSuite (with account-switch flow)</li>
+              <li>ORCID researcher identity</li>
+              <li>HashiCorp Vault</li>
+              <li>Passbolt password manager</li>
+              <li>Grafana (built-in reverse proxy + Authifi auth)</li>
+              <li>UMRS account state synchronization</li>
+              <li>ClamAV antivirus</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18. Deployment & HA -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-teal"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z"/></svg></div>
+          <h2>Deployment &amp; Infrastructure</h2>
+        </div>
+        <div class="detail-card-body">
+          <div class="feature-group">
+            <div class="feature-group-title">High Availability</div>
+            <ul class="feature-list">
+              <li>Redis-based session clustering with mutex operations for multi-instance deployments</li>
+              <li>Concurrent session management with cluster-safe mutex</li>
+              <li>Database read replica support for horizontal read scaling</li>
+            </ul>
+          </div>
+          <div class="feature-group">
+            <div class="feature-group-title">Infrastructure</div>
+            <ul class="feature-list feature-list-2col">
+              <li>Docker containerized deployment</li>
+              <li>MariaDB / MySQL with connection pooling and SSL</li>
+              <li>Redis session and cache storage</li>
+              <li>Amazon RDS built-in SSL profiles</li>
+              <li>Automated Sequelize database migrations</li>
+              <li>CI-enforced migration integrity testing</li>
+              <li>Multi-environment JSON + env var configuration</li>
+              <li>OpenTelemetry distributed tracing &amp; metrics</li>
+              <li>Prometheus push exporter</li>
+              <li>Live and protected health check endpoints</li>
+              <li>License management &amp; enforcement</li>
+              <li>Per-tenant certificate management API</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 19. Standards Compliance -->
+      <div class="detail-card">
+        <div class="detail-card-header">
+          <div class="detail-card-icon hi-emerald"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <h2>Standards Compliance</h2>
+        </div>
+        <div class="detail-card-body">
+          <div class="standards-grid">
+            <div class="standard-item"><span class="standard-badge">OAuth 2.0</span><div><strong>RFC 6749</strong><p>Authorization Code, Client Credentials, Refresh Token, Implicit flows</p></div></div>
+            <div class="standard-item"><span class="standard-badge">Token Exchange</span><div><strong>RFC 8693</strong><p>Delegation tokens for NHE / AI agent use cases</p></div></div>
+            <div class="standard-item"><span class="standard-badge">DPoP</span><div><strong>RFC 9449</strong><p>Proof-of-possession token binding for enhanced client security</p></div></div>
+            <div class="standard-item"><span class="standard-badge">OIDC</span><div><strong>OpenID Connect 1.0</strong><p>OIDC Core, OIDC Discovery; per-tenant <code>.well-known</code> endpoints</p></div></div>
+            <div class="standard-item"><span class="standard-badge">SAML 2.0</span><div><strong>OASIS SAML 2.0</strong><p>SP and IdP modes; HTTP-POST, HTTP-Redirect, Artifact bindings; SLO</p></div></div>
+            <div class="standard-item"><span class="standard-badge">WS-Federation</span><div><strong>WS-Fed 1.2</strong><p>Passive requestor profile; ADFS and SharePoint integration</p></div></div>
+            <div class="standard-item"><span class="standard-badge">FIDO2</span><div><strong>W3C WebAuthn Level 2</strong><p>Hardware security keys and biometric authenticators; CTAP2</p></div></div>
+            <div class="standard-item"><span class="standard-badge">TOTP</span><div><strong>RFC 6238 / RFC 4226</strong><p>Time-based and HMAC-based one-time password standards</p></div></div>
+            <div class="standard-item"><span class="standard-badge">GA4GH</span><div><strong>GA4GH Passport v1</strong><p>AAI OpenID Connect Profile; visa issuance and validation for biomedical research</p></div></div>
+            <div class="standard-item"><span class="standard-badge">GDPR</span><div><strong>GDPR Art. 17</strong><p>Right to erasure with CI-enforced data coverage across all user-referencing tables</p></div></div>
+            <div class="standard-item"><span class="standard-badge">OWASP</span><div><strong>OWASP C10</strong><p>Secure error handling — generic messages, unique error IDs, detailed internal logs</p></div></div>
+            <div class="standard-item"><span class="standard-badge">FedRAMP</span><div><strong>FedRAMP High</strong><p>Security controls aligned with the FedRAMP High baseline for US government cloud</p></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /detail-sections -->
+  </div>
+</section>
+
+<footer>
+  <strong>Authifi Identity Broker</strong> — Enterprise Identity &amp; Access Management Platform<br />
+  <span style="font-size:.8rem;opacity:.6;margin-top:4px;display:block;">OIDC · SAML 2.0 · WS-Federation · OAuth 2.0 · GA4GH Passport · FIDO2/WebAuthn · FedRAMP High</span>
+</footer>
+
+</body>
+</html>

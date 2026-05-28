@@ -37,6 +37,10 @@ Security configuration and best practices:
 - [Security Admin Guide](security/security-admin-guide.md) - Administrative account lifecycle and security
 - [Recommended Secure Configuration](security/recommended-secure-configuration.md) - FedRAMP-aligned security guidance
 
+## Feature Overview
+
+For a complete list of Authifi capabilities — authentication protocols, MFA, RBAC, secret management, AI agent delegation, GA4GH Passport support, FedRAMP High compliance, and more — see the **[Authifi Identity Broker Feature List](feature-list.html)**.
+
 ## FedRAMP
 
 Authifi is FedRAMP High authorized as a supporting service in the [Palantir Federal Cloud Service (PFCS-SS)](https://marketplace.fedramp.gov/products/FR2315464863).
