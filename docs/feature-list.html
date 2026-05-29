@@ -183,7 +183,7 @@
         <div class="highlight-icon hi-blue">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
         </div>
-        <div><h3>FedRAMP High Compliance</h3><p>Security controls aligned with the FedRAMP High baseline — audit logging, access control, session management, input validation, and OWASP C10-compliant error handling.</p></div>
+        <div><h3>FedRAMP High Authorized</h3><p>Authorized as a supporting service within the <a href="https://www.fedramp.gov/marketplace/products/FR2315464863/" target="_blank" rel="noopener">Palantir Federal Cloud Service (PFCS-SS)</a> — FedRAMP High, Class D, Rev5 (FR2315464863).</p></div>
       </div>
 
       <div class="highlight-card">
@@ -211,7 +211,7 @@
         <div class="highlight-icon hi-green">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
         </div>
-        <div><h3>User Self-Service</h3><p>Users can reset passwords, verify email, enroll TOTP and WebAuthn credentials, manage trusted devices, configure notification preferences, and permanently delete their accounts per GDPR Art. 17.</p></div>
+        <div><h3>User Self-Service</h3><p>Users can reset passwords, verify email, enroll TOTP and WebAuthn credentials, manage trusted devices, and permanently delete their accounts per GDPR Art. 17.</p></div>
       </div>
 
       <div class="highlight-card">
@@ -273,10 +273,10 @@
           <tr><td>Machine Identity &amp; Delegation</td><td><span class="tag">NHE Tokens</span><span class="tag">RFC 8693 Token Exchange</span><span class="tag">DPoP / RFC 9449</span><span class="tag">Audit Trail</span></td></tr>
           <tr><td>Research Identity</td><td><span class="tag">GA4GH Passport v1</span><span class="tag">Visa Issuance</span><span class="tag">ORCID Integration</span><span class="tag">Linked Identities</span></td></tr>
           <tr><td>User Self-Service</td><td><span class="tag">Password Reset</span><span class="tag">MFA Enrollment</span><span class="tag">Session Management</span><span class="tag">GDPR Erasure</span></td></tr>
-          <tr><td>Access &amp; Recertification Workflows</td><td><span class="tag">Self-Service Requests</span><span class="tag">Approval Flows</span><span class="tag">Access Review</span><span class="tag">Inactive User Removal</span></td></tr>
+          <tr><td>Access Workflows &amp; Lifecycle</td><td><span class="tag">Self-Service Requests</span><span class="tag">Approval Flows</span><span class="tag">Inactive User Removal</span><span class="tag">Membership Expiration</span></td></tr>
           <tr><td>Reporting &amp; Audit</td><td><span class="tag">Excel Usage Reports</span><span class="tag">Login Analytics</span><span class="tag">Chained Audit Logs</span><span class="tag">NHE Audit Trail</span></td></tr>
           <tr><td>Customization &amp; Branding</td><td><span class="tag">Login Page Templates</span><span class="tag">Email Templates</span><span class="tag">Tenant Branding</span><span class="tag">FedRAMP Upload Controls</span></td></tr>
-          <tr><td>Security &amp; Compliance</td><td><span class="tag">FedRAMP High</span><span class="tag">GDPR Art. 17</span><span class="tag">OWASP C10</span><span class="tag">Antivirus</span><span class="tag">TOCTOU Fixes</span></td></tr>
+          <tr><td>Security &amp; Compliance</td><td><span class="tag">FedRAMP High (PFCS-SS)</span><span class="tag">GDPR Art. 17</span><span class="tag">OWASP C10</span><span class="tag">Antivirus</span><span class="tag">TOCTOU Fixes</span></td></tr>
           <tr><td>Developer Integrations</td><td><span class="tag">OpenAPI / Swagger</span><span class="tag">Angular SDK</span><span class="tag">React SDK</span><span class="tag">CLI</span><span class="tag">Grafana Proxy</span></td></tr>
           <tr><td>Platform &amp; Infrastructure</td><td><span class="tag">High Availability</span><span class="tag">Redis Clustering</span><span class="tag">Docker</span><span class="tag">OpenTelemetry</span><span class="tag">Prometheus</span></td></tr>
           <tr><td>Standards Compliance</td><td><span class="tag">OAuth 2.0</span><span class="tag">OIDC</span><span class="tag">SAML 2.0</span><span class="tag">FIDO2</span><span class="tag">GA4GH Passport</span><span class="tag">FedRAMP High</span></td></tr>
@@ -594,22 +594,20 @@
         </div>
       </div>
 
-      <!-- 12. Recertification Workflows -->
+      <!-- 12. Access Lifecycle Management -->
       <div class="detail-card">
         <div class="detail-card-header">
           <div class="detail-card-icon hi-teal"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/></svg></div>
-          <h2>Recertification &amp; Access Review Workflows</h2>
+          <h2>Access Lifecycle Management</h2>
         </div>
         <div class="detail-card-body">
           <ul class="feature-list feature-list-2col">
-            <li><strong>Access Review &amp; Attestation</strong> — structured review cycles for validating ongoing user access</li>
-            <li><strong>Automated Inactive User Removal</strong> — configurable inactivity thresholds trigger group removal</li>
-            <li><strong>Warning Periods</strong> — notify users before access is removed</li>
-            <li><strong>Configurable Activity Thresholds</strong> — define "active" usage per group or application</li>
-            <li><strong>Email Notifications</strong> — automated alerts for expiring access and recertification requests</li>
-            <li><strong>Scheduled Recertification Jobs</strong> — QuickJS job scripts for weekly/monthly review cycles</li>
-            <li>Group membership validation</li>
-            <li>Excel export of access review results</li>
+            <li><strong>Automated Inactive User Removal</strong> — configurable inactivity thresholds trigger group removal via scheduled jobs</li>
+            <li><strong>Group Membership Expiration</strong> — memberships carry expiration dates with configurable warning periods</li>
+            <li><strong>Warning Periods</strong> — notify users before access is removed; configurable warning lead time</li>
+            <li><strong>Configurable Activity Thresholds</strong> — define active usage criteria per group or application</li>
+            <li><strong>Email Notifications</strong> — automated alerts for expiring group memberships and upcoming removals</li>
+            <li><strong>Scheduled Lifecycle Jobs</strong> — QuickJS job scripts for periodic access hygiene</li>
           </ul>
         </div>
       </div>
@@ -727,16 +725,16 @@
           <div class="feature-group">
             <div class="feature-group-title">Command-Line Interface (CLI)</div>
             <ul class="feature-list feature-list-2col">
-              <li>Tenant creation and management automation</li>
-              <li>User provisioning and batch operations</li>
-              <li>Identity provider configuration</li>
-              <li>Database migration execution</li>
-              <li>Backup and restore operations</li>
-              <li>Bulk user imports and exports</li>
+              <li>Tenant, client, and identity provider import/export</li>
+              <li>User create, update, delete, and list operations</li>
+              <li>Secret management (create, view, update, delete)</li>
+              <li>Session listing and revocation</li>
+              <li>SSH key management</li>
+              <li>Usage report generation</li>
+              <li>Email sending via CLI</li>
               <li>Health checks and diagnostics</li>
               <li>PKCE challenge generation for OAuth flows</li>
-              <li>Scripted administrative tasks</li>
-              <li>CI/CD pipeline integration</li>
+              <li>Scripted administrative tasks and CI/CD integration</li>
             </ul>
           </div>
           <div class="feature-group">
@@ -802,14 +800,14 @@
             <div class="standard-item"><span class="standard-badge">Token Exchange</span><div><strong>RFC 8693</strong><p>Delegation tokens for NHE / AI agent use cases</p></div></div>
             <div class="standard-item"><span class="standard-badge">DPoP</span><div><strong>RFC 9449</strong><p>Proof-of-possession token binding for enhanced client security</p></div></div>
             <div class="standard-item"><span class="standard-badge">OIDC</span><div><strong>OpenID Connect 1.0</strong><p>OIDC Core, OIDC Discovery; per-tenant <code>.well-known</code> endpoints</p></div></div>
-            <div class="standard-item"><span class="standard-badge">SAML 2.0</span><div><strong>OASIS SAML 2.0</strong><p>SP and IdP modes; HTTP-POST, HTTP-Redirect, Artifact bindings; SLO</p></div></div>
+            <div class="standard-item"><span class="standard-badge">SAML 2.0</span><div><strong>OASIS SAML 2.0</strong><p>SP and IdP modes; HTTP-POST and HTTP-Redirect bindings; Single Logout (SLO)</p></div></div>
             <div class="standard-item"><span class="standard-badge">WS-Federation</span><div><strong>WS-Fed 1.2</strong><p>Passive requestor profile; ADFS and SharePoint integration</p></div></div>
             <div class="standard-item"><span class="standard-badge">FIDO2</span><div><strong>W3C WebAuthn Level 2</strong><p>Hardware security keys and biometric authenticators; CTAP2</p></div></div>
             <div class="standard-item"><span class="standard-badge">TOTP</span><div><strong>RFC 6238 / RFC 4226</strong><p>Time-based and HMAC-based one-time password standards</p></div></div>
             <div class="standard-item"><span class="standard-badge">GA4GH</span><div><strong>GA4GH Passport v1</strong><p>AAI OpenID Connect Profile; visa issuance and validation for biomedical research</p></div></div>
             <div class="standard-item"><span class="standard-badge">GDPR</span><div><strong>GDPR Art. 17</strong><p>Right to erasure with CI-enforced data coverage across all user-referencing tables</p></div></div>
             <div class="standard-item"><span class="standard-badge">OWASP</span><div><strong>OWASP C10</strong><p>Secure error handling — generic messages, unique error IDs, detailed internal logs</p></div></div>
-            <div class="standard-item"><span class="standard-badge">FedRAMP</span><div><strong>FedRAMP High</strong><p>Security controls aligned with the FedRAMP High baseline for US government cloud</p></div></div>
+            <div class="standard-item"><span class="standard-badge">FedRAMP</span><div><strong>FedRAMP High (PFCS-SS)</strong><p>Authorized as a supporting service within the <a href="https://www.fedramp.gov/marketplace/products/FR2315464863/" target="_blank" rel="noopener">Palantir Federal Cloud Service (FR2315464863)</a> — Class D, Rev5</p></div></div>
           </div>
         </div>
       </div>
