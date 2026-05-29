@@ -29,6 +29,21 @@ The Security Admin Guide provides comprehensive guidance for setting up, configu
 
 ---
 
+## Encryption Key Security and Backup
+
+**Document**: [Encryption Key Security and Backup](./encryption-key-security.md)
+
+Comprehensive documentation of Authifi's encryption key architecture and backup procedures:
+
+- Envelope encryption key hierarchy (DEKs and KEKs)
+- KEK provider modes: `none`, `local` (SecureCrypto), and `vault-transit` (HashiCorp Vault Transit)
+- Cryptographic details (AES-256-CBC, scrypt, HMAC)
+- DEK migration services (backfill and unwrap)
+- Shamir's Secret Sharing in the Super Admin Console for key backup and recovery
+- Key ceremony procedures and disaster recovery scenarios
+
+---
+
 ## Recommended Secure Configuration
 
 **Document**: [Recommended Secure Configuration](./recommended-secure-configuration.md)

@@ -72,6 +72,7 @@ nav:
     - Resources and Tools: guides/resources-tools-guide.md
   - Security:
     - Overview: security/README.md
+    - Encryption Key Security: security/encryption-key-security.md
     - Security Admin Guide: security/security-admin-guide.md
     - Recommended Secure Configuration: security/recommended-secure-configuration.md
     - FedRAMP Compliance Evidence: security/fedramp-compliance-evidence.md
