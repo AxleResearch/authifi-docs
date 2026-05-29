@@ -1,0 +1,14 @@
+/
+  Link: </.well-known/api-catalog>; rel="api-catalog"
+  Link: </guides/nhe-delegated-tokens/>; rel="service-doc"
+  Link: </guides/sso-integration-guide/>; rel="service-doc"
+  Link: </security/recommended-secure-configuration/>; rel="service-doc"
+
+/.well-known/api-catalog
+  Content-Type: application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"
+
+/.well-known/agent-skills/index.json
+  Content-Type: application/json
+
+/auth.md
+  Content-Type: text/markdown; charset=utf-8

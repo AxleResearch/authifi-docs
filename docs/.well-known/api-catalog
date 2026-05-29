@@ -1,0 +1,18 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://authifi.pages.dev/.well-known/api-catalog",
+      "item": [
+        { "href": "https://authifi.pages.dev/" }
+      ],
+      "service-doc": [
+        { "href": "https://authifi.pages.dev/guides/nhe-delegated-tokens/" },
+        { "href": "https://authifi.pages.dev/guides/sso-integration-guide/" },
+        { "href": "https://authifi.pages.dev/authorization/authorization/" }
+      ],
+      "describedby": [
+        { "href": "https://authifi.pages.dev/feature-list.html" }
+      ]
+    }
+  ]
+}
