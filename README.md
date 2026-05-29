@@ -77,6 +77,63 @@ mkdocs build
 
 The static site is generated in the `site/` directory.
 
+## Agent Readiness
+
+This site publishes static assets for AI agent discovery and crawl policy control.
+
+### Static assets (in repo)
+
+| Path | Purpose |
+|------|---------|
+| `/robots.txt` | Crawl rules, AI bot entries, Content Signals |
+| `/_headers` | Cloudflare Link headers and Content-Type overrides |
+| `/.well-known/api-catalog` | RFC 9727 documentation catalog |
+| `/auth.md` | Agent access instructions |
+| `/.well-known/agent-skills/index.json` | Agent skills discovery index |
+
+The MkDocs hook at `docs/hooks/agent_assets.py` generates `sitemap.xml`, copies static agent files, and updates skill SHA-256 digests on each build.
+
+### Markdown for Agents (Cloudflare dashboard)
+
+Markdown content negotiation requires a Cloudflare zone setting. It is not implemented in application code.
+
+1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com)
+2. Select the zone for `authifi.pages.dev` (or your custom docs domain)
+3. Open **AI Crawl Control**
+4. Enable **Markdown for Agents**
+
+Requires Pro, Business, or Enterprise. Alternatively, enable via API:
+
+```bash
+curl -X PATCH "https://api.cloudflare.com/client/v4/zones/{zone_id}/settings/content_converter" \
+  --header "Authorization: Bearer {api_token}" \
+  --header "Content-Type: application/json" \
+  --data '{"value":"on"}'
+```
+
+Do not enable conflicting robots.txt management in AI Crawl Control while `/robots.txt` is maintained in this repository.
+
+### Verification
+
+After deploy:
+
+```bash
+curl -sI https://authifi.pages.dev/robots.txt
+curl -sI https://authifi.pages.dev/
+curl -sH "Accept: application/linkset+json" https://authifi.pages.dev/.well-known/api-catalog
+curl -sI https://authifi.pages.dev/auth.md
+curl -s https://authifi.pages.dev/.well-known/agent-skills/index.json
+curl -sI https://authifi.pages.dev/ -H "Accept: text/markdown"
+```
+
+Run a full scan:
+
+```bash
+curl -s -X POST https://isitagentready.com/api/scan \
+  -H "Content-Type: application/json" \
+  -d '{"url":"https://authifi.pages.dev"}'
+```
+
 ## Project Structure
 
 ```
@@ -84,6 +141,12 @@ authifi-docs/
 ├── .changeset/              # Changesets configuration
 ├── docs/                    # Documentation source files
 │   ├── index.md            # Home page
+│   ├── robots.txt          # Crawl and AI bot policy
+│   ├── _headers            # Cloudflare Pages header rules
+│   ├── auth.md             # Agent access instructions
+│   ├── .well-known/        # Agent discovery endpoints
+│   ├── hooks/              # MkDocs build hooks
+│   ├── javascripts/        # Client-side scripts (WebMCP)
 │   ├── authorization/      # Authorization concepts
 │   ├── guides/             # Administrator guides
 │   └── security/           # Security documentation

@@ -2,6 +2,16 @@ site_name: Authifi Documentation
 site_description: Public documentation for the Authifi identity and access management platform
 site_url: https://authifi.pages.dev
 
+hooks:
+  - docs/hooks/agent_assets.py
+
+exclude_docs: |
+  auth.md
+  .well-known/**/SKILL.md
+
+extra_javascript:
+  - javascripts/webmcp.js
+
 theme:
   name: material
   features:

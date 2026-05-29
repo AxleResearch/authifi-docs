@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "authifi-docs-navigation",
+      "type": "skill-md",
+      "description": "Navigate the Authifi documentation site information architecture and find relevant guides.",
+      "url": "https://authifi.pages.dev/.well-known/agent-skills/authifi-docs-navigation/SKILL.md",
+      "digest": "sha256:c323ade492a199def6f4174ae0021fe30e35c47faa7f121d9123874245944dee"
+    },
+    {
+      "name": "authifi-oauth-concepts",
+      "type": "skill-md",
+      "description": "Understand Authifi OAuth 2.0 and OIDC concepts as documented, without calling live product APIs.",
+      "url": "https://authifi.pages.dev/.well-known/agent-skills/authifi-oauth-concepts/SKILL.md",
+      "digest": "sha256:63182bc7de02eec2946b0cc93a132145cc13b99617c37678587a3c9900c9ce7a"
+    }
+  ]
+}
