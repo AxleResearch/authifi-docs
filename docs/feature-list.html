@@ -91,8 +91,8 @@
 
     /* FEATURE LIST */
     .feature-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-    .feature-list li { display: flex; align-items: flex-start; gap: 8px; font-size: .875rem; line-height: 1.5; }
-    .feature-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); flex-shrink: 0; margin-top: 7px; }
+    .feature-list li { position: relative; padding-left: 14px; font-size: .875rem; line-height: 1.5; }
+    .feature-list li::before { content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
     .feature-list li code { background: #f1f5f9; color: #334155; font-family: 'JetBrains Mono','Fira Code',monospace; font-size: .78rem; padding: 1px 5px; border-radius: 4px; }
     .feature-list-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; }
 
@@ -143,10 +143,11 @@
 
     /* STANDARDS TABLE */
     .standards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-    .standard-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; display: flex; gap: 12px; align-items: flex-start; }
-    .standard-badge { background: #0f172a; color: #fff; font-size: .7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
-    .standard-item p { font-size: .82rem; color: var(--text-muted); line-height: 1.45; }
-    .standard-item strong { display: block; font-size: .875rem; font-weight: 700; margin-bottom: 2px; }
+    .standard-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; display: grid; grid-template-columns: auto 1fr; column-gap: 10px; row-gap: 8px; align-items: center; }
+    .standard-item > div { display: contents; }
+    .standard-badge { background: #0f172a; color: #fff; font-size: .7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
+    .standard-item p { grid-column: 1 / -1; font-size: .82rem; color: var(--text-muted); line-height: 1.45; }
+    .standard-item strong { font-size: .875rem; font-weight: 700; }
 
     /* FOOTER */
     footer { background: #0f172a; color: #64748b; text-align: center; padding: 32px 24px; font-size: .85rem; }
