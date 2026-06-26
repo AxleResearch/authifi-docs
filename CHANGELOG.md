@@ -1,5 +1,12 @@
 # authifi-docs
 
+## 1.2.1
+
+### Patch Changes
+
+- 78cbb81: Fix feature list page rendering: list items containing inline code/links no longer wrap into narrow columns, and Standards Compliance tiles now keep the badge and title inline with the description spanning full width.
+- a97fc83: Switch navigation to mkdocs-awesome-nav (no nav content change). Navigation is now derived from the file tree plus `docs/.nav.yml` instead of the `nav:` block in `mkdocs.yml`, so future synced docs auto-append to the correct section. The rendered nav and sitemap are unchanged.
+
 ## 1.2.0
 
 ### Minor Changes
