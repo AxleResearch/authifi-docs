@@ -8,8 +8,8 @@ To satisfy the request to address the Controls Requirements Project "*(050) Crea
 
 Documentation covering permissions, actions, and operations for administrative accounts:
 
-- **Admin Roles and Privileges**: [https://authifi.pages.dev/authorization/admin-roles/](https://authifi.pages.dev/authorization/admin-roles/)
-- **Security Overview**: [https://authifi.pages.dev/security/](https://authifi.pages.dev/security/)
+- **Admin Roles and Privileges**: [https://docs.authifi.io/authorization/admin-roles/](https://docs.authifi.io/authorization/admin-roles/)
+- **Security Overview**: [https://docs.authifi.io/security/](https://docs.authifi.io/security/)
 
 ---
 
@@ -17,8 +17,8 @@ Documentation covering permissions, actions, and operations for administrative a
 
 Documentation covering setup, MFA requirements, configuration, and decommissioning:
 
-- **Account Lifecycle Management**: [https://authifi.pages.dev/security/security-admin-guide/#account-lifecycle-management](https://authifi.pages.dev/security/security-admin-guide/#account-lifecycle-management)
-- **Top-Level Administrative Accounts**: [https://authifi.pages.dev/security/recommended-secure-configuration/#top-level-administrative-accounts](https://authifi.pages.dev/security/recommended-secure-configuration/#top-level-administrative-accounts)
+- **Account Lifecycle Management**: [https://docs.authifi.io/security/security-admin-guide/#account-lifecycle-management](https://docs.authifi.io/security/security-admin-guide/#account-lifecycle-management)
+- **Top-Level Administrative Accounts**: [https://docs.authifi.io/security/recommended-secure-configuration/#top-level-administrative-accounts](https://docs.authifi.io/security/recommended-secure-configuration/#top-level-administrative-accounts)
 
 ---
 
@@ -26,8 +26,8 @@ Documentation covering setup, MFA requirements, configuration, and decommissioni
 
 Documentation describing admin-controlled settings with associated functions, security impacts, and recommended values:
 
-- **Secure Configuration Baseline**: [https://authifi.pages.dev/security/recommended-secure-configuration/#secure-configuration-baseline](https://authifi.pages.dev/security/recommended-secure-configuration/#secure-configuration-baseline)
-- **Security Best Practices**: [https://authifi.pages.dev/security/recommended-secure-configuration/#security-best-practices](https://authifi.pages.dev/security/recommended-secure-configuration/#security-best-practices)
+- **Secure Configuration Baseline**: [https://docs.authifi.io/security/recommended-secure-configuration/#secure-configuration-baseline](https://docs.authifi.io/security/recommended-secure-configuration/#secure-configuration-baseline)
+- **Security Best Practices**: [https://docs.authifi.io/security/recommended-secure-configuration/#security-best-practices](https://docs.authifi.io/security/recommended-secure-configuration/#security-best-practices)
 
 ---
 
@@ -35,4 +35,4 @@ Documentation describing admin-controlled settings with associated functions, se
 
 All the above links are publicly accessible without authentication at:
 
-**[https://authifi.pages.dev/](https://authifi.pages.dev/)**
+**[https://docs.authifi.io/](https://docs.authifi.io/)**

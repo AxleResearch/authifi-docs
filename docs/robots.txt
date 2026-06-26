@@ -41,4 +41,4 @@ User-agent: Applebot-Extended
 Allow: /
 Content-Signal: ai-train=no, search=yes, ai-input=yes
 
-Sitemap: https://authifi.pages.dev/sitemap.xml
+Sitemap: https://docs.authifi.io/sitemap.xml

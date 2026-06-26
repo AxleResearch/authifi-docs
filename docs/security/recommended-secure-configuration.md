@@ -1233,7 +1233,7 @@ This document addresses the following FedRAMP Recommended Secure Configuration r
 
 **FRR-RSC-09**: Publish Guidance
 
-- This document is publicly available in the Authifi Documentation repository at: https://authifi.pages.dev/security/recommended-secure-configuration
+- This document is publicly available in the Authifi Documentation repository at: https://docs.authifi.io/security/recommended-secure-configuration
 
 **FRR-RSC-10**: Versioning and Release History
 

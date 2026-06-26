@@ -1,6 +1,6 @@
 site_name: Authifi Documentation
 site_description: Public documentation for the Authifi identity and access management platform
-site_url: https://authifi.pages.dev
+site_url: https://docs.authifi.io
 
 hooks:
   - docs/hooks/agent_assets.py
@@ -14,6 +14,8 @@ extra_javascript:
 
 theme:
   name: material
+  logo: assets/authifi-logo.png
+  favicon: assets/authifi-logo.png
   features:
     - navigation.sections
     - navigation.expand

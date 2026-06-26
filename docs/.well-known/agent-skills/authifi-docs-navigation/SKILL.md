@@ -5,7 +5,7 @@ description: Navigate the Authifi documentation site information architecture an
 
 # Authifi Documentation Navigation
 
-Use this skill when you need to locate Authifi product documentation on https://authifi.pages.dev.
+Use this skill when you need to locate Authifi product documentation on https://docs.authifi.io.
 
 ## Site structure
 
