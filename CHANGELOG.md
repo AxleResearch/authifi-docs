@@ -1,5 +1,11 @@
 # authifi-docs
 
+## 1.3.0
+
+### Minor Changes
+
+- 50e43f0: Set `docs.authifi.io` as the canonical custom domain across the site (`site_url`, robots/sitemap, `.well-known` agent assets, and security docs), document the Cloudflare Pages custom-domain DNS setup, and add the Authifi logo as the header logo and favicon.
+
 ## 1.2.1
 
 ### Patch Changes
