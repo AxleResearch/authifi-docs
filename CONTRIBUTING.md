@@ -117,7 +117,7 @@ Before requesting a review, verify:
 ### Preview vs. Production
 
 - **Preview URL**: `https://<build-id>.authifi.pages.dev` — unique to each PR
-- **Production URL**: `https://authifi.pages.dev` — updated when PRs are merged to `main`
+- **Production URL**: `https://docs.authifi.io` — updated when PRs are merged to `main`
 
 ---
 

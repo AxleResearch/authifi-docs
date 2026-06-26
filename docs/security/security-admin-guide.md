@@ -826,4 +826,4 @@ All security settings are accessible via REST API and the Authifi UI:
 
 **Classification**: Public  
 **Distribution**: Unlimited  
-**URL**: https://authifi.pages.dev/security/security-admin-guide
+**URL**: https://docs.authifi.io/security/security-admin-guide

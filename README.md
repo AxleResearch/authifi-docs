@@ -2,7 +2,7 @@
 
 Public documentation for the Authifi identity and access management platform.
 
-**Live Site**: [https://authifi.pages.dev](https://authifi.pages.dev)
+**Live Site**: [https://docs.authifi.io](https://docs.authifi.io)
 
 ## For Documentation Writers
 
@@ -40,13 +40,51 @@ Once connected, every pull request will automatically get a preview URL. Contrib
 https://abc123.authifi.pages.dev
 ```
 
-### 3. Custom Domain (Optional)
+### 3. Custom Domain
 
-To use a custom domain instead of `*.pages.dev`:
+The production site is served at the custom domain **`docs.authifi.io`**. The
+`*.pages.dev` URL keeps working and is still used for deploy previews.
 
-1. Go to your Pages project → **Custom domains**
-2. Add your domain (e.g., `docs.authifi.com`)
-3. Follow the DNS configuration instructions
+#### A. Add the custom domain in Cloudflare Pages
+
+1. Go to **Workers & Pages → `authifi-docs` → Custom domains**
+2. Click **Set up a custom domain**
+3. Enter `docs.authifi.io` and click **Continue**
+
+#### B. Configure DNS
+
+If the `authifi.io` zone is managed in the **same Cloudflare account**, Pages
+creates the DNS record automatically — just **Activate** it when prompted. The
+record will be:
+
+```
+Type:   CNAME
+Name:   docs
+Target: authifi.pages.dev
+Proxy:  Proxied (orange cloud)
+```
+
+If `authifi.io` is hosted with **another DNS provider**, create the record there
+manually:
+
+```
+Type:   CNAME
+Name:   docs
+Value:  authifi.pages.dev
+```
+
+#### C. Verify
+
+After DNS propagates (usually a few minutes), Cloudflare provisions a TLS
+certificate and the domain shows **Active**. Then:
+
+```bash
+curl -sI https://docs.authifi.io/
+```
+
+The `site_url` in `mkdocs.yml` is already set to `https://docs.authifi.io`, so
+canonical links and `sitemap.xml` resolve to the custom domain after the next
+build.
 
 ## Local Development
 
@@ -100,7 +138,7 @@ The MkDocs hook at `docs/hooks/agent_assets.py` generates `sitemap.xml`, copies 
 Markdown content negotiation requires a Cloudflare zone setting. It is not implemented in application code.
 
 1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com)
-2. Select the zone for `authifi.pages.dev` (or your custom docs domain)
+2. Select the `authifi.io` zone (the zone that serves the custom docs domain `docs.authifi.io`)
 3. Open **AI Crawl Control**
 4. Enable **Markdown for Agents**
 
@@ -120,12 +158,12 @@ Do not enable conflicting robots.txt management in AI Crawl Control while `/robo
 After deploy:
 
 ```bash
-curl -sI https://authifi.pages.dev/robots.txt
-curl -sI https://authifi.pages.dev/
-curl -sH "Accept: application/linkset+json" https://authifi.pages.dev/.well-known/api-catalog
-curl -sI https://authifi.pages.dev/auth.md
-curl -s https://authifi.pages.dev/.well-known/agent-skills/index.json
-curl -sI https://authifi.pages.dev/ -H "Accept: text/markdown"
+curl -sI https://docs.authifi.io/robots.txt
+curl -sI https://docs.authifi.io/
+curl -sH "Accept: application/linkset+json" https://docs.authifi.io/.well-known/api-catalog
+curl -sI https://docs.authifi.io/auth.md
+curl -s https://docs.authifi.io/.well-known/agent-skills/index.json
+curl -sI https://docs.authifi.io/ -H "Accept: text/markdown"
 ```
 
 Run a full scan:
@@ -133,7 +171,7 @@ Run a full scan:
 ```bash
 curl -s -X POST https://isitagentready.com/api/scan \
   -H "Content-Type: application/json" \
-  -d '{"url":"https://authifi.pages.dev"}'
+  -d '{"url":"https://docs.authifi.io"}'
 ```
 
 ## Project Structure

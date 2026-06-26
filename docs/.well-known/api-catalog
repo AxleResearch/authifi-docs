@@ -1,17 +1,17 @@
 {
   "linkset": [
     {
-      "anchor": "https://authifi.pages.dev/.well-known/api-catalog",
+      "anchor": "https://docs.authifi.io/.well-known/api-catalog",
       "item": [
-        { "href": "https://authifi.pages.dev/" }
+        { "href": "https://docs.authifi.io/" }
       ],
       "service-doc": [
-        { "href": "https://authifi.pages.dev/guides/nhe-delegated-tokens/" },
-        { "href": "https://authifi.pages.dev/guides/sso-integration-guide/" },
-        { "href": "https://authifi.pages.dev/authorization/authorization/" }
+        { "href": "https://docs.authifi.io/guides/nhe-delegated-tokens/" },
+        { "href": "https://docs.authifi.io/guides/sso-integration-guide/" },
+        { "href": "https://docs.authifi.io/authorization/authorization/" }
       ],
       "describedby": [
-        { "href": "https://authifi.pages.dev/feature-list.html" }
+        { "href": "https://docs.authifi.io/feature-list.html" }
       ]
     }
   ]

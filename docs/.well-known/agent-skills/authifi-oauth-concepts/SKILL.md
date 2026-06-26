@@ -33,4 +33,4 @@ For short-lived tokens delegated to automated agents or LLM pipelines, read the 
 
 ## Important distinction
 
-The documentation site at authifi.pages.dev is public and unauthenticated. Do not expect OAuth metadata, token endpoints, or protected resources on this domain.
+The documentation site at docs.authifi.io is public and unauthenticated. Do not expect OAuth metadata, token endpoints, or protected resources on this domain.
