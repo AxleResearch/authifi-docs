@@ -38,6 +38,11 @@ STATIC_COPIES = (
     ".well-known/agent-skills/authifi-oauth-concepts/SKILL.md",
 )
 
+# Navigation is derived by the awesome-nav plugin and no longer lives in
+# mkdocs.yml (config.nav is None at post-build time). Capture the resolved
+# Navigation in on_nav so the sitemap can still enumerate pages in nav order.
+_resolved_nav: Any = None
+
 
 def _sha256_digest(path: Path) -> str:
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
@@ -45,6 +50,24 @@ def _sha256_digest(path: Path) -> str:
 
 
 def _iter_nav_pages(nav: Any, pages: list[str]) -> None:
+    # Resolved mkdocs Navigation object (from the awesome-nav plugin).
+    if hasattr(nav, "items"):
+        for item in nav.items:
+            _iter_nav_pages(item, pages)
+        return
+
+    # StructureItem: Section, Page or Link.
+    if hasattr(nav, "is_section"):
+        if nav.is_section:
+            for child in nav.children:
+                _iter_nav_pages(child, pages)
+        elif nav.is_page:
+            pages.append(nav.file.src_uri)
+        elif nav.is_link:
+            pages.append(nav.url)
+        return
+
+    # Raw mkdocs.yml nav config (fallback when no plugin rewrites the nav).
     if isinstance(nav, str):
         pages.append(nav)
         return
@@ -132,13 +155,21 @@ def _copy_static_files(docs_dir: Path, site_dir: Path) -> None:
         target.write_bytes(source.read_bytes())
 
 
+def on_nav(nav, config, files):
+    global _resolved_nav
+    _resolved_nav = nav
+    return nav
+
+
 def on_post_build(config, **kwargs) -> None:
     docs_dir = Path(config.docs_dir)
     site_dir = Path(config.site_dir)
     site_url = config.site_url or ""
 
+    nav = _resolved_nav if _resolved_nav is not None else config.nav
+
     _copy_static_files(docs_dir, site_dir)
-    _write_sitemap(site_dir, site_url, config.nav)
+    _write_sitemap(site_dir, site_url, nav)
     _write_agent_skills_index(site_dir, site_url, docs_dir)
 
     headers_path = site_dir / "_headers"
