@@ -23,7 +23,7 @@ To deploy this documentation site:
 5. Click **Connect to Git**
 6. Authorize GitHub and select the `AxleResearch/authifi-docs` repository
 7. Configure build settings:
-   - **Project name**: `authifi-docs`
+   - **Project name**: `authifi` (this becomes the `*.pages.dev` hostname, i.e. `authifi.pages.dev`)
    - **Production branch**: `main`
    - **Framework preset**: None
    - **Build command**: `pip install -r requirements.txt && mkdocs build`
@@ -47,7 +47,7 @@ The production site is served at the custom domain **`docs.authifi.io`**. The
 
 #### A. Add the custom domain in Cloudflare Pages
 
-1. Go to **Workers & Pages → `authifi-docs` → Custom domains**
+1. Go to **Workers & Pages → `authifi` → Custom domains**
 2. Click **Set up a custom domain**
 3. Enter `docs.authifi.io` and click **Continue**
 
