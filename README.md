@@ -30,6 +30,8 @@ To deploy this documentation site:
    - **Build output directory**: `site`
 8. Click **Save and Deploy**
 
+> **Python version**: The build requires Python 3.10+ (`mkdocs-awesome-nav`). This repo pins it via a `.python-version` file (`3.12`), which Cloudflare Pages reads automatically. To override from the dashboard instead, set a `PYTHON_VERSION` environment variable under **Settings → Environment variables**.
+
 ### 2. Verify Deploy Previews
 
 Once connected, every pull request will automatically get a preview URL. Contributors will see a comment on their PR with a link like:
@@ -50,7 +52,7 @@ To use a custom domain instead of `*.pages.dev`:
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 3.10+ (required by the `mkdocs-awesome-nav` plugin; the pinned version lives in `.python-version`)
 - pip
 
 ### Setup

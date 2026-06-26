@@ -41,6 +41,7 @@ theme:
 
 plugins:
   - search
+  - awesome-nav
 
 markdown_extensions:
   - admonition
@@ -59,33 +60,6 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
-
-nav:
-  - Home: index.md
-  - Authorization:
-    - Overview: authorization/authorization.md
-    - Admin Roles: authorization/admin-roles.md
-    - Privileged Access Summary: authorization/privileged-access-summary.md
-    - Super Admin Access: authorization/super-admin-access.md
-    - Default Application User Groups: authorization/default-application-user-groups.md
-    - Delegating Tenant Management: authorization/delegating-tenant-management-to-a-shared-tenant.md
-    - Trusted Tenant Implementation: authorization/trusted-tenant-implementation.md
-  - Guides:
-    - Tenant Administration: guides/tenant-admin-guide.md
-    - Users and Groups: guides/users-groups-admin-guide.md
-    - SSO Integration: guides/sso-integration-guide.md
-    - Access Requests: guides/access-requests-guide.md
-    - License Management: guides/license-management-guide.md
-    - Logout Confirmation: guides/logout-confirmation-guide.md
-    - Monitoring and Logging: guides/monitoring-guide.md
-    - NHE Delegated Tokens: guides/nhe-delegated-tokens.md
-    - Resources and Tools: guides/resources-tools-guide.md
-  - Security:
-    - Overview: security/README.md
-    - Security Admin Guide: security/security-admin-guide.md
-    - Recommended Secure Configuration: security/recommended-secure-configuration.md
-    - FedRAMP Compliance Evidence: security/fedramp-compliance-evidence.md
-  - Feature List: feature-list.html
 
 extra:
   social:
