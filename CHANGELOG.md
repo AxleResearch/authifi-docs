@@ -1,5 +1,12 @@
 # authifi-docs
 
+## 2.0.0
+
+### Major Changes
+
+- 1d23fbf: Move the documentation site to an OIDC-protected application on a private EC2
+  instance behind an AWS Application Load Balancer, deployed through S3 and SSM.
+
 ## 1.5.0
 
 ### Minor Changes
